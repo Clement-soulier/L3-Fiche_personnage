@@ -32,10 +32,9 @@ public class Competence implements Serializable
      * @param nouveau_nom
      * @return
      */
-    public int renommer(String nouveau_nom)
+    public void renommer(String nouveau_nom)
     {
         this.nom = nouveau_nom;
-        return 0;
     }
 
     /**
@@ -43,10 +42,9 @@ public class Competence implements Serializable
      * @param nouvelle_description
      * @return
      */
-    public int ajouter_description(String nouvelle_description)
+    public void changer_description(String nouvelle_description)
     {
         this.description = nouvelle_description;
-        return 0;
     }
 
     /**

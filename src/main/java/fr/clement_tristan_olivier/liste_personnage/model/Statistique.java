@@ -18,12 +18,14 @@ public class Statistique implements Serializable
 
     /**
      *Créer une nouvelle instance de Statistique et l'ajoute à la liste de Statistiques
+     *@param nom nom de la statistique
      *@param description description de la statistique
      *@param valeur valeur de la statistique
      */
-    public Statistique(String description, int valeur)
+    public Statistique(String nom, String description, int valeur)
     {
         this.id = get_id++;
+        this.nom = nom;
         this.description = description;
         this.valeur = valeur;
         liste_stats.add(this);
@@ -33,17 +35,16 @@ public class Statistique implements Serializable
      * Permet de renommer une statistique
      * @param nouveau_nom le nouveau nom de la statistique
     */
-    public int renommer(String nouveau_nom)
+    public void renommer(String nouveau_nom)
     {
         this.nom = nouveau_nom;
-        return 0;
     }
 
     /**
      * Change la valeur d'une statistique pour un personnage
      * @param personnage le personnage pour qui la statistique va être changer
      */
-    public void change_valeur(Personnage personnage, int valeur)
+    public void changer_valeur(Personnage personnage, int valeur)
     {
         personnage.modifier_statistique(this, valeur);
     }
@@ -52,7 +53,7 @@ public class Statistique implements Serializable
      * Permet de changer la description de la statistique
      * @param nouvelle_description la nouvelle descrition de la statistique
      */
-    public void ajouter_description(String nouvelle_description)
+    public void changer_description(String nouvelle_description)
     {
         this.description = nouvelle_description;
     }

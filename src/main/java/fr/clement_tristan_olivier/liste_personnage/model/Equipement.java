@@ -40,7 +40,7 @@ public class Equipement implements Serializable
      * Change la description d'un équipement
      * @param nouvelle_description la nouvelle description
      */
-    public void ajouter_description(String nouvelle_description)
+    public void changer_description(String nouvelle_description)
     {
         this.description = nouvelle_description;
     }

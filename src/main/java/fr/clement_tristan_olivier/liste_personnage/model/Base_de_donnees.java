@@ -1,7 +1,7 @@
 package fr.clement_tristan_olivier.liste_personnage.model;
 
-import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import fr.clement_tristan_olivier.liste_personnage.utils.passwordUtils;
 
@@ -24,7 +24,7 @@ public class Base_de_donnees implements Serializable{
      * Authentifie un compte depuis un pseudo et un mot de passe
      * @param pseudo String
      * @param password String
-     * @return Compte
+     * @return ?Compte
      */
     public Compte authenticate(String pseudo, String password){
         for(Compte compte : this.utilisateurs){
@@ -32,7 +32,7 @@ public class Base_de_donnees implements Serializable{
                 return compte;
             }
         }
-        //raise une erreur
+        return null;
     }
 
     /**

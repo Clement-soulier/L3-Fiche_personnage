@@ -1,4 +1,5 @@
 package fr.clement_tristan_olivier.liste_personnage.model;
+import fr.clement_tristan_olivier.liste_personnage.utils.passwordUtils;
 
 import java.util.ArrayList;
 import java.io.Serializable;
@@ -22,7 +23,7 @@ public class Compte implements Serializable{
     public Compte(String pseudo, String password) {
         this.pseudo = pseudo;
         this.id = get_id++;
-        this.password = password;
+        this.password = passwordUtils.hashPassword(password);
         this.active = true;
         this.liste_personnage = new ArrayList<Personnage>();
     }

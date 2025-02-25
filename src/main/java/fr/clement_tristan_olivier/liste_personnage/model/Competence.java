@@ -29,36 +29,54 @@ public class Competence implements Serializable
 
     /**
      * Renomme une compétence
+     * Retourne false si le nom est le même, true sinon
      * @param nouveau_nom String
+     * @return boolean
      */
-    public void renommer(String nouveau_nom)
+    public boolean renommer(String nouveau_nom)
     {
+        if(this.nom.equals(nouveau_nom)){
+            return false;
+        }
         this.nom = nouveau_nom;
+        return true;
     }
 
     /**
      * Change la description d'une compétence
+     * Retourne false si la description est la même, true sinon
      * @param nouvelle_description String
+     * @return boolean
      */
-    public void changer_description(String nouvelle_description)
+    public boolean changer_description(String nouvelle_description)
     {
+        if(this.description.equals(nouvelle_description)){
+            return false;
+        }
         this.description = nouvelle_description;
+        return true;
     }
 
     /**
      * Supprime une compétence pour chaque personnage et pour la liste globale
      * @param p Competence
+     * @return boolean
      */
-    public static void supprime_globale(Competence p)
+    public static boolean supprime_globale(Competence p)
     {
         for(Compte compte : Compte.liste_compte)
         {
             for (Personnage personnage : compte.liste_personnage)
             {
                 personnage.supprime_competence(p);
+                if(personnage.competences.contains(p))
+                {
+                    return false;
+                }
             }
         }
         liste_competence.remove(p);
+        return !liste_competence.contains(p);
     }
 
     /**

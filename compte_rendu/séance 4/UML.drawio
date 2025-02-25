@@ -1,0 +1,157 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0" version="26.0.16">
+  <diagram name="Page-1" id="Ys_Si_Kp9JGe3EzJ7wWJ">
+    <mxGraphModel dx="1395" dy="621" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="01AiD1RpHDVqo8bFV30B-1" value="Compte" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="21" y="110" width="350" height="230" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-2" value="static int get_id&#xa;protected int id&#xa;protected String pseudo&#xa;protected String password&#xa;protected Boolean active&#xa;protected ArrayList&lt;Personnage&gt; liste_personnage&#xa;public static ArrayList&lt;Compte&gt; liste_compte" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-1">
+          <mxGeometry y="26" width="350" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-4" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-1">
+          <mxGeometry y="130" width="350" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-5" value="public Compte(String pseudo, String password)&#xa;public Boolean ajouter_personnage(Personnage personnage)&#xa;public Boolean supprimer_personnage(int id)&#xa;public void enregistrer()&#xa;public String ToString()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-1">
+          <mxGeometry y="140" width="350" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-6" value="Base_de_donnees" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="160" width="340" height="170" as="geometry">
+            <mxRectangle x="470" y="160" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-7" value="public ArrayList&lt;Compte&gt; utilisateurs" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-6">
+          <mxGeometry y="26" width="340" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-8" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-6">
+          <mxGeometry y="60" width="340" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-9" value="public Compte authenticate(String pseudo, String password)&#xa;publid Boolean ajouter_compte(Compte compte)&#xa;public Boolean supprime_compte(int id)&#xa;public Boolean  desactive_compte(int id)&#xa;public String ToString()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-6">
+          <mxGeometry y="68" width="340" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-10" value="Personnage" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="10" y="530" width="420" height="390" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-11" value="static Int get_id&#xa;protected int id&#xa;protected String nom" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-10">
+          <mxGeometry y="26" width="420" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-12" value="protected Image portrait&#xa;protected String biographie&#xa;protected HashMap&lt;Statistique, Integer&gt; statistiques&#xa;protected ArrayList&lt;Competence&gt; competences&#xa;protected ArrayList&lt;Equipement&gt; equipements&#xa;protected String classse " style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-10">
+          <mxGeometry y="70" width="420" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-13" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-10">
+          <mxGeometry y="160" width="420" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-14" value="public Personnage(String nom, Image portrait, String biographie,&#xa;    ArrayList&lt;Statistique&gt; statistiques, ArrayList&lt;Competence&gt; competences,&#xa;    ArrayList&lt;Equipement&gt; equipement, String classe)&#xa;public Booleen modifie_nom(String nom)&#xa;public Boolean modifie_portrait(Image portrait)&#xa;public Boolean modifie_biographie(String biographie)&#xa;public Boolean ajoute_statistiques(Statistique stat, int valeur)&#xa;public Boolean modifie_statistique(Statistique stat, int valeur)&#xa;public Boolean supprime_statistique(Statistique stat)&#xa;public Boolean ajoute_competence(Competence comp)&#xa;public Boolean supprime_competence(Competence comp)&#xa;public Boolean ajoute_equipement(Equipe!ent equip)&#xa;public Boolean supprime_equipement(Equipement equip)&#xa;public String ToString()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-10">
+          <mxGeometry y="168" width="420" height="222" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-15" value="Compétence" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="740" width="430" height="200" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-16" value="static int get_id&#xa;public int id&#xa;public String nom&#xa;public String description&#xa;static ArrayList&lt;Competence&gt; liste_competence&#xa;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-15">
+          <mxGeometry y="26" width="430" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-17" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-15">
+          <mxGeometry y="110" width="430" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-18" value="public boolean renommer(String nouveau_nom)&#xa;public boolean ajouter_description(String nouvelle_description)&#xa;public static boolean supprime_globale(Compétence p)&#xa;public String ToString()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-15">
+          <mxGeometry y="118" width="430" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-19" value="Statistique" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1000" width="340" height="210" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-20" value="static int get_id&#xa;public int id&#xa;public String description&#xa;static ArrayList&lt;Statistique&gt; liste_stats" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-19">
+          <mxGeometry y="26" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-21" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-19">
+          <mxGeometry y="100" width="340" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-22" value="public Boolean renommer(String nouveau_nom)&#xa;public Boolean ajouter_description(String nouvelle_description)&#xa;public Boolean supprime_globale(int id)&#xa;public String ToString()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-19">
+          <mxGeometry y="108" width="340" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-23" value="Est stocké" style="endArrow=classic;html=1;rounded=0;exitX=1.031;exitY=0.077;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.006;entryY=0.222;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="01AiD1RpHDVqo8bFV30B-5" target="01AiD1RpHDVqo8bFV30B-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="260" as="sourcePoint" />
+            <mxPoint x="510" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-24" value="1, *" style="edgeLabel;resizable=0;html=1;;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="01AiD1RpHDVqo8bFV30B-23">
+          <mxGeometry x="-1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-25" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="edgeLabel;resizable=0;html=1;;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="01AiD1RpHDVqo8bFV30B-23">
+          <mxGeometry x="1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-26" value="Est stocké" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="01AiD1RpHDVqo8bFV30B-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="70" y="463" as="sourcePoint" />
+            <mxPoint x="190" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-27" value="1, *" style="edgeLabel;resizable=0;html=1;;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="01AiD1RpHDVqo8bFV30B-26">
+          <mxGeometry x="-1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-28" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="edgeLabel;resizable=0;html=1;;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="01AiD1RpHDVqo8bFV30B-26">
+          <mxGeometry x="1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-29" value="Est possédé" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="01AiD1RpHDVqo8bFV30B-38">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="970" as="sourcePoint" />
+            <mxPoint x="190" y="900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-30" value="1, *" style="edgeLabel;resizable=0;html=1;;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="01AiD1RpHDVqo8bFV30B-29">
+          <mxGeometry x="-1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-31" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="edgeLabel;resizable=0;html=1;;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="01AiD1RpHDVqo8bFV30B-29">
+          <mxGeometry x="1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-32" value="Est possédé" style="endArrow=classic;html=1;rounded=0;exitX=0.527;exitY=0.028;exitDx=0;exitDy=0;entryX=1.021;entryY=0.836;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" edge="1" parent="1" source="01AiD1RpHDVqo8bFV30B-15" target="01AiD1RpHDVqo8bFV30B-12">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="487" y="740" as="sourcePoint" />
+            <mxPoint x="457" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-33" value="1, *" style="edgeLabel;resizable=0;html=1;;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="01AiD1RpHDVqo8bFV30B-32">
+          <mxGeometry x="-1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-34" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="edgeLabel;resizable=0;html=1;;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="01AiD1RpHDVqo8bFV30B-32">
+          <mxGeometry x="1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-35" value="Est possédé" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1.008;entryY=1.036;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="01AiD1RpHDVqo8bFV30B-19" target="01AiD1RpHDVqo8bFV30B-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="680" y="911" as="sourcePoint" />
+            <mxPoint x="650" y="791" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-36" value="1, *" style="edgeLabel;resizable=0;html=1;;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="01AiD1RpHDVqo8bFV30B-35">
+          <mxGeometry x="-1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-37" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="edgeLabel;resizable=0;html=1;;align=right;verticalAlign=bottom;" connectable="0" vertex="1" parent="01AiD1RpHDVqo8bFV30B-35">
+          <mxGeometry x="1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-38" value="Equipement" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="25" y="1000" width="340" height="190" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-39" value="static int get_id&#xa;public int id&#xa;public String nom&#xa;public String description&#xa;static ArrayList&lt;Equipement&gt; liste_equipement" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-38">
+          <mxGeometry y="26" width="340" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-40" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-38">
+          <mxGeometry y="100" width="340" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="01AiD1RpHDVqo8bFV30B-41" value="public Boolean renommer(String nouveau_nom)&#xa;public Boolean ajouter_description(String nouvelle_description)&#xa;public static Boolean supprime_globale(Equipement p)&#xa;public String ToString()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="01AiD1RpHDVqo8bFV30B-38">
+          <mxGeometry y="108" width="340" height="82" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

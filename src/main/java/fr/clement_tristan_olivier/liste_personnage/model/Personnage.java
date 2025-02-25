@@ -76,6 +76,7 @@ public class Personnage implements Serializable{
     /**
      * Ajoute une statistique au personnage
      * @param statistique Statistique
+     * @param valeur int
      */
     public void ajoute_statistique (Statistique statistique, int valeur){
         this.statistiques.put(statistique, valeur);
@@ -99,9 +100,7 @@ public class Personnage implements Serializable{
      * @param statistique Statistique
      */
     public void supprime_statistique(Statistique statistique){
-        if(this.statistiques.get(statistique) != null){
-            this.statistiques.remove(statistique);
-        }
+        this.statistiques.remove(statistique);
     }
 
     /**

@@ -2,6 +2,7 @@ package fr.clement_tristan_olivier.liste_personnage.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Classe représentant un personnage
@@ -12,7 +13,7 @@ public class Personnage implements Serializable{
     protected String nom;
     protected String biographie;
     // protected image portrait
-    protected ArrayList<Statistique> statistiques;
+    protected HashMap<Statistique, Integer> statistiques;
     protected ArrayList<Competence> competences;
     protected ArrayList<Equipement> equipements;
     protected String classe;
@@ -21,12 +22,12 @@ public class Personnage implements Serializable{
      * Constructeur pour Personnage
      * @param nom String
      * @param biographie String 
-     * @param statistiques ArrayList<Statistique>
+     * @param statistiques HashMap<Statistique, Integer>
      * @param competences ArrayList<Competence>
      * @param equipements ArrayList<Equipement>
      * @param classe String 
      */
-    public Personnage(String nom, String biographie, ArrayList<Statistique> statistiques, ArrayList<Competence> competences, ArrayList<Equipement> equipements, String classe){
+    public Personnage(String nom, String biographie, HashMap<Statistique, Integer> statistiques, ArrayList<Competence> competences, ArrayList<Equipement> equipements, String classe){
         this.id = get_id++;
         this.nom = nom;
         this.biographie = biographie; 
@@ -76,17 +77,21 @@ public class Personnage implements Serializable{
      * Ajoute une statistique au personnage
      * @param statistique Statistique
      */
-    public void ajoute_statistique (Statistique statistique){
-        this.statistiques.add(statistique);
+    public void ajoute_statistique (Statistique statistique, int valeur){
+        this.statistiques.put(statistique, valeur);
     }
 
     /**
-     * Modifie la valeur d'une statistique du personnage
+     * Modifie la valeur d'une statistique du personnage, ajoute la statistique si elle n'existe pas
      * @param statistique Statistique
      * @param valeur int
      */
     public void modifie_statistique(Statistique statistique, int valeur){
-        statistique.valeur = valeur;
+        if(this.statistiques.containsKey(statistique)){
+            this.statistiques.replace(statistique, valeur);
+        } else {
+            this.statistiques.put(statistique, valeur);
+        }
     }
 
     /**
@@ -94,7 +99,7 @@ public class Personnage implements Serializable{
      * @param statistique Statistique
      */
     public void supprime_statistique(Statistique statistique){
-        if(this.statistiques.contains(statistique)){
+        if(this.statistiques.get(statistique) != null){
             this.statistiques.remove(statistique);
         }
     }

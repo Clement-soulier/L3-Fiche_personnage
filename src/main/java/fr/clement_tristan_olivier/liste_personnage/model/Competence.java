@@ -62,20 +62,6 @@ public class Competence implements Serializable
     }
 
     /**
-     * Ajoute une compétence à chaque personnage de la liste personnages
-     * @param p Competence
-     * @param personnages ArrayList<Personnage>
-     */
-    public static void ajoute_globale(Competence p, ArrayList<Personnage> personnages)
-    {
-        for(Personnage personnage : personnages)
-        {
-            personnage.ajoute_competence(p);
-        }
-        liste_competence.add(p);
-    }
-
-    /**
      * Renvoie un string représentant l'objet pour affichage
      * @return String
      */

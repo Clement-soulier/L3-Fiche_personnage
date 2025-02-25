@@ -20,14 +20,12 @@ public class Statistique implements Serializable
      *Créer une nouvelle instance de Statistique et l'ajoute à la liste de Statistiques
      *@param nom String
      *@param description String
-     *@param valeur int
      */
-    public Statistique(String nom, String description, int valeur)
+    public Statistique(String nom, String description)
     {
         this.id = get_id++;
         this.nom = nom;
         this.description = description;
-        this.valeur = valeur;
         liste_stats.add(this);
     }
 
@@ -73,20 +71,6 @@ public class Statistique implements Serializable
             }
         }
         liste_stats.remove(p);
-    }
-
-    /**
-     * Ajoute une statistique à chaque personnage de la liste personnages
-     * @param p Statistique
-     * @param personnages ArrayList<Personnage>
-     */
-    public static void ajoute_globale(Statistique p, ArrayList<Personnage> personnages)
-    {
-        for(Personnage personnage : personnages)
-        {
-            personnage.ajoute_statistique(p);
-        }
-        liste_stats.add(p);
     }
 
     /**

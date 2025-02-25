@@ -62,20 +62,6 @@ public class Equipement implements Serializable
     }
 
     /**
-     * Ajoute un équipement à tous les personnages de la liste
-     * @param p Equipement
-     * @param personnages ArrayList<Personnage>
-     */
-    public static void ajoute_globale(Equipement p, ArrayList<Personnage> personnages)
-    {
-        for (Personnage personnage : personnages)
-        {
-            personnage.ajoute_equipement(p);
-        }
-        liste_equipement.add(p);
-    }
-
-    /**
      * Renvoie un string représentant l'objet pour affichage
      * @return String
      */

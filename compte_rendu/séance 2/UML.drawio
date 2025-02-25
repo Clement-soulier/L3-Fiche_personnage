@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="26.0.6">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:134.0) Gecko/20100101 Firefox/134.0" version="26.0.6">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="393" dy="436" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1339" dy="596" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -49,7 +49,7 @@
         <mxCell id="w7G9YBBGKHnngfm891Rs-14" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="w7G9YBBGKHnngfm891Rs-11" vertex="1">
           <mxGeometry y="160" width="420" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="w7G9YBBGKHnngfm891Rs-15" value="public Personnage(String nom, Image portrait, String biographie,&#xa;    ArrayList&lt;Statistique&gt; statistiques, ArrayList&lt;Competence&gt; competences,&#xa;    ArrayList&lt;Equipement&gt; equipement, String classe)&#xa;public Booleen modifier_nom(String nom)&#xa;public Boolean modifier_portrait(Image portrait)&#xa;public Boolean modifier_biographie(String biographie)&#xa;public Boolean ajouter_statistiques(Statistique stat)&#xa;public Boolean ajouter_competence(Competence comp)&#xa;public Boolean ajouter_equipement(Equipe!ent equip)&#xa;public void ToString()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="w7G9YBBGKHnngfm891Rs-11" vertex="1">
+        <mxCell id="w7G9YBBGKHnngfm891Rs-15" value="public Personnage(String nom, Image portrait, String biographie,&#xa;    ArrayList&lt;Statistique&gt; statistiques, ArrayList&lt;Competence&gt; competences,&#xa;    ArrayList&lt;Equipement&gt; equipement, String classe)&#xa;public Booleen modifie_nom(String nom)&#xa;public Boolean modifie_portrait(Image portrait)&#xa;public Boolean modifie_biographie(String biographie)&#xa;public Boolean ajoute_statistiques(Statistique stat)&#xa;public Boolean ajoute_competence(Competence comp)&#xa;public Boolean ajoute_equipement(Equipe!ent equip)&#xa;public void ToString()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="w7G9YBBGKHnngfm891Rs-11" vertex="1">
           <mxGeometry y="168" width="420" height="152" as="geometry" />
         </mxCell>
         <mxCell id="w7G9YBBGKHnngfm891Rs-20" value="Compétence" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">

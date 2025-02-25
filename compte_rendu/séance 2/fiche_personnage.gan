@@ -38,12 +38,12 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" uid="c6fbb54507e344339b33979d9a377f8b" name="Initialisation" meeting="false" start="2025-01-15" duration="1" complete="0" expand="true">
-            <task id="1" uid="f7a082ba4f264e77a48d67544aaeb1c8" name="Modélisation diagramme UML" meeting="false" start="2025-01-15" duration="1" complete="0" expand="true">
+        <task id="0" uid="c6fbb54507e344339b33979d9a377f8b" name="Initialisation" meeting="false" start="2025-01-15" duration="1" complete="100" expand="true">
+            <task id="1" uid="f7a082ba4f264e77a48d67544aaeb1c8" name="Modélisation diagramme UML" meeting="false" start="2025-01-15" duration="1" complete="100" expand="true">
                 <depend id="3" type="2" difference="0" hardness="Strong"/>
             </task>
         </task>
-        <task id="2" uid="99e0f0ffaf5440a6a61d03da53cd1ce6" name="Plannification" meeting="false" start="2025-01-15" duration="5" complete="0" expand="true">
+        <task id="2" uid="99e0f0ffaf5440a6a61d03da53cd1ce6" name="Plannification" meeting="false" start="2025-01-15" duration="5" complete="100" expand="true">
             <depend id="3" type="2" difference="0" hardness="Strong"/>
         </task>
         <task id="3" uid="6b119691f2d94eac929d1eb56f953fa7" name="Execution" meeting="false" start="2025-01-22" duration="8" complete="0" expand="true">

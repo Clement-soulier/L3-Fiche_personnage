@@ -66,7 +66,7 @@ public class Equipement implements Serializable
     {
         for (Compte compte : Compte.liste_compte)
         {
-            for (Personnage personnage : compte.liste_personnage)
+            for (Personnage personnage : compte.personnages)
             {
                 personnage.supprime_equipement(p);
                 if(personnage.equipements.contains(p))
@@ -75,8 +75,8 @@ public class Equipement implements Serializable
                 }
             }
         }
-        liste_equipement.remove(p);
-        return !liste_equipement.contains(p);
+        liste_equipement.removeIf(c -> c.equals(p));
+        return true;
     }
 
     /**

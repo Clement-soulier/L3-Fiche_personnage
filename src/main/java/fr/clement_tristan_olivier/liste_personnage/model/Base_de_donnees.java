@@ -37,20 +37,28 @@ public class Base_de_donnees implements Serializable{
 
     /**
      * Ajout un Compte à la base de données
+     * Retourne false is le compte existe déjà, true sinon
      * @param compte Compte
      * @return true
      */
     public boolean ajouter_compte(Compte compte){
+        if(this.utilisateurs.contains(compte)){
+            return false;
+        }
         this.utilisateurs.add(compte);
         return this.utilisateurs.contains(compte);
     }
 
     /**
      * Supprime un compte de la base de données
+     * Retourne false si le compte n'existe pas, true sinon
      * @param compte Compte
      * @return boolean
      */
     public boolean supprimer_compte(Compte compte){
+        if(!this.utilisateurs.contains(compte)){
+            return false;
+        }
         this.utilisateurs.remove(compte);
         return !this.utilisateurs.contains(compte);
     }

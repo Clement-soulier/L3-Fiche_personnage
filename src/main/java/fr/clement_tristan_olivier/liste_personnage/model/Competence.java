@@ -66,7 +66,7 @@ public class Competence implements Serializable
     {
         for(Compte compte : Compte.liste_compte)
         {
-            for (Personnage personnage : compte.liste_personnage)
+            for (Personnage personnage : compte.personnages)
             {
                 personnage.supprime_competence(p);
                 if(personnage.competences.contains(p))
@@ -75,8 +75,8 @@ public class Competence implements Serializable
                 }
             }
         }
-        liste_competence.remove(p);
-        return !liste_competence.contains(p);
+        liste_competence.removeIf(c -> c.equals(p));
+        return true;
     }
 
     /**

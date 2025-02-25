@@ -67,7 +67,7 @@ public class Statistique implements Serializable
     {
         for(Compte compte : Compte.liste_compte)
         {
-            for(Personnage personnage : compte.liste_personnage)
+            for(Personnage personnage : compte.personnages)
             {
                 personnage.supprime_statistique(p);
                 if(personnage.statistiques.containsKey(p)){
@@ -75,8 +75,8 @@ public class Statistique implements Serializable
                 }
             }
         }
-        liste_stats.remove(p);
-        return !liste_stats.contains(p);
+        liste_stats.removeIf(s -> s.equals(p));
+        return true;
     }
 
     /**

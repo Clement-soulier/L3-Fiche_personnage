@@ -39,64 +39,77 @@ public class Personnage implements Serializable{
 
     /**
      * Ajoute une compétence au personnage
+     * Retourne false si la compétence est déjà présente, true sinon
      * @param competence Competence
      * @return boolean
      */
     public boolean ajoute_competence(Competence competence){
+        if(this.competences.contains(competence)){
+            return false;
+        }
         this.competences.add(competence);
-        return this.competences.contains(competence);
+        return true;
     }
 
     /**
      * Supprime une compétence du personnage
+     * Retourne false si la compétence n'est pas présente, true sinon
      * @param competence Competence
      * @return boolean
      */
     public boolean supprime_competence(Competence competence){
-        if(this.competences.contains(competence)){
-            this.competences.remove(competence);
-            return true;
+        if(!this.competences.contains(competence)){
+            return false;
         }
-        return false;
+        this.competences.removeIf(c -> c.equals(competence));
+        return true;
     }
 
     /**
      * Ajoute un équipement au personnage
+     * Retourne false si l'équipement est déjà présent, true sinon
      * @param equipement Equipement
      * @return boolean
      */
     public boolean ajoute_equipement(Equipement equipement){
+        if(this.equipements.contains(equipement)){
+            return false;
+        }
         this.equipements.add(equipement);
-        return this.equipements.contains(equipement);
+        return true;
     }
 
     /**
      * Supprime un équipement du personnage
-     * Retourne true si l'équipement a été trouvé et supprimé, false sinon
+     * Retourne false si l'équipement n'est pas présent, true sinon
      * @param equipement Equipement
      * @return boolean
      */
     public boolean supprime_equipement(Equipement equipement){
-        if(this.equipements.contains(equipement)){
-            this.equipements.remove(equipement);
-            return true;
+        if(!this.equipements.contains(equipement)){
+            return false;
         }
-        return false;
+        this.equipements.removeIf(e -> e.equals(equipement));
+        return true;
     }
 
     /**
      * Ajoute une statistique au personnage
+     * Retourne false si la statistique existe déjà, true sinon
      * @param statistique Statistique
      * @param valeur int
      * @return boolean
      */
     public boolean ajoute_statistique (Statistique statistique, int valeur){
+        if(this.statistiques.containsKey(statistique)){
+            return false;
+        }
         this.statistiques.put(statistique, valeur);
-        return this.statistiques.containsKey(statistique);
+        return true;
     }
 
     /**
-     * Modifie la valeur d'une statistique du personnage, ajoute la statistique si elle n'existe pas
+     * Modifie la valeur d'une statistique du personnage, ajoute la statistique et retourne false si elle n'existe pas
      * @param statistique Statistique
      * @param valeur int
      * @return boolean
@@ -106,27 +119,35 @@ public class Personnage implements Serializable{
             this.statistiques.replace(statistique, valeur);
         } else {
             this.statistiques.put(statistique, valeur);
+            return false;
         }
-        return (this.statistiques.get(statistique) == valeur);
+        return true;
     }
 
     /**
      * Supprime une statistique du personnage
+     * Retourne false si le personnage n'a pas la statistique, sinon retourne true
      * @param statistique Statistique
      * @return boolean
      */
     public boolean supprime_statistique(Statistique statistique){
+        if(!this.statistiques.containsKey(statistique)){
+            return false;
+        }
         this.statistiques.remove(statistique);
-        return !this.statistiques.containsKey(statistique);
+        return true;
     }
 
     /**
      * Retourne la valeur d'une statistique du personnage
-     * Si le personnage n'a pas la statistique, retourne null
+     * Si le personnage n'a pas la statistique, retourne -1
      * @param statistique Statistique
-     * @return ?int
+     * @return int
      */
     public int get_statistique_valeur(Statistique statistique){
+        if(!this.statistiques.containsKey(statistique)){
+            return -1;
+        }
         return this.statistiques.get(statistique);
     }
 

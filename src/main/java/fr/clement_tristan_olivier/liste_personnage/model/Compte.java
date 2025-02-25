@@ -13,7 +13,7 @@ public class Compte implements Serializable{
     protected String pseudo;
     protected String password;
     protected Boolean active;
-    protected ArrayList<Personnage> liste_personnage;
+    protected ArrayList<Personnage> personnages;
     public static ArrayList<Compte> liste_compte = new ArrayList<>();
 
     /**
@@ -26,28 +26,36 @@ public class Compte implements Serializable{
         this.id = get_id++;
         this.password = passwordUtils.hashPassword(password);
         this.active = true;
-        this.liste_personnage = new ArrayList<>();
+        this.personnages = new ArrayList<>();
         liste_compte.add(this);
     }
 
     /**
      * Ajoute un personnage au compte
+     * Retourne false si le personnage est déjà présent, true sinon
      * @param personnage Personnage
      * @return boolean
      */
     public boolean ajouter_personnage(Personnage personnage) {
-        this.liste_personnage.add(personnage);
-        return this.liste_personnage.contains(personnage);
+        if(this.personnages.contains(personnage)){
+            return false;
+        }
+        this.personnages.add(personnage);
+        return true;
     }
 
     /**
      * Supprime un personnage pour le compte
+     * Retourne false si le personnage n'est pas présent, true sinon
      * @param personnage Personnage
      * @return boolean
      */
     public boolean supprimer_personnage(Personnage personnage) {
-        this.liste_personnage.remove(personnage);
-        return !this.liste_personnage.contains(personnage);
+        if(!this.personnages.contains(personnage)){
+            return false;
+        }
+        this.personnages.removeIf(p -> p.equals(personnage));
+        return !true;
     }
 
     /**
@@ -60,7 +68,7 @@ public class Compte implements Serializable{
                 ", pseudo='" + pseudo + '\'' +
                 ", password='" + password + '\'' +
                 ", active=" + active +
-                ", liste_personnage=" + liste_personnage +
+                ", personnages=" + personnages +
                 '}';
     }
 }

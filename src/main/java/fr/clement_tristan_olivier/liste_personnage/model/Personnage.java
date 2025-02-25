@@ -65,12 +65,16 @@ public class Personnage implements Serializable{
 
     /**
      * Supprime un équipement du personnage
+     * Retourne true si l'équipement a été trouvé et supprimé, false sinon
      * @param equipement Equipement
+     * @return boolean
      */
-    public void supprime_equipement(Equipement equipement){
+    public boolean supprime_equipement(Equipement equipement){
         if(this.equipements.contains(equipement)){
             this.equipements.remove(equipement);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -101,6 +105,16 @@ public class Personnage implements Serializable{
      */
     public void supprime_statistique(Statistique statistique){
         this.statistiques.remove(statistique);
+    }
+
+    /**
+     * Retourne la valeur d'une statistique du personnage
+     * Si le personnage n'a pas la statistique, retourne null
+     * @param statistique Statistique
+     * @return int, null
+     */
+    public int get_statistique_valeur(Statistique statistique){
+        return this.statistiques.get(statistique);
     }
 
     /**

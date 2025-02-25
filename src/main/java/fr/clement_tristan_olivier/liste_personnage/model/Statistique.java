@@ -12,7 +12,6 @@ public class Statistique implements Serializable
     public int id;
     public String nom;
     public String description;
-    public int valeur;
 
     public static ArrayList<Statistique> liste_stats = new ArrayList<>();
 
@@ -36,16 +35,6 @@ public class Statistique implements Serializable
     public void renommer(String nouveau_nom)
     {
         this.nom = nouveau_nom;
-    }
-
-    /**
-     * Change la valeur d'une statistique pour un personnage
-     * @param personnage Personnage
-     * @param valeur int
-     */
-    public void changer_valeur(Personnage personnage, int valeur)
-    {
-        personnage.modifie_statistique(this, valeur);
     }
 
     /**
@@ -78,6 +67,6 @@ public class Statistique implements Serializable
      * @return String
      */
     public String ToString(){
-        return nom + ": " + valeur + ". " + description;
+        return nom + ": " + description;
     }
 }

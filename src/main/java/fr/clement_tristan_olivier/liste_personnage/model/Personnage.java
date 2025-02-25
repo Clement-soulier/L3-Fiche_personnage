@@ -80,6 +80,11 @@ public class Personnage implements Serializable{
         this.statistiques.add(statistique);
     }
 
+    /**
+     * Modifie la valeur d'une statistique du personnage
+     * @param statistique Statistique
+     * @param valeur int
+     */
     public void modifie_statistique(Statistique statistique, int valeur){
         statistique.valeur = valeur;
     }

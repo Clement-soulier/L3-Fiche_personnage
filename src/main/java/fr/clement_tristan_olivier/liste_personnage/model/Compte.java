@@ -1,8 +1,8 @@
 package fr.clement_tristan_olivier.liste_personnage.model;
-import fr.clement_tristan_olivier.liste_personnage.utils.passwordUtils;
-
-import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import fr.clement_tristan_olivier.liste_personnage.utils.passwordUtils;
 
 /**
  * Cette classe représente un compte pour un utilisateur
@@ -14,6 +14,7 @@ public class Compte implements Serializable{
     protected String password;
     protected Boolean active;
     protected ArrayList<Personnage> liste_personnage;
+    public static ArrayList<Compte> liste_compte = new ArrayList<>();
 
     /**
      * Constructeur pour Compte
@@ -25,7 +26,8 @@ public class Compte implements Serializable{
         this.id = get_id++;
         this.password = passwordUtils.hashPassword(password);
         this.active = true;
-        this.liste_personnage = new ArrayList<Personnage>();
+        this.liste_personnage = new ArrayList<>();
+        liste_compte.add(this);
     }
 
     /**
@@ -48,7 +50,7 @@ public class Compte implements Serializable{
      * Renvoie un String représentant l'objet pour affichage
      * @return La string représentant l'objet
      */
-    public String toString(){
+    @Override public String toString(){
         return "Compte{" +
                 "id=" + id +
                 ", pseudo='" + pseudo + '\'' +

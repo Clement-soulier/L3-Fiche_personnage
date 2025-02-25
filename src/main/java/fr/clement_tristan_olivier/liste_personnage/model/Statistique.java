@@ -46,7 +46,7 @@ public class Statistique implements Serializable
      */
     public void changer_valeur(Personnage personnage, int valeur)
     {
-        personnage.modifier_statistique(this, valeur);
+        personnage.modifie_statistique(this, valeur);
     }
 
     /**
@@ -80,7 +80,7 @@ public class Statistique implements Serializable
         {
             for(Personnage personnage : compte.liste_personnage)
             {
-                personnage.ajouter_statistique(p);
+                personnage.ajoute_statistique(p);
             }
         }
         liste_stats.add(p);

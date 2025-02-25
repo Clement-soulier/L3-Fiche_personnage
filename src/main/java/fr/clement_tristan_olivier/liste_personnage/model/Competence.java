@@ -63,14 +63,16 @@ public class Competence implements Serializable
         liste_competence.remove(p);
     }
 
-    public static void ajoute_globale(Competence p)
+    /**
+     * Ajoute une compétence à chaque personnage de la liste personnages
+     * @param p la compétence à ajouter
+     * @param personnages la liste de personnages
+     */
+    public static void ajoute_globale(Competence p, ArrayList<Personnage> personnages)
     {
-        for(Compte compte : Compte.liste_compte)
+        for(Personnage personnage : personnages)
         {
-            for(Personnage personnage : compte.liste_personnage)
-            {
-                personnage.ajoute_competence(p);
-            }
+            personnage.ajoute_competence(p);
         }
         liste_competence.add(p);
     }

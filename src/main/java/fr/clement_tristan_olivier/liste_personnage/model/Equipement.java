@@ -61,17 +61,18 @@ public class Equipement implements Serializable
         liste_equipement.remove(p);
     }
 
-    public static void ajoute_globale(Equipement p)
+    /**
+     * Ajoute un équipement à tous les personnages de la liste
+     * @param p l'équipement à ajouter
+     * @param personnages la liste de personnages
+     */
+    public static void ajoute_globale(Equipement p, ArrayList<Personnage> personnages)
     {
-        for(Compte compte : Compte.liste_compte)
+        for (Personnage personnage : personnages)
         {
-            for (Personnage personnage : compte.liste_personnage)
-            {
-                personnage.ajouter_equipement(p);
-            }
+            personnage.ajoute_equipement(p);
         }
         liste_equipement.add(p);
-
     }
 
     /**

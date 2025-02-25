@@ -36,6 +36,7 @@ public class EquipementTest {
 
     @Test
     public void test_supprime_globale() {
+        Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
         Equipement equipement = new Equipement("épée", "Une épée très tranchante 😱");
         Equipement equipement1 = new Equipement("hache", "Une hache très tranchante 😱");
         Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
@@ -44,6 +45,8 @@ public class EquipementTest {
         personnage.ajoute_equipement(equipement);
         personnage2.ajoute_equipement(equipement);
         personnage2.ajoute_equipement(equipement1);
+        compte.ajouter_personnage(personnage);
+        compte.ajouter_personnage(personnage2);
 
         Equipement.supprime_globale(equipement);
 

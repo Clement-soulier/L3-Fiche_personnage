@@ -106,7 +106,7 @@ public class PersonnageTest {
     @Test
     public void test_modifier_nom() {
         Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
-        personnage.modifier_nom("Loïc");
+        personnage.modifie_nom("Loïc");
 
         assertEquals("Loïc", personnage.nom, "Le nom n'as pas été modifié");
     }
@@ -114,7 +114,7 @@ public class PersonnageTest {
     @Test
     public void test_modifier_biographie() {
         Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
-        personnage.modifier_biographie("Originaire de Khalos");
+        personnage.modifie_biographie("Originaire de Khalos");
 
         assertEquals("Originaire de Khalos", personnage.biographie, "La biographie n'as pas été modifiée");
     }

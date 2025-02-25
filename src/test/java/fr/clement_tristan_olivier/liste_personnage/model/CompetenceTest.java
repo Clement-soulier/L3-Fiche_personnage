@@ -38,6 +38,7 @@ public class CompetenceTest {
 
     @Test
     public void test_supprime_globale() {
+        Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
         Competence competence = new Competence("Rugissement", "Le lanceur pousse un cri tout mimi pour tromper la vigilance de la cible et baisser son Attaque.");
         Competence competence2 = new Competence("Danse Lames", "Une danse frénétique qui exalte l'esprit combatif. Augmente beaucoup l'Attaque du lanceur.");
         Competence competence3 = new Competence("Charge", "Le lanceur charge l'ennemi et le percute de tout son poids.");
@@ -48,6 +49,8 @@ public class CompetenceTest {
         personnage2.ajoute_competence(competence);
         personnage2.ajoute_competence(competence2);
         personnage2.ajoute_competence(competence3);
+        compte.ajouter_personnage(personnage);
+        compte.ajouter_personnage(personnage2);
 
         Competence.supprime_globale(competence);
 

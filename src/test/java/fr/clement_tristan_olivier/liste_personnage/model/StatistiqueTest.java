@@ -37,6 +37,7 @@ public class StatistiqueTest {
 
     @Test
     public void test_supprime_globale() {
+        Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
         Statistique statistique = new Statistique("Attaque", "Les dégâts bruts lors d'une attaque");
         Statistique statistique1 = new Statistique("Défense", "La capacité à encaisser les attaquesz");
         Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
@@ -45,13 +46,15 @@ public class StatistiqueTest {
         personnage.ajoute_statistique(statistique, 15);
         personnage2.ajoute_statistique(statistique, 20);
         personnage2.ajoute_statistique(statistique1, 15);
+        compte.ajouter_personnage(personnage);
+        compte.ajouter_personnage(personnage2);
 
         Statistique.supprime_globale(statistique);
 
         assertTrue(!personnage.statistiques.containsKey(statistique), "La statistique n'as pas été supprimé pour le premier personnage");
         assertTrue(!personnage2.statistiques.containsKey(statistique), "La statistique n'as pas été supprimé pour le deuxième personnage");
         assertTrue(!Statistique.liste_stats.contains(statistique), "La statistique n'as pas été supprimé pour la liste globale");
-        assertTrue(personnage2.statistiques.containsKey(statistique), "La mauvaise statistique à été supprimée");
+        assertTrue(personnage2.statistiques.containsKey(statistique1), "La mauvaise statistique à été supprimée");
     }
 
     @Test

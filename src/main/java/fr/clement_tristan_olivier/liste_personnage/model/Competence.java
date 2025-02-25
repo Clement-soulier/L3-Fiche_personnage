@@ -16,8 +16,8 @@ public class Competence implements Serializable
     
     /**
      * Constructeur pour la classe Competence
-     * @param nom
-     * @param description
+     * @param nom String
+     * @param description String
      */
     public Competence(String nom, String description)
     {
@@ -29,8 +29,7 @@ public class Competence implements Serializable
 
     /**
      * Renomme une compétence
-     * @param nouveau_nom
-     * @return
+     * @param nouveau_nom String
      */
     public void renommer(String nouveau_nom)
     {
@@ -39,8 +38,7 @@ public class Competence implements Serializable
 
     /**
      * Change la description d'une compétence
-     * @param nouvelle_description
-     * @return
+     * @param nouvelle_description String
      */
     public void changer_description(String nouvelle_description)
     {
@@ -49,7 +47,7 @@ public class Competence implements Serializable
 
     /**
      * Supprime une compétence pour chaque personnage et pour la liste globale
-     * @param p la compétence à supprimer
+     * @param p Competence
      */
     public static void supprime_globale(Competence p)
     {
@@ -65,8 +63,8 @@ public class Competence implements Serializable
 
     /**
      * Ajoute une compétence à chaque personnage de la liste personnages
-     * @param p la compétence à ajouter
-     * @param personnages la liste de personnages
+     * @param p Competence
+     * @param personnages ArrayList<Personnage>
      */
     public static void ajoute_globale(Competence p, ArrayList<Personnage> personnages)
     {
@@ -79,7 +77,7 @@ public class Competence implements Serializable
 
     /**
      * Renvoie un string représentant l'objet pour affichage
-     * @return La String représentant l'objet
+     * @return String
      */
     public String ToString()
     {

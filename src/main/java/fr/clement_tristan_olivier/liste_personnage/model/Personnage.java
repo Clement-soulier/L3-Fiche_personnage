@@ -21,9 +21,9 @@ public class Personnage implements Serializable{
      * Constructeur pour Personnage
      * @param nom String
      * @param biographie String 
-     * @param statistiques ArrayList
-     * @param competences ArrayList
-     * @param equipements ArrayList
+     * @param statistiques ArrayList<Statistique>
+     * @param competences ArrayList<Competence>
+     * @param equipements ArrayList<Equipement>
      * @param classe String 
      */
     public Personnage(String nom, String biographie, ArrayList<Statistique> statistiques, ArrayList<Competence> competences, ArrayList<Equipement> equipements, String classe){

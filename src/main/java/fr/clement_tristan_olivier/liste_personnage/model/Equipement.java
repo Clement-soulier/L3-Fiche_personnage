@@ -1,7 +1,7 @@
 package fr.clement_tristan_olivier.liste_personnage.model;
 
-import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Cette classe représente un équipement pour un personnage
@@ -16,8 +16,8 @@ public class Equipement implements Serializable
 
     /**
      * Constructeur pour la classe Equipement
-     * @param nom le nom de l'équipement
-     * @param description la description de l'équipement
+     * @param nom String
+     * @param description String
      */
     public Equipement(String nom, String description)
     {
@@ -29,7 +29,7 @@ public class Equipement implements Serializable
 
     /**
      * Renomme un équipement
-     * @param nouveau_nom le nouveau nom de l'équipement
+     * @param nouveau_nom String
      */
     public void renommer(String nouveau_nom)
     {
@@ -38,7 +38,7 @@ public class Equipement implements Serializable
 
     /**
      * Change la description d'un équipement
-     * @param nouvelle_description la nouvelle description
+     * @param nouvelle_description String
      */
     public void changer_description(String nouvelle_description)
     {
@@ -47,7 +47,7 @@ public class Equipement implements Serializable
 
     /**
      * Supprime un équipement de pour tous les personnages et de la liste globale
-     * @param p l'équipement à supprimer
+     * @param p Equipement
      */
     public static void supprime_globale(Equipement p)
     {
@@ -63,8 +63,8 @@ public class Equipement implements Serializable
 
     /**
      * Ajoute un équipement à tous les personnages de la liste
-     * @param p l'équipement à ajouter
-     * @param personnages la liste de personnages
+     * @param p Equipement
+     * @param personnages ArrayList<Personnage>
      */
     public static void ajoute_globale(Equipement p, ArrayList<Personnage> personnages)
     {
@@ -77,7 +77,7 @@ public class Equipement implements Serializable
 
     /**
      * Renvoie un string représentant l'objet pour affichage
-     * @return La stringre représentant l'objet
+     * @return String
      */
     public String ToString()
     {

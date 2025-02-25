@@ -1,7 +1,7 @@
 package fr.clement_tristan_olivier.liste_personnage.model;
 
-import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Cette classe représente une statistique pour un personage
@@ -18,9 +18,9 @@ public class Statistique implements Serializable
 
     /**
      *Créer une nouvelle instance de Statistique et l'ajoute à la liste de Statistiques
-     *@param nom nom de la statistique
-     *@param description description de la statistique
-     *@param valeur valeur de la statistique
+     *@param nom String
+     *@param description String
+     *@param valeur int
      */
     public Statistique(String nom, String description, int valeur)
     {
@@ -33,7 +33,7 @@ public class Statistique implements Serializable
 
     /**
      * Permet de renommer une statistique
-     * @param nouveau_nom le nouveau nom de la statistique
+     * @param nouveau_nom String
     */
     public void renommer(String nouveau_nom)
     {
@@ -42,7 +42,8 @@ public class Statistique implements Serializable
 
     /**
      * Change la valeur d'une statistique pour un personnage
-     * @param personnage le personnage pour qui la statistique va être changer
+     * @param personnage Personnage
+     * @param valeur int
      */
     public void changer_valeur(Personnage personnage, int valeur)
     {
@@ -51,7 +52,7 @@ public class Statistique implements Serializable
 
     /**
      * Permet de changer la description de la statistique
-     * @param nouvelle_description la nouvelle descrition de la statistique
+     * @param nouvelle_description String
      */
     public void changer_description(String nouvelle_description)
     {
@@ -60,7 +61,7 @@ public class Statistique implements Serializable
 
     /**
      * Supprime la statistique de chaque personnage puis se supprime de la liste static
-     * @param p la statistique à supprimer
+     * @param p Statistique
      */
     public static void supprime_globale(Statistique p)
     {
@@ -74,21 +75,23 @@ public class Statistique implements Serializable
         liste_stats.remove(p);
     }
 
-    public static void ajoute_globale(Statistique p)
+    /**
+     * Ajoute une statistique à chaque personnage de la liste personnages
+     * @param p Statistique
+     * @param personnages ArrayList<Personnage>
+     */
+    public static void ajoute_globale(Statistique p, ArrayList<Personnage> personnages)
     {
-        for(Compte compte : Compte.liste_compte)
+        for(Personnage personnage : personnages)
         {
-            for(Personnage personnage : compte.liste_personnage)
-            {
-                personnage.ajoute_statistique(p);
-            }
+            personnage.ajoute_statistique(p);
         }
         liste_stats.add(p);
     }
 
     /**
      * Retourne l'objet sous forme de String pour affichage
-     * @return La String décrivant l'objet
+     * @return String
      */
     public String ToString(){
         return nom + ": " + valeur + ". " + description;

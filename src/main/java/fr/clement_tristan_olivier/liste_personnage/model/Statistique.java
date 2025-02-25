@@ -30,36 +30,53 @@ public class Statistique implements Serializable
 
     /**
      * Permet de renommer une statistique
+     * Retourne false si le nom est le même, true sinon
      * @param nouveau_nom String
+     * @return boolean
     */
-    public void renommer(String nouveau_nom)
+    public boolean renommer(String nouveau_nom)
     {
+        if(this.nom.equals(nouveau_nom)){
+            return false;
+        }
         this.nom = nouveau_nom;
+        return true;
     }
 
     /**
      * Permet de changer la description de la statistique
+     * Retourne false si la description est la même, true sinon
      * @param nouvelle_description String
+     * @return boolean
      */
-    public void changer_description(String nouvelle_description)
+    public boolean changer_description(String nouvelle_description)
     {
+        if(this.description.equals(nouvelle_description)){
+            return false;
+        }
         this.description = nouvelle_description;
+        return true;
     }
 
     /**
      * Supprime la statistique de chaque personnage puis se supprime de la liste static
      * @param p Statistique
+     * @return boolean
      */
-    public static void supprime_globale(Statistique p)
+    public static boolean supprime_globale(Statistique p)
     {
         for(Compte compte : Compte.liste_compte)
         {
             for(Personnage personnage : compte.liste_personnage)
             {
                 personnage.supprime_statistique(p);
+                if(personnage.statistiques.containsKey(p)){
+                    return false;
+                }
             }
         }
         liste_stats.remove(p);
+        return !liste_stats.contains(p);
     }
 
     /**

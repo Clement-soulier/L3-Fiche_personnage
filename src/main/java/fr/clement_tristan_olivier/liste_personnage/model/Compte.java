@@ -33,17 +33,21 @@ public class Compte implements Serializable{
     /**
      * Ajoute un personnage au compte
      * @param personnage Personnage
+     * @return boolean
      */
-    public void ajouter_personnage(Personnage personnage) {
+    public boolean ajouter_personnage(Personnage personnage) {
         this.liste_personnage.add(personnage);
+        return this.liste_personnage.contains(personnage);
     }
 
     /**
      * Supprime un personnage pour le compte
      * @param personnage Personnage
+     * @return boolean
      */
-    public void supprimer_personnage(Personnage personnage) {
+    public boolean supprimer_personnage(Personnage personnage) {
         this.liste_personnage.remove(personnage);
+        return !this.liste_personnage.contains(personnage);
     }
 
     /**

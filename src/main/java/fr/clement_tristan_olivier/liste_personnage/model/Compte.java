@@ -18,8 +18,8 @@ public class Compte implements Serializable{
 
     /**
      * Constructeur pour Compte
-     * @param pseudo
-     * @param password
+     * @param pseudo String
+     * @param password String
      */
     public Compte(String pseudo, String password) {
         this.pseudo = pseudo;
@@ -32,7 +32,7 @@ public class Compte implements Serializable{
 
     /**
      * Ajoute un personnage au compte
-     * @param personnage l'objet Personnage
+     * @param personnage Personnage
      */
     public void ajouter_personnage(Personnage personnage) {
         this.liste_personnage.add(personnage);
@@ -40,7 +40,7 @@ public class Compte implements Serializable{
 
     /**
      * Supprime un personnage pour le compte
-     * @param personnage l'instance à supprimer
+     * @param personnage Personnage
      */
     public void supprimer_personnage(Personnage personnage) {
         this.liste_personnage.remove(personnage);
@@ -48,7 +48,7 @@ public class Compte implements Serializable{
 
     /**
      * Renvoie un String représentant l'objet pour affichage
-     * @return La string représentant l'objet
+     * @return String
      */
     @Override public String toString(){
         return "Compte{" +

@@ -28,7 +28,7 @@ public class Base_de_donneeTest {
         assertEquals(compte_depuis_bd.pseudo, compte.pseudo, "Le pseudo ne correspond pas");
         assertEquals(compte_depuis_bd.password, compte.password, "Le pseudo ne correspond pas");
         assertEquals(compte_depuis_bd.active, compte.active, "L'état du compte ne correspond pas");
-        assertTrue(compte_depuis_bd.liste_personnage.equals(compte.liste_personnage), "La liste des personnage ne correspond pas");
+        assertTrue(compte_depuis_bd.personnages.equals(compte.personnages), "La liste des personnage ne correspond pas");
     }
 
     @Test
@@ -60,7 +60,7 @@ public class Base_de_donneeTest {
         Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
 
         bd.ajouter_compte(compte);
-        bd.desactive_compte(compte);
+        bd.desactiver_compte(compte);
 
         assertTrue(!compte.active, "Le compte n'a pas été désactivé (depuis le comtpe)");
         assertTrue(!bd.utilisateurs.get(bd.utilisateurs.indexOf(compte)).active, "Le compte n'a pas été désactivé (depuis la db)");
@@ -72,8 +72,8 @@ public class Base_de_donneeTest {
         Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
 
         bd.ajouter_compte(compte);
-        bd.desactive_compte(compte);
-        bd.active_compte(compte);
+        bd.desactiver_compte(compte);
+        bd.activer_compte(compte);
 
         assertTrue(compte.active, "Le Compte n'as pas été réactivé (depuis compte)");
         assertTrue(bd.utilisateurs.get(bd.utilisateurs.indexOf(compte)).active, "Le compte n'as pas été réactivé (depuis la db)");
@@ -89,9 +89,9 @@ public class Base_de_donneeTest {
         Statistique statistique = new Statistique("Attaque", "Les dégâts bruts lors d'une attaque");
 
 
-        personnage.ajoute_competence(competence);
-        personnage.ajoute_equipement(equipement);
-        personnage.ajoute_statistique(statistique, 15);
+        personnage.ajouter_competence(competence);
+        personnage.ajouter_equipement(equipement);
+        personnage.ajouter_statistique(statistique, 15);
 
         compte.ajouter_personnage(personnage);
         bd.ajouter_compte(compte);

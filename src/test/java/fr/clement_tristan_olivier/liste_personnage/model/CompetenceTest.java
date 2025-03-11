@@ -1,10 +1,11 @@
 package fr.clement_tristan_olivier.liste_personnage.model;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 
 public class CompetenceTest {
@@ -45,10 +46,10 @@ public class CompetenceTest {
         Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
         Personnage personnage2 = new Personnage("Claude", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
 
-        personnage.ajoute_competence(competence);
-        personnage2.ajoute_competence(competence);
-        personnage2.ajoute_competence(competence2);
-        personnage2.ajoute_competence(competence3);
+        personnage.ajouter_competence(competence);
+        personnage2.ajouter_competence(competence);
+        personnage2.ajouter_competence(competence2);
+        personnage2.ajouter_competence(competence3);
         compte.ajouter_personnage(personnage);
         compte.ajouter_personnage(personnage2);
 

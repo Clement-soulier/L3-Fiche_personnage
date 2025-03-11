@@ -69,7 +69,7 @@ public class Statistique implements Serializable
         {
             for(Personnage personnage : compte.personnages)
             {
-                personnage.supprime_statistique(p);
+                personnage.supprimer_statistique(p);
                 if(personnage.statistiques.containsKey(p)){
                     return false;
                 }

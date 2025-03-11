@@ -13,7 +13,7 @@ public class Base_de_donnees implements Serializable{
 
 
     /**
-     * Constructeur pour Base_de_donnees
+     * Constructeur pour Base_de_donnees.
      * Créer une base de donnée vide
      */
     public Base_de_donnees(){
@@ -24,11 +24,11 @@ public class Base_de_donnees implements Serializable{
      * Authentifie un compte depuis un pseudo et un mot de passe
      * @param pseudo String
      * @param password String
-     * @return ?Compte
+     * @return Compte ou null
      */
     public Compte authenticate(String pseudo, String password){
         for(Compte compte : this.utilisateurs){
-            if(compte.pseudo.equals(pseudo) && passwordUtils.verifyPassword(compte.password, password)){
+            if(compte.active == true && compte.pseudo.equals(pseudo) && passwordUtils.verifyPassword(compte.password, password)){
                 return compte;
             }
         }
@@ -36,21 +36,21 @@ public class Base_de_donnees implements Serializable{
     }
 
     /**
-     * Ajout un Compte à la base de données
+     * Ajoute un Compte à la base de données.
      * Retourne false is le compte existe déjà, true sinon
      * @param compte Compte
-     * @return true
+     * @return boolean
      */
     public boolean ajouter_compte(Compte compte){
         if(this.utilisateurs.contains(compte)){
             return false;
         }
         this.utilisateurs.add(compte);
-        return this.utilisateurs.contains(compte);
+        return true;
     }
 
     /**
-     * Supprime un compte de la base de données
+     * Supprime un compte de la base de données.
      * Retourne false si le compte n'existe pas, true sinon
      * @param compte Compte
      * @return boolean
@@ -64,12 +64,12 @@ public class Base_de_donnees implements Serializable{
     }
 
     /**
-     * Désactive le compte
+     * Désactive le compte.
      * Retourne false si le compte est déjà désactivé, true sinon
      * @param compte Compte
      * @return boolean
      */
-    public boolean desactive_compte(Compte compte){
+    public boolean desactiver_compte(Compte compte){
         if(compte.active == false){
             return false;
         }
@@ -78,12 +78,12 @@ public class Base_de_donnees implements Serializable{
     }
 
     /**
-     * Réactive un compte désactivé
+     * Réactive un compte désactivé.
      * Retourne false si le compte est déjà activé, true sinon
      * @param compte Compte
      * @return boolean
      */
-    public boolean active_compte(Compte compte){
+    public boolean activer_compte(Compte compte){
         if(compte.active == true){
             return false;
         }
@@ -92,7 +92,7 @@ public class Base_de_donnees implements Serializable{
     }
 
     /**
-     * Renvoie une string représentant l'objet pour affichage
+     * Renvoie une string représentant l'objet pour affichage.
      * @return String
      */
     public String ToString(){

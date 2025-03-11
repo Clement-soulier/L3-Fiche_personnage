@@ -19,7 +19,7 @@ public class Personnage implements Serializable{
     protected String classe;
 
     /**
-     * Constructeur pour Personnage
+     * Constructeur pour Personnage.
      * @param nom String
      * @param biographie String 
      * @param statistiques HashMap<Statistique, Integer>
@@ -28,7 +28,7 @@ public class Personnage implements Serializable{
      * @param classe String 
      */
     public Personnage(String nom, String biographie, HashMap<Statistique, Integer> statistiques, ArrayList<Competence> competences, ArrayList<Equipement> equipements, String classe){
-        this.id = get_id++;
+        this.id = Personnage.get_id++;
         this.nom = nom;
         this.biographie = biographie; 
         this.statistiques =  statistiques;
@@ -38,12 +38,12 @@ public class Personnage implements Serializable{
     }
 
     /**
-     * Ajoute une compétence au personnage
+     * Ajoute une compétence au personnage.
      * Retourne false si la compétence est déjà présente, true sinon
      * @param competence Competence
      * @return boolean
      */
-    public boolean ajoute_competence(Competence competence){
+    public boolean ajouter_competence(Competence competence){
         if(this.competences.contains(competence)){
             return false;
         }
@@ -52,12 +52,12 @@ public class Personnage implements Serializable{
     }
 
     /**
-     * Supprime une compétence du personnage
+     * Supprime une compétence du personnage.
      * Retourne false si la compétence n'est pas présente, true sinon
      * @param competence Competence
      * @return boolean
      */
-    public boolean supprime_competence(Competence competence){
+    public boolean supprimer_competence(Competence competence){
         if(!this.competences.contains(competence)){
             return false;
         }
@@ -66,12 +66,12 @@ public class Personnage implements Serializable{
     }
 
     /**
-     * Ajoute un équipement au personnage
+     * Ajoute un équipement au personnage.
      * Retourne false si l'équipement est déjà présent, true sinon
      * @param equipement Equipement
      * @return boolean
      */
-    public boolean ajoute_equipement(Equipement equipement){
+    public boolean ajouter_equipement(Equipement equipement){
         if(this.equipements.contains(equipement)){
             return false;
         }
@@ -80,12 +80,12 @@ public class Personnage implements Serializable{
     }
 
     /**
-     * Supprime un équipement du personnage
+     * Supprime un équipement du personnage.
      * Retourne false si l'équipement n'est pas présent, true sinon
      * @param equipement Equipement
      * @return boolean
      */
-    public boolean supprime_equipement(Equipement equipement){
+    public boolean supprimer_equipement(Equipement equipement){
         if(!this.equipements.contains(equipement)){
             return false;
         }
@@ -100,7 +100,7 @@ public class Personnage implements Serializable{
      * @param valeur int
      * @return boolean
      */
-    public boolean ajoute_statistique (Statistique statistique, int valeur){
+    public boolean ajouter_statistique (Statistique statistique, int valeur){
         if(this.statistiques.containsKey(statistique)){
             return false;
         }
@@ -114,7 +114,7 @@ public class Personnage implements Serializable{
      * @param valeur int
      * @return boolean
      */
-    public boolean modifie_statistique(Statistique statistique, int valeur){
+    public boolean modifier_statistique(Statistique statistique, int valeur){
         if(this.statistiques.containsKey(statistique)){
             this.statistiques.replace(statistique, valeur);
         } else {
@@ -130,7 +130,7 @@ public class Personnage implements Serializable{
      * @param statistique Statistique
      * @return boolean
      */
-    public boolean supprime_statistique(Statistique statistique){
+    public boolean supprimer_statistique(Statistique statistique){
         if(!this.statistiques.containsKey(statistique)){
             return false;
         }
@@ -139,12 +139,12 @@ public class Personnage implements Serializable{
     }
 
     /**
-     * Retourne la valeur d'une statistique du personnage
+     * Retourne la valeur d'une statistique du personnage.
      * Si le personnage n'a pas la statistique, retourne -1
      * @param statistique Statistique
      * @return int
      */
-    public int get_statistique_valeur(Statistique statistique){
+    public int get_valeur_statistique(Statistique statistique){
         if(!this.statistiques.containsKey(statistique)){
             return -1;
         }
@@ -165,12 +165,12 @@ public class Personnage implements Serializable{
     }*/
 
     /**
-     * Modifie le nom du personnage
+     * Modifie le nom du personnage.
      * Retourne false si le nom est le même, true sinon
      * @param nom String
      * @return boolean
      */
-    public boolean modifie_nom(String nom){
+    public boolean modifier_nom(String nom){
         if(this.nom.equals(nom)){
             return false;
         }
@@ -180,12 +180,12 @@ public class Personnage implements Serializable{
 
 
     /**
-     * Modifie la biographie du personnage
+     * Modifie la biographie du personnage.
      * Retourne false si la biographie est la même, true sinon
      * @param biographie String
      * @return boolean
      */
-    public boolean modifie_biographie(String biographie){
+    public boolean modifier_biographie(String biographie){
         if(this.biographie.equals(biographie)){
             return false;
         }
@@ -194,10 +194,23 @@ public class Personnage implements Serializable{
     }
 
     /**
-     * Renvoie un string représentant l'objet pour affichage
+     * Renvoie un string représentant l'objet pour affichage.
      * @return String
      */
     public String ToString(){
-        return nom + ": " + biographie;
+        String ret = this.nom + ": " + this.biographie + "\nStatistiques: {";
+        for(Statistique statistique : this.statistiques.keySet()){
+            ret += "\n" + statistique.ToString() + ": " + this.statistiques.get(statistique);
+        }
+        ret += "\n}\nCompétences: {";
+        for(Competence competence : this.competences){
+            ret += "\n" + competence.ToString();
+        }
+        ret += "\n}\nEquipements: {";
+        for(Equipement equipement : this.equipements){
+            ret += "\n" + equipement.ToString();
+        }
+        ret += "\n}";
+        return ret;
     }
 }

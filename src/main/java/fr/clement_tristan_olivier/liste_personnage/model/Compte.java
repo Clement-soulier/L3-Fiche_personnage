@@ -74,7 +74,7 @@ public class Compte implements Serializable{
     }
 
     /**
-     * Renvoie un String représentant l'objet pour affichage
+     * Renvoie un String représentant l'objet pour affichage.
      * @return String
      */
     @Override public String toString(){

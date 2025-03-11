@@ -17,7 +17,7 @@
             <TextField id="CreatePasswordText" />
             <Label text="Confirmer Mot de passe" />
             <TextField id="ConfirmPasswordText" />
-            <Button id="CreateUserButton" mnemonicParsing="false" text="Créer" />
+            <Button id="CreateUserButton" mnemonicParsing="false" text="Créer" onAction="#handleCreateUserButton"/>
          </children>
       </VBox>
    </children>

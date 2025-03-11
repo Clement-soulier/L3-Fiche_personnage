@@ -38,7 +38,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.monprojet.App</mainClass>
+              <mainClass>fr.clement_tristan_olivier.App</mainClass>
               </manifest>
             </archive>
           </configuration>

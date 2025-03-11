@@ -8,7 +8,7 @@ import fr.clement_tristan_olivier.liste_personnage.utils.passwordUtils;
  * Cette classe représente un compte pour un utilisateur
  */
 public class Compte implements Serializable{
-    static int get_id;
+    static int get_id = 0;
     protected int id;
     protected String pseudo;
     protected String password;
@@ -17,13 +17,13 @@ public class Compte implements Serializable{
     public static ArrayList<Compte> liste_compte = new ArrayList<>();
 
     /**
-     * Constructeur pour Compte
+     * Constructeur pour Compte.
      * @param pseudo String
      * @param password String
      */
     public Compte(String pseudo, String password) {
         this.pseudo = pseudo;
-        this.id = get_id++;
+        this.id = Compte.get_id++;
         this.password = passwordUtils.hashPassword(password);
         this.active = true;
         this.personnages = new ArrayList<>();
@@ -31,7 +31,7 @@ public class Compte implements Serializable{
     }
 
     /**
-     * Ajoute un personnage au compte
+     * Ajoute un personnage au compte.
      * Retourne false si le personnage est déjà présent, true sinon
      * @param personnage Personnage
      * @return boolean
@@ -55,11 +55,26 @@ public class Compte implements Serializable{
             return false;
         }
         this.personnages.removeIf(p -> p.equals(personnage));
-        return !true;
+        return true;
     }
 
     /**
-     * Renvoie un String représentant l'objet pour affichage
+     * Retourne un personnage du compte d'après son id.
+     * Retourne null si le personnage n'est pas trouvé
+     * @param id int
+     * @return Personnage ou null
+     */
+    public Personnage get_personnage_by_id(int id) {
+        for(Personnage personnage : this.personnages){
+            if(personnage.id == id){
+                return personnage;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Renvoie un String représentant l'objet pour affichage.
      * @return String
      */
     @Override public String toString(){

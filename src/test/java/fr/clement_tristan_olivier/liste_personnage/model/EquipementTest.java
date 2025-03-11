@@ -1,9 +1,11 @@
 package fr.clement_tristan_olivier.liste_personnage.model;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 public class EquipementTest {
     
@@ -39,12 +41,12 @@ public class EquipementTest {
         Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
         Equipement equipement = new Equipement("épée", "Une épée très tranchante 😱");
         Equipement equipement1 = new Equipement("hache", "Une hache très tranchante 😱");
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
-        Personnage personnage2 = new Personnage("Claude", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
+        Personnage personnage2 = new Personnage("Claude", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
 
-        personnage.ajoute_equipement(equipement);
-        personnage2.ajoute_equipement(equipement);
-        personnage2.ajoute_equipement(equipement1);
+        personnage.ajouter_equipement(equipement);
+        personnage2.ajouter_equipement(equipement);
+        personnage2.ajouter_equipement(equipement1);
         compte.ajouter_personnage(personnage);
         compte.ajouter_personnage(personnage2);
 

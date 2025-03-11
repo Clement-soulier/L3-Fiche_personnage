@@ -6,11 +6,11 @@ import de.mkammerer.argon2.Argon2Factory;
 public class passwordUtils {
    public static String hashPassword(String password){
     Argon2 argon2 = Argon2Factory.create();
-    return argon2.hash(10, 65536, 1, password);
+    return argon2.hash(10, 65536, 1, password.getBytes());
    } 
 
     public static boolean verifyPassword(String hash, String password){
      Argon2 argon2 = Argon2Factory.create();
-     return argon2.verify(hash, password);
+     return argon2.verify(hash, password.toCharArray());
     }
 }

@@ -1,9 +1,9 @@
 package fr.clement_tristan_olivier.liste_personnage.model;
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class StatistiqueTest {
@@ -40,12 +40,12 @@ public class StatistiqueTest {
         Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
         Statistique statistique = new Statistique("Attaque", "Les dégâts bruts lors d'une attaque");
         Statistique statistique1 = new Statistique("Défense", "La capacité à encaisser les attaquesz");
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
-        Personnage personnage2 = new Personnage("Claude", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
+        Personnage personnage2 = new Personnage("Claude", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
 
-        personnage.ajoute_statistique(statistique, 15);
-        personnage2.ajoute_statistique(statistique, 20);
-        personnage2.ajoute_statistique(statistique1, 15);
+        personnage.ajouter_statistique(statistique, 15);
+        personnage2.ajouter_statistique(statistique, 20);
+        personnage2.ajouter_statistique(statistique1, 15);
         compte.ajouter_personnage(personnage);
         compte.ajouter_personnage(personnage2);
 

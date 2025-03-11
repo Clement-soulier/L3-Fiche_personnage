@@ -68,7 +68,7 @@ public class Equipement implements Serializable
         {
             for (Personnage personnage : compte.personnages)
             {
-                personnage.supprime_equipement(p);
+                personnage.supprimer_equipement(p);
                 if(personnage.equipements.contains(p))
                 {
                     return false;

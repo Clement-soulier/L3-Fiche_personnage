@@ -43,8 +43,8 @@ public class CompetenceTest {
         Competence competence = new Competence("Rugissement", "Le lanceur pousse un cri tout mimi pour tromper la vigilance de la cible et baisser son Attaque.");
         Competence competence2 = new Competence("Danse Lames", "Une danse frénétique qui exalte l'esprit combatif. Augmente beaucoup l'Attaque du lanceur.");
         Competence competence3 = new Competence("Charge", "Le lanceur charge l'ennemi et le percute de tout son poids.");
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
-        Personnage personnage2 = new Personnage("Claude", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
+        Personnage personnage2 = new Personnage("Claude", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
 
         personnage.ajouter_competence(competence);
         personnage2.ajouter_competence(competence);

@@ -1,16 +1,17 @@
 package fr.clement_tristan_olivier.liste_personnage.model;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 public class PersonnageTest {
     
     @Test
     public void test_Personnage() {
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
 
         assertEquals("Jean", personnage.nom, "Le nom du personnage n'est pas valide");
         assertEquals("Personnage de test", personnage.biographie, "La biographie du personnage n'est pas valide");
@@ -22,7 +23,7 @@ public class PersonnageTest {
 
     @Test
     public void test_ajoute_competence() {
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
         Competence competence = new Competence("Rugissement", "Le lanceur pousse un cri tout mimi pour tromper la vigilance de la cible et baisser son Attaque.");
         personnage.ajouter_competence(competence);
 
@@ -31,7 +32,7 @@ public class PersonnageTest {
 
     @Test
     public void test_supprime_competence() {
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
         Competence competence = new Competence("Rugissement", "Le lanceur pousse un cri tout mimi pour tromper la vigilance de la cible et baisser son Attaque.");
         Competence competence1 = new Competence("Danse Lames", "Une danse frénétique qui exalte l'esprit combatif. Augmente beaucoup l'Attaque du lanceur.");
 
@@ -45,7 +46,7 @@ public class PersonnageTest {
 
     @Test
     public void test_ajoute_equipement() {
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
         Equipement equipement = new Equipement("épée", "Une épée très tranchante 😱");
 
         personnage.ajouter_equipement(equipement);
@@ -55,7 +56,7 @@ public class PersonnageTest {
 
     @Test
     public void test_supprime_equipement() {
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
         Equipement equipement = new Equipement("épée", "Une épée très tranchante 😱");
         Equipement equipement1 = new Equipement("hache", "Une hache très tranchante 😱");
 
@@ -69,7 +70,7 @@ public class PersonnageTest {
 
     @Test
     public void test_ajoute_statistique() {
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
         Statistique statistique = new Statistique("Attaque", "Les dégâts bruts lors d'une attaque");
 
         personnage.ajouter_statistique(statistique, 15);
@@ -79,7 +80,7 @@ public class PersonnageTest {
 
     @Test
     public void test_modifie_statistique() {
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
         Statistique statistique = new Statistique("Attaque", "Les dégâts bruts lors d'une attaque");
 
         personnage.ajouter_statistique(statistique, 15);
@@ -90,7 +91,7 @@ public class PersonnageTest {
 
     @Test
     public void test_supprime_statistique() {
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
         Statistique statistique = new Statistique("Attaque", "Les dégâts bruts lors d'une attaque");
         Statistique statistique1 = new Statistique("Défense", "La capacité à encaisser les attaquesz");
 
@@ -105,7 +106,7 @@ public class PersonnageTest {
 
     @Test
     public void test_modifier_nom() {
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
         personnage.modifier_nom("Loïc");
 
         assertEquals("Loïc", personnage.nom, "Le nom n'as pas été modifié");
@@ -113,7 +114,7 @@ public class PersonnageTest {
 
     @Test
     public void test_modifier_biographie() {
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
         personnage.modifier_biographie("Originaire de Khalos");
 
         assertEquals("Originaire de Khalos", personnage.biographie, "La biographie n'as pas été modifiée");
@@ -121,7 +122,7 @@ public class PersonnageTest {
 
     @Test
     public void test_toString() {
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
         
         System.out.println(personnage.toString());
     }

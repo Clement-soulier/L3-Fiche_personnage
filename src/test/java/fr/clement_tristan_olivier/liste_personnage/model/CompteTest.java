@@ -1,11 +1,12 @@
 package fr.clement_tristan_olivier.liste_personnage.model;
-import fr.clement_tristan_olivier.liste_personnage.utils.passwordUtils;
-
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
+import fr.clement_tristan_olivier.liste_personnage.utils.passwordUtils;
 
 
 public class CompteTest {
@@ -25,7 +26,7 @@ public class CompteTest {
     @Test
     public void test_ajouter_personnage() {
         Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
-        Personnage personnage = new Personnage("Bernard", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "Nain");
+        Personnage personnage = new Personnage("Bernard", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "Nain");
         compte.ajouter_personnage(personnage);
 
         assertTrue(compte.personnages.contains(personnage), "Le personnage n'a pas été ajouté correctement");
@@ -34,8 +35,8 @@ public class CompteTest {
     @Test
     public void test_supprimer_personnage() {
         Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
-        Personnage personnage = new Personnage("Bernard", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "Nain");
-        Personnage personnage2 = new Personnage("Roland", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "Guerrier");
+        Personnage personnage = new Personnage("Bernard", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "Nain");
+        Personnage personnage2 = new Personnage("Roland", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "Guerrier");
         compte.ajouter_personnage(personnage);
         compte.ajouter_personnage(personnage2);
         compte.supprimer_personnage(personnage);

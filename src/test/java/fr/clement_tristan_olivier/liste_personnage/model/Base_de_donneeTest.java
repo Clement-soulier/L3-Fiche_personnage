@@ -1,10 +1,10 @@
 package fr.clement_tristan_olivier.liste_personnage.model;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class Base_de_donneeTest {
@@ -83,7 +83,7 @@ public class Base_de_donneeTest {
     public void test_toString() {
         Base_de_donnees bd = new Base_de_donnees();
         Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<Statistique, Integer>(), new ArrayList<Competence>(), new ArrayList<Equipement>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
         Equipement equipement = new Equipement("épée", "Une épée très tranchante 😱");
         Competence competence = new Competence("Rugissement", "Le lanceur pousse un cri tout mimi pour tromper la vigilance de la cible et baisser son Attaque.");
         Statistique statistique = new Statistique("Attaque", "Les dégâts bruts lors d'une attaque");

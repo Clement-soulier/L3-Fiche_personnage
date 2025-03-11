@@ -7,6 +7,10 @@
     <h1>Dépendances</h1>
     <li><b>JUnit 5.8.1:</b> utilisé pour les tests</li>
     <li><b>argon2 2.11:</b> Utilisé pour le hashage des mots de passes</li>
+    <li></li>
+    <li><b>JavaFX Controls:</b> Utilisé pour les contrôler les visuels</li>
+    <li><b>JavaFX FXML:</b> Utilisé pour décrire les vues</li>
+    <li><b>Gluon HQ</b> Utilisé pour ajouter d'autres composant pour les visuels</li>
 </ul>
 <br>
 <h1>Installation</h1>

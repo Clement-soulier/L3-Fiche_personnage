@@ -13,7 +13,7 @@ public class Compte implements Serializable{
     protected String pseudo;
     protected String password;
     protected Boolean active;
-    protected ArrayList<Personnage> personnages;
+    public ArrayList<Personnage> personnages;
     public static ArrayList<Compte> liste_compte = new ArrayList<>();
 
     /**

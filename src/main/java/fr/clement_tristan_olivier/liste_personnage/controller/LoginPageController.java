@@ -24,13 +24,13 @@ public class LoginPageController {
     private Label label;
 
     @FXML
-    private TextField textField;
+    private TextField Login;
 
     @FXML
     private Label label0;
 
     @FXML
-    private PasswordField passwordField;
+    private PasswordField Password;
 
     @FXML
     private CheckBox checkBox;
@@ -45,22 +45,19 @@ public class LoginPageController {
 
     @FXML
     public void initialize() {
-        userModel = new UserModel();
+        base_de_donnees = new Base_de_donnees();
     }
 
-    private Base_de_donnees base_de_donnees;
-
-    private void handleLoginButtonAction() {
-        String username = textField.getText();
-        String password = passwordField.getText();
-        if (base_de_donnees.authenticate(username, password)!=null) {
+    private void handleLoginButton() {
+        String username = Login.getText();
+        String password = Password.getText();
+        Compte compte = base_de_donnees.authenticate(username, password);
+        if (compte != null) {
             System.out.println("Login successful");
+            label.setText("Login successful");
         } else {
             System.out.println("Login failed");
+            label.setText("Login failed");
         }
     }
-
-    
-
-    
 }

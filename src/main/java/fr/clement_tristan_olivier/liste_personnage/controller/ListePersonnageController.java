@@ -33,6 +33,7 @@ public class ListePersonnageController {
 
     /**
      * Importe la liste des personnages du compte et les ajoute à la liste déroulante.
+     * @return void
      */
     private void setup_liste_personnages() {
         for (Personnage personnage : this.model.personnages) {
@@ -42,6 +43,7 @@ public class ListePersonnageController {
 
     /**
      * Crée un nouveau personnage avec comme nom celui entré dans le champ de texte.
+     * @return void
      */
     @FXML
     private void handleAddToListButtonAction() {
@@ -55,6 +57,7 @@ public class ListePersonnageController {
 
     /**
      * Supprime le personnage sélectionné dans la liste déroulante.
+     * @return void
      */
     @FXML
     private void handleDeleteFromListButtonAction() {
@@ -65,9 +68,10 @@ public class ListePersonnageController {
 
     /**
      * Ferme la page ListePersonnage.fxml.
+     * @return void
      */
     @FXML
     private void handleClosePageButtonAction() {
-        // Implement closing logic if needed
+        ((javafx.stage.Stage)ClosePageButton.getScene().getWindow()).close();
     }
 }

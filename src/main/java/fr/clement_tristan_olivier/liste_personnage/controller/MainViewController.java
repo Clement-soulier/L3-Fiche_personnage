@@ -1,16 +1,20 @@
 package fr.clement_tristan_olivier.liste_personnage.controller;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.Parent;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import fr.clement_tristan_olivier.liste_personnage.model.*;
+
+import fr.clement_tristan_olivier.liste_personnage.model.Base_de_donnees;
+import fr.clement_tristan_olivier.liste_personnage.model.Competence;
+import fr.clement_tristan_olivier.liste_personnage.model.Compte;
+import fr.clement_tristan_olivier.liste_personnage.model.Equipement;
+import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
+import fr.clement_tristan_olivier.liste_personnage.model.Statistique;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 public class MainViewController {
     private Base_de_donnees base_de_donnees;
@@ -36,7 +40,7 @@ public class MainViewController {
             
             HashMap<Statistique, Integer> statistiques = new HashMap<>();
             Statistique stat1 = new Statistique("attaque", "capacité à faire mal");
-            Statistique stat2 = new Statistique("défense", "capacité à encaisser les coûts");
+            Statistique stat2 = new Statistique("défense", "capacité à encaisser les coups");
             statistiques.put(stat1, 20);
             statistiques.put(stat2, 40);
 

@@ -13,13 +13,13 @@
       <VBox alignment="CENTER" layoutX="199.0" layoutY="71.0" prefHeight="257.0" prefWidth="202.0" spacing="10.0">
          <children>
             <Label text="Liste" />
-            <ComboBox id="ComboBoxListe" prefHeight="26.0" prefWidth="204.0" />
-            <Button id="DeleteFromListButton" mnemonicParsing="false" text="Delete from list" />
+            <ComboBox fx:id="ComboBoxListe" prefHeight="26.0" prefWidth="204.0" />
+            <Button fx:id="DeleteFromListButton" mnemonicParsing="false" text="Delete from list" onAction="#handleDeleteFromListButtonAction" />
             <Label text="Create New" />
-            <TextField id="AddText" />
-            <Button id="AddToListButton" mnemonicParsing="false" text="Add to list" />
+            <TextField fx:id="AddText" />
+            <Button fx:id="AddToListButton" mnemonicParsing="false" text="Add to list" onAction="#handleAddToListButtonAction" />
          </children>
       </VBox>
-      <Button id="ClosePageButton" alignment="CENTER" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" text="Close" />
+      <Button fx:id="ClosePageButton" alignment="CENTER" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" text="Close" onAction="#handleClosePageButtonAction" />
    </children>
 </AnchorPane>

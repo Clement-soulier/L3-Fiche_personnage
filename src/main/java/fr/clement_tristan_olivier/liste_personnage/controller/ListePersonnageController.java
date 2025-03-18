@@ -1,4 +1,5 @@
 package fr.clement_tristan_olivier.liste_personnage.controller;
+
 import fr.clement_tristan_olivier.liste_personnage.model.Compte;
 import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
 import javafx.fxml.FXML;
@@ -25,22 +26,16 @@ public class ListePersonnageController {
 
     private Compte model;
 
-    /**
-     * Initialise le contrôleur avec le modèle.
-     * @param model Compte
-     * @return void
-     */
-    public void initialize(Compte model) {
+    protected void setModele(Compte model) {
         this.model = model;
         setup_liste_personnages();
     }
 
     /**
      * Importe la liste des personnages du compte et les ajoute à la liste déroulante.
-     * @return void
      */
     private void setup_liste_personnages() {
-        for(Personnage personnage : this.model.personnages){
+        for (Personnage personnage : this.model.personnages) {
             this.ComboBoxListe.getItems().add(personnage);
         }
     }
@@ -48,8 +43,9 @@ public class ListePersonnageController {
     /**
      * Crée un nouveau personnage avec comme nom celui entré dans le champ de texte.
      */
+    @FXML
     private void handleAddToListButtonAction() {
-        if(!this.AddText.getText().trim().isEmpty()){
+        if (!this.AddText.getText().trim().isEmpty()) {
             String nom_personnage = this.AddText.getText();
             Personnage personnage = new Personnage(nom_personnage, null, null, null, null, null);
             this.model.ajouter_personnage(personnage);
@@ -57,13 +53,21 @@ public class ListePersonnageController {
         }
     }
 
+    /**
+     * Supprime le personnage sélectionné dans la liste déroulante.
+     */
+    @FXML
     private void handleDeleteFromListButtonAction() {
         Personnage personnage = this.ComboBoxListe.getSelectionModel().getSelectedItem();
         this.model.supprimer_personnage(personnage);
         this.ComboBoxListe.getItems().remove(personnage);
     }
 
+    /**
+     * Ferme la page ListePersonnage.fxml.
+     */
+    @FXML
     private void handleClosePageButtonAction() {
-        
+        // Implement closing logic if needed
     }
 }

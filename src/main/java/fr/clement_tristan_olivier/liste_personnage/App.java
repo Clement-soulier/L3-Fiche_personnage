@@ -14,7 +14,7 @@ public class App extends Application
 {
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/FichePersonnage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/MainView.fxml"));
             Parent root = loader.load();
 
             // Créer la scnène avec le noeud racine

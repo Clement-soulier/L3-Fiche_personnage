@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<VBox fx:id="rootPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clement_tristan_olivier.liste_personnage.controller.MainViewController">
+    <!-- Autres éléments de l'interface -->
+</VBox>

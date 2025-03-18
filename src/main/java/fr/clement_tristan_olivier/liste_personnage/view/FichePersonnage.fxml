@@ -48,7 +48,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:controller="fr.clement_tristan_olivier.liste_personnage.controller.FichePersonnageController" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar style="-fx-background-color: black;" VBox.vgrow="NEVER">
       <menus>
@@ -100,7 +100,7 @@
             <Label layoutX="81.0" layoutY="49.0" text="Lastname :" />
             <TextField layoutX="150.0" layoutY="44.0" prefHeight="27.0" prefWidth="142.0" />
             <TextField layoutX="150.0" layoutY="17.0" prefHeight="27.0" prefWidth="142.0" />
-            <ImageView fitHeight="25.0" fitWidth="306.0" layoutX="14.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="equipementImage" fitHeight="25.0" fitWidth="306.0" layoutX="14.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Saved%20Pictures/why-does-adding-1-point-to-con-use-2-ability-points-here-v0-u0vttayf2fgb1.png" />
                </image>

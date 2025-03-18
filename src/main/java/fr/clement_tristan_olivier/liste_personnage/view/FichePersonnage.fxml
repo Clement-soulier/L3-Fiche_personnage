@@ -48,7 +48,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:controller="fr.clement_tristan_olivier.liste_personnage.controller.FichePersonnageController" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clement_tristan_olivier.liste_personnage.controller.FichePersonnageController">
   <children>
     <MenuBar style="-fx-background-color: black;" VBox.vgrow="NEVER">
       <menus>
@@ -80,11 +80,6 @@
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" text="Select All" />
             <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Settings">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
           </items>
         </Menu>
       </menus>
@@ -181,6 +176,8 @@
                   </HBox>
                </children>
             </VBox>
+            <Button id="ValidateButton" layoutX="519.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: green;" text="Valider" />
+            <Button id="CancelButton" cancelButton="true" layoutX="583.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: red;" text="Annuler" />
       </children>
     </AnchorPane>
   </children>

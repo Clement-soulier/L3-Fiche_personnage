@@ -1,7 +1,6 @@
 package fr.clement_tristan_olivier.liste_personnage.controller;
 import fr.clement_tristan_olivier.liste_personnage.model.Compte;
 import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -10,7 +9,7 @@ import javafx.scene.control.TextField;
 public class ListePersonnageController {
 
     @FXML
-    private ComboBox<String> ComboBoxListe;
+    private ComboBox<Personnage> ComboBoxListe;
 
     @FXML
     private Button DeleteFromListButton;
@@ -42,7 +41,7 @@ public class ListePersonnageController {
      */
     private void setup_liste_personnages() {
         for(Personnage personnage : this.model.personnages){
-            this.ComboBoxListe.addItem(personnage);
+            this.ComboBoxListe.getItems().add(personnage);
         }
     }
 
@@ -54,7 +53,17 @@ public class ListePersonnageController {
             String nom_personnage = this.AddText.getText();
             Personnage personnage = new Personnage(nom_personnage, null, null, null, null, null);
             this.model.ajouter_personnage(personnage);
-            this.ComboBoxListe.addItem(personnage);
+            this.ComboBoxListe.getItems().add(personnage);
         }
+    }
+
+    private void handleDeleteFromListButtonAction() {
+        Personnage personnage = this.ComboBoxListe.getSelectionModel().getSelectedItem();
+        this.model.supprimer_personnage(personnage);
+        this.ComboBoxListe.getItems().remove(personnage);
+    }
+
+    private void handleClosePageButtonAction() {
+        
     }
 }

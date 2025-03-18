@@ -9,14 +9,14 @@ import java.util.HashMap;
  */
 public class Personnage implements Serializable{
     static int get_id = 0;
-    protected int id;
-    protected String nom;
+    public int id;
+    public String nom;
     // protected image portrait
-    protected String biographie;
-    protected HashMap<Statistique, Integer> statistiques;
-    protected ArrayList<Competence> competences;
-    protected ArrayList<Equipement> equipements;
-    protected String classe;
+    public String biographie;
+    public HashMap<Statistique, Integer> statistiques;
+    public ArrayList<Competence> competences;
+    public ArrayList<Equipement> equipements;
+    public String classe;
 
     /**
      * Constructeur pour Personnage.

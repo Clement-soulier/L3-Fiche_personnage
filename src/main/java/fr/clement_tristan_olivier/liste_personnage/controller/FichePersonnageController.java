@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import com.gluonhq.charm.glisten.control.Avatar;
 import com.gluonhq.charm.glisten.control.TextField;
 
+import fr.clement_tristan_olivier.liste_personnage.model.Equipement;
 import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -22,15 +23,22 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class FichePersonnageController {
-    Personnage personnage;
+    private Personnage personnage;
+
+    @FXML
+    private ComboBox<String> equipementsComboBox;
+
     @FXML
     private ImageView equipementImage;
 
     public void setModele(Personnage personnage){
         this.personnage = personnage;
+        initialiserVue();
     }
 
-    private void initialiserVue(){}
+    private void initialiserVue(){
+        equipementsComboBox.getItems().addAll(this.personnage.equipements.toString());
+    }
 
 
 }

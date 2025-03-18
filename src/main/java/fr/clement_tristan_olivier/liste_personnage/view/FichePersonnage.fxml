@@ -137,7 +137,7 @@
                <children>
                   <HBox id="HBoxEquipements" alignment="TOP_CENTER" prefHeight="30.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ComboBox id="equipementsComboBox" prefHeight="28.0" prefWidth="240.0" />
+                        <ComboBox fx:id="equipementsComboBox" prefHeight="28.0" prefWidth="240.0" />
                      </children>
                   </HBox>
                </children>

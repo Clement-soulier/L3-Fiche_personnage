@@ -42,6 +42,36 @@ public class MainViewController {
         }
     }
 
+    private void chargerLoginPage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/LoginPage.fxml"));
+            Parent vue = loader.load();
+
+            LoginPageController controller = loader.getController();
+            controller.setModel(base_de_donnees);
+            
+            rootPane.getChildren().setAll(vue);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+private void chargerCreateUserPage() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/CreateUserPage.fxml"));
+        Parent vue = loader.load();
+
+        CreateUserPageController controller = loader.getController();
+        controller.setModel(base_de_donnees);
+
+        rootPane.getChildren().setAll(vue);
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+}
     // private void chargerVueSecondaire(String cheminFXML) {
     //     try {
     //         FXMLLoader loader = new FXMLLoader(getClass().getResource(cheminFXML));
@@ -56,4 +86,3 @@ public class MainViewController {
     //         e.printStackTrace();
     //     }
     // }
-}

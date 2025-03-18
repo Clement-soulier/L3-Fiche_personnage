@@ -1,6 +1,7 @@
 package fr.clement_tristan_olivier.liste_personnage.controller;
 
 import fr.clement_tristan_olivier.liste_personnage.model.Base_de_donnees;
+import fr.clement_tristan_olivier.liste_personnage.model.Compte;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -41,11 +42,15 @@ public class LoginPageController {
     @FXML
     private Hyperlink hyperlink;
 
-    private UserModel userModel;
+    private Base_de_donnees base_de_donnees;
 
     @FXML
     public void initialize() {
         base_de_donnees = new Base_de_donnees();
+    }
+
+    public void setModel(Base_de_donnees base_de_donnees) {
+        this.base_de_donnees = base_de_donnees;
     }
 
     private void handleLoginButton() {

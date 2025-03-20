@@ -100,7 +100,7 @@
                <children>
                   <HBox id="HBoxStats" prefHeight="30.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ComboBox id="statsComboBox" prefHeight="28.0" prefWidth="240.0" />
+                        <ComboBox fx:id="statsComboBox" prefHeight="28.0" prefWidth="240.0" />
                         <Spinner id="statsSpinner" prefHeight="28.0" prefWidth="60.0" />
                      </children>
                   </HBox>
@@ -128,7 +128,7 @@
                <children>
                   <HBox id="HBoxSkills" alignment="TOP_CENTER" prefHeight="30.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ComboBox id="skillsComboBox" prefHeight="28.0" prefWidth="240.0" />
+                        <ComboBox fx:id="skillsComboBox" prefHeight="28.0" prefWidth="240.0" />
                      </children>
                   </HBox>
                </children>

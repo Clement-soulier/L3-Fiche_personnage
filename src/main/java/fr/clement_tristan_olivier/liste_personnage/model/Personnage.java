@@ -17,6 +17,7 @@ public class Personnage implements Serializable{
     public ArrayList<Competence> competences;
     public ArrayList<Equipement> equipements;
     public String classe;
+    public String race;
 
     /**
      * Constructeur pour Personnage.
@@ -26,8 +27,9 @@ public class Personnage implements Serializable{
      * @param competences ArrayList<Competence>
      * @param equipements ArrayList<Equipement>
      * @param classe String 
+     * @param race String
      */
-    public Personnage(String nom, String biographie, HashMap<Statistique, Integer> statistiques, ArrayList<Competence> competences, ArrayList<Equipement> equipements, String classe){
+    public Personnage(String nom, String biographie, HashMap<Statistique, Integer> statistiques, ArrayList<Competence> competences, ArrayList<Equipement> equipements, String classe, String race){
         this.id = Personnage.get_id++;
         this.nom = nom;
         this.biographie = biographie; 
@@ -35,6 +37,7 @@ public class Personnage implements Serializable{
         this.competences = competences;
         this.equipements = equipements;
         this.classe = classe;
+        this.race = race;
     }
 
     /**

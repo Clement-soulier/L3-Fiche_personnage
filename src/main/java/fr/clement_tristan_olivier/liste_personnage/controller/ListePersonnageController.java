@@ -36,9 +36,7 @@ public class ListePersonnageController {
      * @return void
      */
     private void setup_liste_personnages() {
-        for (Personnage personnage : this.model.personnages) {
-            this.ComboBoxListe.getItems().add(personnage);
-        }
+        this.ComboBoxListe.getItems().addAll(model.personnages);
     }
 
     /**

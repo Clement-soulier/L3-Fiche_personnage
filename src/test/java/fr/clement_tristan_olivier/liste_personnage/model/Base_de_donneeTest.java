@@ -83,7 +83,7 @@ public class Base_de_donneeTest {
     public void test_toString() {
         Base_de_donnees bd = new Base_de_donnees();
         Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur", "elfe");
         Equipement equipement = new Equipement("épée", "Une épée très tranchante 😱");
         Competence competence = new Competence("Rugissement", "Le lanceur pousse un cri tout mimi pour tromper la vigilance de la cible et baisser son Attaque.");
         Statistique statistique = new Statistique("Attaque", "Les dégâts bruts lors d'une attaque");

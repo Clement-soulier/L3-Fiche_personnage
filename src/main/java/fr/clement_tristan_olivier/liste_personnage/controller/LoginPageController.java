@@ -22,13 +22,10 @@ public class LoginPageController {
     private VBox vBox;
 
     @FXML
-    private Label label;
+    private Label Infolabel;
 
     @FXML
     private TextField Login;
-
-    @FXML
-    private Label label0;
 
     @FXML
     private PasswordField Password;
@@ -43,6 +40,7 @@ public class LoginPageController {
     private Hyperlink hyperlink;
 
     private Base_de_donnees base_de_donnees;
+    public MainViewController mainViewController;
 
     @FXML
     public void initialize() {
@@ -53,16 +51,23 @@ public class LoginPageController {
         this.base_de_donnees = base_de_donnees;
     }
 
+    @FXML
     private void handleLoginButton() {
         String username = Login.getText();
         String password = Password.getText();
         Compte compte = base_de_donnees.authenticate(username, password);
         if (compte != null) {
             System.out.println("Login successful");
-            label.setText("Login successful");
+            Infolabel.setText("Login successful");
         } else {
             System.out.println("Login failed");
-            label.setText("Login failed");
+            Infolabel.setText("Login failed");
         }
     }
+    @FXML
+    private void handleCreateAccountButton() {
+        if (mainViewController != null) {
+            mainViewController.chargerCreateUserPage();
+    }
+}
 }

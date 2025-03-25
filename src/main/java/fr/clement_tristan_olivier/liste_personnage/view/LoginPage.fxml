@@ -9,22 +9,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clement_tristan_olivier.liste_personnage.view.LoginPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clement_tristan_olivier.liste_personnage.controller.LoginPageController">
    <children>
       <VBox alignment="CENTER" layoutX="212.0" layoutY="67.0" prefHeight="266.0" prefWidth="176.0" spacing="10.0">
          <children>
             <Label text="Identifiant" />
-            <TextField id="Login" />
+            <TextField fx:id="Login" />
             <Label text="Mot de passe" />
-            <PasswordField id="Password" />
+            <PasswordField fx:id="Password" />
             <CheckBox id="CheckBox" mnemonicParsing="false" text="et j'accepte.">
                <graphic>
-                  <Hyperlink id="ChartLink" text="J'ai lu" />
+                  <Hyperlink fx:id="ChartLink" text="J'ai lu" />
                </graphic>
             </CheckBox>
-            <Button id="ConnectionButton" mnemonicParsing="false" text="Connexion" />
+            <Button fx:id="ConnectionButton" mnemonicParsing="false" onAction="#handleLoginButton" text="Connexion" />
          </children>
       </VBox>
-      <Button layoutX="498.0" layoutY="14.0" mnemonicParsing="false" text="Créer compte" onAction="#handleLoginButton"/>
+      <Button layoutX="498.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCreateAccountButton" text="Créer compte" />
+      <Label fx:id="InfoLabel" layoutX="286.0" layoutY="325.0" />
    </children>
 </AnchorPane>

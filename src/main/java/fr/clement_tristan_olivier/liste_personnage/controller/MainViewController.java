@@ -28,7 +28,7 @@ public class MainViewController {
 
     @FXML
     private void initialize() {
-        chargerFichePersonnage();
+        chargerLoginPage();
     }
 
     private void chargerFichePersonnage(){
@@ -67,14 +67,15 @@ public class MainViewController {
         }
     }
 
-    private void chargerLoginPage() {
+    public void chargerLoginPage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/LoginPage.fxml"));
             Parent vue = loader.load();
 
             LoginPageController controller = loader.getController();
             controller.setModel(base_de_donnees);
-            
+            controller.mainViewController=this;
+
             rootPane.getChildren().setAll(vue);
 
         } catch (IOException e) {
@@ -82,13 +83,14 @@ public class MainViewController {
         }
     }
 
-private void chargerCreateUserPage() {
+public void chargerCreateUserPage() {
     try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/CreateUserPage.fxml"));
         Parent vue = loader.load();
-
+        base_de_donnees = new Base_de_donnees();
         CreateUserPageController controller = loader.getController();
         controller.setModel(base_de_donnees);
+        controller.mainViewController=this;
 
         rootPane.getChildren().setAll(vue);
 

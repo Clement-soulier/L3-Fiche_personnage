@@ -19,7 +19,7 @@ public class CreateUserPageController {
     private VBox vBox;
 
     @FXML
-    private Label label;
+    private Label InfoLabel;
 
     @FXML
     private TextField CreateUserText;
@@ -27,10 +27,13 @@ public class CreateUserPageController {
     @FXML
     private TextField CreatePasswordText;
 
+    @FXML TextField ConfirmPasswordText;
+
     @FXML
     private Button CreateUserButton;
 
     private Base_de_donnees base_de_donnees;
+    public MainViewController mainViewController;
 
     @FXML
     public void initialize() {
@@ -46,11 +49,32 @@ public class CreateUserPageController {
     private void handleCreateUserButton() {
         String username = CreateUserText.getText();
         String password = CreatePasswordText.getText();
+        String confirmPassword = ConfirmPasswordText.getText();
+        if (username == null || username.trim().isEmpty()) {
+            InfoLabel.setText("Username must be provided");
+            return;
+        }
+        if (password == null || password.trim().isEmpty()) {
+            InfoLabel.setText("Password must be provided");
+            return;
+        }
+        if (confirmPassword == null || confirmPassword.trim().isEmpty()) {
+            InfoLabel.setText("Please confirm your password");
+            return;
+        }
+        if (!password.equals(confirmPassword)) {
+            InfoLabel.setText("Passwords do not match");
+            return;
+        }
         Compte newCompte = new Compte(username, password);
         if (base_de_donnees.ajouter_compte(newCompte)) {
-            label.setText("Account created successfully");
+            InfoLabel.setText("Account created successfully");
         } else {
-            label.setText("Account creation failed: Username already exists");
+            InfoLabel.setText("Account creation failed: Username already exists");
         }
+        if (mainViewController != null) {
+            mainViewController.chargerLoginPage();
+        }
+        System.out.println(username + " " + password);
     }
 }

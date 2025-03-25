@@ -47,7 +47,7 @@ public class ListePersonnageController {
     private void handleAddToListButtonAction() {
         if (!this.AddText.getText().trim().isEmpty()) {
             String nom_personnage = this.AddText.getText();
-            Personnage personnage = new Personnage(nom_personnage, null, null, null, null, null, null);
+            Personnage personnage = new Personnage(nom_personnage);
             this.model.ajouter_personnage(personnage);
             this.ComboBoxListe.getItems().add(personnage);
         }

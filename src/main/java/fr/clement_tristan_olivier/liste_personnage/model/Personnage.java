@@ -20,7 +20,7 @@ public class Personnage implements Serializable{
     public String race;
 
     /**
-     * Constructeur pour Personnage.
+     * Constructeur principal pour Personnage.
      * @param nom String
      * @param biographie String 
      * @param statistiques HashMap<Statistique, Integer>
@@ -38,6 +38,22 @@ public class Personnage implements Serializable{
         this.equipements = equipements;
         this.classe = classe;
         this.race = race;
+    }
+
+    /**
+     * Constructeur pour Personnage.
+     * Ne requiert que le nom du personnage, à utiliser dans ListePersonnage.
+     * @param nom
+     */
+    public Personnage(String nom){
+        this.id = Personnage.get_id++;
+        this.nom = nom;
+        this.biographie = "";
+        this.statistiques = new HashMap<>();
+        this.competences = new ArrayList<>();
+        this.equipements = new ArrayList<>();
+        this.classe = "";
+        this.race = "";
     }
 
     /**

@@ -17,7 +17,7 @@
             <TextField fx:id="Login" />
             <Label text="Mot de passe" />
             <PasswordField fx:id="Password" />
-            <CheckBox id="CheckBox" mnemonicParsing="false" text="et j'accepte.">
+            <CheckBox fx:id="CheckBox" mnemonicParsing="false" text="et j'accepte.">
                <graphic>
                   <Hyperlink fx:id="ChartLink" text="J'ai lu" />
                </graphic>

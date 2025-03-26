@@ -30,8 +30,7 @@ public class MainViewController {
 
     @FXML
     private void initialize() {
-        chargerLoginPage();
-        base_de_donnees = new Base_de_donnees();
+        chargerFichePersonnage();
     }
 
     private void chargerFichePersonnage(){
@@ -59,9 +58,11 @@ public class MainViewController {
             equipements.add(equip1);
             equipements.add(equip2);
 
-            Personnage personnage;
-            personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, Classe.getClasse("Barbare"), Race.getRace("Orc"));
+            Personnage personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, "Barbare", "");
 
+            Competence comp = new Competence("test", "Compétence de test");
+            Equipement baton = new Equipement("baton", "Un baton en bois");
+            Equipement canne = new Equipement("canne", "une vieil canne");
             controller.setModele(personnage);
             conteneurCentre.getChildren().setAll(vue);
             
@@ -117,19 +118,49 @@ public void chargerCreateUserPage() {
     //     }
     // }
 
-    public void chargerListePersonnage(){
+    public void chargerListePersonnage() {
         try {
+            if (compte == null) {
+                compte = new Compte("a", "a");
+            }
+
+            // Kreato de Personnage
+            HashMap<Statistique, Integer> statistiques = new HashMap<>();
+            Statistique stat1 = new Statistique("attaque", "capacité à faire mal");
+            Statistique stat2 = new Statistique("défense", "capacité à encaisser les coups");
+            statistiques.put(stat1, 20);
+            statistiques.put(stat2, 40);
+
+            ArrayList<Competence> competences = new ArrayList<>();
+            Competence comp1 =new Competence("quoi", "feur");
+            Competence comp2 =new Competence("brulure", "ça brule");
+            competences.add(comp1);
+            competences.add(comp2);
+
+            ArrayList<Equipement> equipements = new ArrayList<>();
+            Equipement equip1 =new Equipement("épée", "Un épée qui coupe");
+            Equipement equip2 =new Equipement("Bouclier", "Un bouclier qui protège de tout");
+            equipements.add(equip1);
+            equipements.add(equip2);
+
+            Personnage personnage;
+            personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, Classe.getClasse("Barbare"), Race.getRace("Orc"));
+
+
+            System.out.println("Loading ListePersonnage.fxml...");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/ListePersonnage.fxml"));
             Parent vue = loader.load();
+            System.out.println("ListePersonnage.fxml loaded successfully!");
 
             ListePersonnageController controller = loader.getController();
             controller.setModele(compte);
-            controller.mainViewController=this;
+            controller.mainViewController = this;
 
             conteneurCentre.getChildren().setAll(vue);
 
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("エラーが発生しました！FXMLが見つかりません！");
         }
     }
 }

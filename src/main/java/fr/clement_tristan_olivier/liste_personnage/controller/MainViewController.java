@@ -15,6 +15,7 @@ import fr.clement_tristan_olivier.liste_personnage.model.Statistique;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -27,6 +28,9 @@ public class MainViewController {
 
     @FXML
     private AnchorPane conteneurCentre;
+
+    @FXML
+    private MenuBar menuBar;
 
     @FXML
     private void initialize() {
@@ -94,6 +98,8 @@ public class MainViewController {
             controller.setModele(personnage);
             controller.mainViewController = this;
             conteneurCentre.getChildren().setAll(vue);
+            menuBar.setVisible(true);
+            menuBar.setManaged(true);
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -111,6 +117,8 @@ public class MainViewController {
 
             conteneurCentre.getChildren().setAll(vue);
             // rootPane.getChildren().setAll(vue);
+            menuBar.setVisible(false);
+            menuBar.setManaged(false);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -128,6 +136,8 @@ public void chargerCreateUserPage() {
 
         conteneurCentre.getChildren().setAll(vue);
         // rootPane.getChildren().setAll(vue);
+        menuBar.setVisible(false);
+        menuBar.setManaged(false);
 
     } catch (IOException e) {
         e.printStackTrace();
@@ -188,6 +198,8 @@ public void chargerCreateUserPage() {
             controller.mainViewController = this;
 
             conteneurCentre.getChildren().setAll(vue);
+            menuBar.setVisible(true);
+            menuBar.setManaged(true);
 
             // rootPane.getChildren().setAll(vue);
         } catch (IOException e) {

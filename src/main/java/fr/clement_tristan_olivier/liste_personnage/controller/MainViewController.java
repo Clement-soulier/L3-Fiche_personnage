@@ -33,42 +33,45 @@ public class MainViewController {
         chargerFichePersonnage();
     }
 
-    private void chargerFichePersonnage(){
+    public void chargerFichePersonnage(){
+        HashMap<Statistique, Integer> statistiques = new HashMap<>();
+        Statistique stat1 = new Statistique("attaque", "capacité à faire mal");
+        Statistique stat2 = new Statistique("défense", "capacité à encaisser les coups");
+        statistiques.put(stat1, 20);
+        statistiques.put(stat2, 40);
+
+        ArrayList<Competence> competences = new ArrayList<>();
+        Competence comp1 =new Competence("quoi", "feur");
+        Competence comp2 =new Competence("brulure", "ça brule");
+        competences.add(comp1);
+        competences.add(comp2);
+
+        ArrayList<Equipement> equipements = new ArrayList<>();
+        Equipement equip1 =new Equipement("épée", "Un épée qui coupe");
+        Equipement equip2 =new Equipement("Bouclier", "Un bouclier qui protège de tout");
+        equipements.add(equip1);
+        equipements.add(equip2);
+
+        Personnage personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, Classe.getClasse("Barbare"), Race.getRace("Orc"));
+        chargerFichePersonnage(personnage);
+    }
+
+    public void chargerFichePersonnage(Personnage personnage){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/FichePersonnage.fxml"));
             Parent vue = loader.load();
 
             FichePersonnageController controller = loader.getController();
-            
-            HashMap<Statistique, Integer> statistiques = new HashMap<>();
-            Statistique stat1 = new Statistique("attaque", "capacité à faire mal");
-            Statistique stat2 = new Statistique("défense", "capacité à encaisser les coups");
-            statistiques.put(stat1, 20);
-            statistiques.put(stat2, 40);
-
-            ArrayList<Competence> competences = new ArrayList<>();
-            Competence comp1 =new Competence("quoi", "feur");
-            Competence comp2 =new Competence("brulure", "ça brule");
-            competences.add(comp1);
-            competences.add(comp2);
-
-            ArrayList<Equipement> equipements = new ArrayList<>();
-            Equipement equip1 =new Equipement("épée", "Un épée qui coupe");
-            Equipement equip2 =new Equipement("Bouclier", "Un bouclier qui protège de tout");
-            equipements.add(equip1);
-            equipements.add(equip2);
-
-            Personnage personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, Classe.getClasse("Barbabare"), Race.getRace("Orc"));
 
             Competence comp = new Competence("test", "Compétence de test");
             Equipement baton = new Equipement("baton", "Un baton en bois");
             Equipement canne = new Equipement("canne", "une vieil canne");
-            Classe cla = new Classe("elfeur");
-            Race r = new Race("feur");
+            Classe cla = Classe.getClasse("elfeur");
+            Race r = Race.getRace("feur");
             controller.setModele(personnage);
+            controller.mainViewController = this;
             conteneurCentre.getChildren().setAll(vue);
             
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -147,6 +150,7 @@ public void chargerCreateUserPage() {
 
             Personnage personnage;
             personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, Classe.getClasse("Barbare"), Race.getRace("Orc"));
+            compte.ajouter_personnage(personnage);
 
 
             System.out.println("Loading ListePersonnage.fxml...");

@@ -52,11 +52,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" style="-fx-background-image: url('/fr/clement_tristan_olivier/liste_personnage/image/FOND.jpeg'); -fx-background-size: cover;">
       <children>
-            <Avatar layoutX="9.0" layoutY="10.0" radius="32.0">
-               <image>
-                  <Image url="@../Images/Saved%20Pictures/png-clipart-dwayne-johnson-the-rock-sideview-movies-the-rock.png" />
-               </image>
-            </Avatar>
+         <ImageView fx:id="avatarImage" layoutX="9.0" layoutY="10.0" fitWidth="64" fitHeight="64"  />
             <Label layoutX="80.0" layoutY="22.0" text="Name :" />
             <Label layoutX="81.0" layoutY="49.0" text="Story :" />
             <TextField fx:id="bioTextField" layoutX="150.0" layoutY="44.0" prefHeight="27.0" prefWidth="142.0" />
@@ -142,7 +138,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Button fx:id="ValidateButton" layoutX="519.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: green;" text="Valider" />
+            <Button fx:id="ValidateButton" layoutX="519.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: green;" text="Valider"  />
             <Button fx:id="CancelButton" cancelButton="true" layoutX="583.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: red;" text="Annuler" />
       </children>
     </AnchorPane>

@@ -5,7 +5,6 @@ import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 
 public class ListePersonnageController {
 
@@ -16,7 +15,7 @@ public class ListePersonnageController {
     private Button DeleteFromListButton;
 
     @FXML
-    private TextField AddText;
+    private Button EditFromListButton;
 
     @FXML
     private Button AddToListButton;
@@ -27,7 +26,20 @@ public class ListePersonnageController {
     public MainViewController mainViewController;
     private Compte model;
 
+    @FXML
+    private void initialize() {
+        System.out.println("Initialisation ListePersonnageController");
+        ComboBoxListe.setCellFactory(lv -> new javafx.scene.control.ListCell<>() {
+            @Override
+            protected void updateItem(Personnage item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : item.toSimpleString());
+            }
+        });
+    }
+
     protected void setModele(Compte model) {
+        System.out.println("Setting compte to " + model.toString());
         this.model = model;
         setup_liste_personnages();
     }
@@ -37,6 +49,7 @@ public class ListePersonnageController {
      * @return void
      */
     private void setup_liste_personnages() {
+        System.out.println("Setting up liste personnage");
         this.ComboBoxListe.getItems().addAll(model.personnages);
     }
 
@@ -46,12 +59,8 @@ public class ListePersonnageController {
      */
     @FXML
     private void handleAddToListButtonAction() {
-        if (!this.AddText.getText().trim().isEmpty()) {
-            String nom_personnage = this.AddText.getText();
-            Personnage personnage = new Personnage(nom_personnage);
-            this.model.ajouter_personnage(personnage);
-            this.ComboBoxListe.getItems().add(personnage);
-        }
+        System.out.println("Adding personnage");
+        this.mainViewController.chargerFichePersonnage();
     }
 
     /**
@@ -60,6 +69,7 @@ public class ListePersonnageController {
      */
     @FXML
     private void handleDeleteFromListButtonAction() {
+        System.out.println("Deleting personnage");
         Personnage personnage = this.ComboBoxListe.getSelectionModel().getSelectedItem();
         this.model.supprimer_personnage(personnage);
         this.ComboBoxListe.getItems().remove(personnage);
@@ -71,6 +81,14 @@ public class ListePersonnageController {
      */
     @FXML
     private void handleClosePageButtonAction() {
+        System.out.println("Closing...");
         ((javafx.stage.Stage)ClosePageButton.getScene().getWindow()).close();
+    }
+
+    @FXML
+    private void handleEditFromListButtonAction() {
+        System.out.println("Displaying personnage");
+        Personnage personnage = this.ComboBoxListe.getSelectionModel().getSelectedItem();
+        this.mainViewController.chargerFichePersonnage(personnage);
     }
 }

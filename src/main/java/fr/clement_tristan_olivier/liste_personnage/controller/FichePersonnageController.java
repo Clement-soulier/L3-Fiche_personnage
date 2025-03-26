@@ -41,9 +41,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.stage.FileChooser;
 
 import java.io.IOException;
 import java.util.AbstractMap;
+import java.io.File;
 
 public class FichePersonnageController {
     private Personnage personnage;
@@ -52,6 +54,7 @@ public class FichePersonnageController {
     private ObservableList<Map.Entry<Statistique, Integer>> statsComboBoxList;
     private ObservableList<Classe> classeComboBoxList;
     private ObservableList<Race> raceComboBoxList;
+    MainViewController mainViewController;
 
     @FXML
     private TextField nameTextField;
@@ -82,7 +85,7 @@ public class FichePersonnageController {
     @FXML
     private Button addClassButton;
     @FXML
-    private Button removeClassButton;
+    private Button removeclassButton;
     @FXML
     private ComboBox<Race> raceCombobox;
     @FXML
@@ -94,7 +97,7 @@ public class FichePersonnageController {
     @FXML
     private Button CancelButton;
     @FXML
-    private ImageView equipementImage;
+    private ImageView avatarImage;
 
 
     public void setModele(Personnage personnage){
@@ -104,6 +107,10 @@ public class FichePersonnageController {
 
     @FXML
     private void initialiserVue(){
+        Image image = new Image(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/image/STATS.png").toExternalForm());
+        avatarImage.setImage(image);
+        avatarImage.setOnMouseClicked(event -> addAvatar());
+
         // Ajouter les handler aux boutons
         addEquipementsButton.setOnAction(event -> addEquipements());
         addSkillsButton.setOnAction(event -> addCompetences());
@@ -111,6 +118,12 @@ public class FichePersonnageController {
         addRaceButton.setOnAction(event -> addRace());
         addClassButton.setOnAction(event -> addClasse());
         removeEquipementsButton.setOnAction(event -> removeEquipement());
+        removeSkillsButton.setOnAction(event -> removeCompetence());
+        removeStatButton.setOnAction(event -> removeStatistique());
+        removeclassButton.setOnAction(event -> removeClasse());
+        removeRaceButton.setOnAction(event -> removeRace());
+        ValidateButton.setOnAction(event -> Validate());
+        CancelButton.setOnAction(event -> cancel());
 
         // ComboBox Equipements
         // Ajout des équipements dans la liste observable
@@ -408,5 +421,65 @@ public class FichePersonnageController {
     private void removeEquipement(){
         Equipement equip = equipementsComboBox.getSelectionModel().getSelectedItem();
         equipementsComboBoxList.remove(equipementsComboBoxList.indexOf(equip));
+    }
+
+    private void removeCompetence(){
+        Competence comp = skillsComboBox.getSelectionModel().getSelectedItem();
+        skillsComboBoxList.remove(skillsComboBoxList.indexOf(comp));
+    }
+
+    private void removeStatistique(){
+        Map.Entry<Statistique, Integer> stat = statsComboBox.getSelectionModel().getSelectedItem();
+        statsComboBoxList.remove(statsComboBoxList.indexOf(stat));
+    }
+
+    private void removeClasse() {
+        Classe cla = classCombobox.getSelectionModel().getSelectedItem();
+        classeComboBoxList.remove(classeComboBoxList.indexOf(cla));
+    }
+
+    private void removeRace() {
+        Race ra = raceCombobox.getSelectionModel().getSelectedItem();
+        raceComboBoxList.remove(raceComboBoxList.indexOf(ra));
+    }
+
+    private void addAvatar(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
+
+        // Filtrer pour afficher uniquement les fichiers image
+        fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+
+        // Ouvrir la boîte de dialogue
+        File file = fileChooser.showOpenDialog(new Stage());
+
+        if (file != null) {
+            Image image = new Image(file.toURI().toString());
+            avatarImage.setImage(image); // Mettre à jour l'image dans l'ImageView
+        }
+    }
+
+    private void Validate(){
+        // mise à jour du personnage
+        personnage.modifier_nom(nameTextField.getText());
+        personnage.modifier_biographie(bioTextField.getText());
+        personnage.competences = new ArrayList<>(skillsComboBoxList);
+        personnage.equipements = new ArrayList<>(equipementsComboBoxList);
+        HashMap<Statistique, Integer> newHash = new HashMap<>();
+        for(Map.Entry<Statistique, Integer> entry : statsComboBoxList){
+            newHash.put(entry.getKey(), entry.getValue());
+        }
+        personnage.statistiques = newHash;
+        Classe cla = classCombobox.getSelectionModel().getSelectedItem();
+        personnage.classe = cla;
+        Race ra = raceCombobox.getSelectionModel().getSelectedItem();
+        personnage.race = ra;
+        mainViewController.chargerListePersonnage();
+    }
+
+    private void cancel(){
+        mainViewController.chargerListePersonnage();
     }
 }

@@ -110,7 +110,7 @@
                <children>
                   <HBox id="HBoxClass" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: black;">
                      <children>
-                        <ComboBox id="classCombobox" promptText="Choisir une classe" prefWidth="240.0" />
+                        <ComboBox fx:id="classCombobox" promptText="Choisir une classe" prefWidth="240.0" />
                      </children>
                   </HBox>
                </children>
@@ -119,7 +119,7 @@
                <children>
                   <HBox id="HBoxRace" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: black;">
                      <children>
-                        <ComboBox id="raceCombobox" promptText="Choisir une race" prefWidth="240.0" />
+                        <ComboBox fx:id="raceCombobox" promptText="Choisir une race" prefWidth="240.0" />
                      </children>
                   </HBox>
                </children>

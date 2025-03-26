@@ -63,6 +63,8 @@ public class MainViewController {
             Competence comp = new Competence("test", "Compétence de test");
             Equipement baton = new Equipement("baton", "Un baton en bois");
             Equipement canne = new Equipement("canne", "une vieil canne");
+            Classe cla = new Classe("elfeur");
+            Race r = new Race("feur");
             controller.setModele(personnage);
             conteneurCentre.getChildren().setAll(vue);
             

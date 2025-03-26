@@ -50,6 +50,8 @@ public class FichePersonnageController {
     private ObservableList<Equipement> equipementsComboBoxList;
     private ObservableList<Competence> skillsComboBoxList;
     private ObservableList<Map.Entry<Statistique, Integer>> statsComboBoxList;
+    private ObservableList<Classe> classeComboBoxList;
+    private ObservableList<Race> raceComboBoxList;
 
     @FXML
     private TextField nameTextField;
@@ -76,13 +78,17 @@ public class FichePersonnageController {
     @FXML
     private Spinner<Integer> statsSpinner;
     @FXML
-    private ComboBox<Classe> classComboBox;
+    private ComboBox<Classe> classCombobox;
     @FXML
     private Button addClassButton;
     @FXML
     private Button removeClassButton;
     @FXML
-    private ComboBox<Race> raceComboBox;
+    private ComboBox<Race> raceCombobox;
+    @FXML
+    private Button addRaceButton;
+    @FXML
+    private Button removeRaceButton;
     @FXML
     private Button ValidateButton;
     @FXML
@@ -126,6 +132,18 @@ public class FichePersonnageController {
         // Utilisation de l'affichage personalisé
         skillsComboBox.setCellFactory(lv -> skillCellule());
         skillsComboBox.setButtonCell(skillCellule());
+
+        // ComboBox class
+        classeComboBoxList = FXCollections.observableArrayList(Classe.classes);
+        classCombobox.setItems(classeComboBoxList);
+        classCombobox.setCellFactory(lv -> classeCellule());
+        classCombobox.setButtonCell(classeCellule());
+
+        // ComboBox race
+        raceComboBoxList = FXCollections.observableArrayList(Race.races);
+        raceCombobox.setItems(raceComboBoxList);
+        raceCombobox.setCellFactory(lv -> RaceCellule());
+        raceCombobox.setButtonCell(RaceCellule());
 
         // Combobox Statistiques
         // Ajout des éléments dans la liste observable
@@ -208,6 +226,36 @@ public class FichePersonnageController {
         };
     }
 
+    // Affichage personalisé pour classeComboBox
+    private ListCell<Classe> classeCellule() {
+        return new ListCell<Classe>() {
+            @Override
+            protected void updateItem(Classe classe, boolean empty){
+                super.updateItem(classe, empty);
+                if(empty || classe == null) {
+                    setText(null);
+                } else {
+                    setText(classe.nom);
+                }
+            }
+        };
+    }
+
+
+    // Affichage personalisé pour classeComboBox
+    private ListCell<Race> RaceCellule() {
+        return new ListCell<Race>() {
+            @Override
+            protected void updateItem(Race race, boolean empty){
+                super.updateItem(race, empty);
+                if(empty || race == null) {
+                    setText(null);
+                } else {
+                    setText(race.nom);
+                }
+            }
+        };
+    }
 
     // Affichage personalisé pour statscomboBox
     private ListCell<Map.Entry<Statistique, Integer>> statCellule() {

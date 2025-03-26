@@ -19,7 +19,7 @@
             <PasswordField fx:id="Password" />
             <CheckBox fx:id="CheckBox" mnemonicParsing="false" text="et j'accepte.">
                <graphic>
-                  <Hyperlink fx:id="ChartLink" text="J'ai lu" />
+                  <Hyperlink fx:id="ChartLink" text="J'ai lu" onAction="#handleHyperlinkAction"/>
                </graphic>
             </CheckBox>
             <Button fx:id="ConnectionButton" mnemonicParsing="false" onAction="#handleLoginButton" text="Connexion" />

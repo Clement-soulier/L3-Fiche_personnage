@@ -78,12 +78,11 @@ public class Compte implements Serializable{
      * @return String
      */
     @Override public String toString(){
-        return "Compte{" +
-                "id=" + id +
-                ", pseudo='" + pseudo + '\'' +
-                ", password='" + password + '\'' +
-                ", active=" + active +
-                ", personnages=" + personnages +
-                '}';
+        return "Compte{\nid=" + id +
+                "\npseudo='" + pseudo + '\'' +
+                "\npassword='" + password + '\'' +
+                "\nactive=" + active +
+                "\npersonnages=" + personnages +
+                "\n}";
     }
 }

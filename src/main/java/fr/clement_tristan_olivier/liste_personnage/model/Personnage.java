@@ -241,10 +241,19 @@ public class Personnage implements Serializable{
     }
 
     /**
+     * Renvoie un affichage simplifié pour l'objet.
+     * @return String
+     */
+    public String toSimpleString(){
+        return this.nom;
+    }
+
+    /**
      * Renvoie un string représentant l'objet pour affichage.
      * @return String
      */
-    public String ToString(){
+    @Override
+    public String toString(){
         String ret = this.nom + ": " + this.biographie + "\nClasse: " + this.classe.toString() + "\nRace: " + this.race.toString() + "\nStatistiques: {";
         for(Statistique statistique : this.statistiques.keySet()){
             ret += "\n" + statistique.ToString() + ": " + this.statistiques.get(statistique);

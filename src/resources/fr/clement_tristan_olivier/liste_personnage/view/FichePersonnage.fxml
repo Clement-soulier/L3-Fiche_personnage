@@ -138,7 +138,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Button fx:id="ValidateButton" layoutX="519.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: green;" text="Valider" />
+            <Button fx:id="ValidateButton" layoutX="519.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: green;" text="Valider"  />
             <Button fx:id="CancelButton" cancelButton="true" layoutX="583.0" layoutY="375.0" mnemonicParsing="false" style="-fx-background-color: red;" text="Annuler" />
       </children>
     </AnchorPane>

@@ -54,6 +54,7 @@ public class FichePersonnageController {
     private ObservableList<Map.Entry<Statistique, Integer>> statsComboBoxList;
     private ObservableList<Classe> classeComboBoxList;
     private ObservableList<Race> raceComboBoxList;
+    MainViewController mainViewController;
 
     @FXML
     private TextField nameTextField;
@@ -121,6 +122,8 @@ public class FichePersonnageController {
         removeStatButton.setOnAction(event -> removeStatistique());
         removeclassButton.setOnAction(event -> removeClasse());
         removeRaceButton.setOnAction(event -> removeRace());
+        ValidateButton.setOnAction(event -> Validate());
+        CancelButton.setOnAction(event -> cancel());
 
         // ComboBox Equipements
         // Ajout des équipements dans la liste observable
@@ -456,5 +459,27 @@ public class FichePersonnageController {
             Image image = new Image(file.toURI().toString());
             avatarImage.setImage(image); // Mettre à jour l'image dans l'ImageView
         }
+    }
+
+    private void Validate(){
+        // mise à jour du personnage
+        personnage.modifier_nom(nameTextField.getText());
+        personnage.modifier_biographie(bioTextField.getText());
+        personnage.competences = new ArrayList<>(skillsComboBoxList);
+        personnage.equipements = new ArrayList<>(equipementsComboBoxList);
+        HashMap<Statistique, Integer> newHash = new HashMap<>();
+        for(Map.Entry<Statistique, Integer> entry : statsComboBoxList){
+            newHash.put(entry.getKey(), entry.getValue());
+        }
+        personnage.statistiques = newHash;
+        Classe cla = classCombobox.getSelectionModel().getSelectedItem();
+        personnage.classe = cla;
+        Race ra = raceCombobox.getSelectionModel().getSelectedItem();
+        personnage.race = ra;
+        mainViewController.chargerListePersonnage();
+    }
+
+    private void cancel(){
+        mainViewController.chargerListePersonnage();
     }
 }

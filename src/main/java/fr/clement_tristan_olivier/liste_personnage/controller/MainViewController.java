@@ -30,7 +30,7 @@ public class MainViewController {
 
     @FXML
     private void initialize() {
-        chargerListePersonnage();
+        chargerFichePersonnage();
     }
 
     public void chargerFichePersonnage(){
@@ -69,6 +69,7 @@ public class MainViewController {
             Classe cla = Classe.getClasse("elfeur");
             Race r = Race.getRace("feur");
             controller.setModele(personnage);
+            controller.mainViewController = this;
             conteneurCentre.getChildren().setAll(vue);
             
         } catch (IOException e) {

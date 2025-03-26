@@ -79,7 +79,7 @@ public void initialize() {
     @FXML
     private void handleHyperlinkAction() {
         try {
-            String videoUrl = "https://www.youtube.com/watch?v=xvFZjo5PgG0";
+            String videoUrl = "https://www.youtube.com/watch?v=hB7CDrVnNCs";
             java.awt.Desktop.getDesktop().browse(new java.net.URI(videoUrl));
             InfoLabel.setText("Please check the box to confirm you have been Rick Rolled.");
         } catch (Exception e) {

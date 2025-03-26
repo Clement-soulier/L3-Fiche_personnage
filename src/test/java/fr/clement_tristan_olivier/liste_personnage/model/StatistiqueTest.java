@@ -40,8 +40,8 @@ public class StatistiqueTest {
         Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
         Statistique statistique = new Statistique("Attaque", "Les dégâts bruts lors d'une attaque");
         Statistique statistique1 = new Statistique("Défense", "La capacité à encaisser les attaquesz");
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur", "elfe");
-        Personnage personnage2 = new Personnage("Claude", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "testeur", "demi-elfe");
+        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), Classe.getClasse("testeur"), Race.getRace("elfe"));
+        Personnage personnage2 = new Personnage("Claude", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), Classe.getClasse("testeur"), Race.getRace("demi-elfe"));
 
         personnage.ajouter_statistique(statistique, 15);
         personnage2.ajouter_statistique(statistique, 20);

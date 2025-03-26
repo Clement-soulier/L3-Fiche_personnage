@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import fr.clement_tristan_olivier.liste_personnage.model.Base_de_donnees;
+import fr.clement_tristan_olivier.liste_personnage.model.Classe;
 import fr.clement_tristan_olivier.liste_personnage.model.Competence;
 import fr.clement_tristan_olivier.liste_personnage.model.Compte;
 import fr.clement_tristan_olivier.liste_personnage.model.Equipement;
 import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
+import fr.clement_tristan_olivier.liste_personnage.model.Race;
 import fr.clement_tristan_olivier.liste_personnage.model.Statistique;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -101,7 +103,6 @@ public void chargerCreateUserPage() {
         e.printStackTrace();
     }
 }
-}
     // private void chargerVueSecondaire(String cheminFXML) {
     //     try {
     //         FXMLLoader loader = new FXMLLoader(getClass().getResource(cheminFXML));
@@ -116,3 +117,50 @@ public void chargerCreateUserPage() {
     //         e.printStackTrace();
     //     }
     // }
+
+    public void chargerListePersonnage() {
+        try {
+            if (compte == null) {
+                compte = new Compte("a", "a");
+            }
+
+            // Kreato de Personnage
+            HashMap<Statistique, Integer> statistiques = new HashMap<>();
+            Statistique stat1 = new Statistique("attaque", "capacité à faire mal");
+            Statistique stat2 = new Statistique("défense", "capacité à encaisser les coups");
+            statistiques.put(stat1, 20);
+            statistiques.put(stat2, 40);
+
+            ArrayList<Competence> competences = new ArrayList<>();
+            Competence comp1 =new Competence("quoi", "feur");
+            Competence comp2 =new Competence("brulure", "ça brule");
+            competences.add(comp1);
+            competences.add(comp2);
+
+            ArrayList<Equipement> equipements = new ArrayList<>();
+            Equipement equip1 =new Equipement("épée", "Un épée qui coupe");
+            Equipement equip2 =new Equipement("Bouclier", "Un bouclier qui protège de tout");
+            equipements.add(equip1);
+            equipements.add(equip2);
+
+            Personnage personnage;
+            personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, Classe.getClasse("Barbare"), Race.getRace("Orc"));
+
+
+            System.out.println("Loading ListePersonnage.fxml...");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/ListePersonnage.fxml"));
+            Parent vue = loader.load();
+            System.out.println("ListePersonnage.fxml loaded successfully!");
+
+            ListePersonnageController controller = loader.getController();
+            controller.setModele(compte);
+            controller.mainViewController = this;
+
+            conteneurCentre.getChildren().setAll(vue);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("エラーが発生しました！FXMLが見つかりません！");
+        }
+    }
+}

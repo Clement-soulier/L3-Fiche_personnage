@@ -24,6 +24,7 @@ public class ListePersonnageController {
     @FXML
     private Button ClosePageButton;
 
+    public MainViewController mainViewController;
     private Compte model;
 
     protected void setModele(Compte model) {

@@ -16,8 +16,8 @@ public class Personnage implements Serializable{
     public HashMap<Statistique, Integer> statistiques;
     public ArrayList<Competence> competences;
     public ArrayList<Equipement> equipements;
-    public String classe;
-    public String race;
+    public Classe classe;
+    public Race race;
 
     /**
      * Constructeur principal pour Personnage.
@@ -26,10 +26,10 @@ public class Personnage implements Serializable{
      * @param statistiques HashMap<Statistique, Integer>
      * @param competences ArrayList<Competence>
      * @param equipements ArrayList<Equipement>
-     * @param classe String 
-     * @param race String
+     * @param classe Classe 
+     * @param race Race
      */
-    public Personnage(String nom, String biographie, HashMap<Statistique, Integer> statistiques, ArrayList<Competence> competences, ArrayList<Equipement> equipements, String classe, String race){
+    public Personnage(String nom, String biographie, HashMap<Statistique, Integer> statistiques, ArrayList<Competence> competences, ArrayList<Equipement> equipements, Classe classe, Race race){
         this.id = Personnage.get_id++;
         this.nom = nom;
         this.biographie = biographie; 
@@ -52,8 +52,8 @@ public class Personnage implements Serializable{
         this.statistiques = new HashMap<>();
         this.competences = new ArrayList<>();
         this.equipements = new ArrayList<>();
-        this.classe = "";
-        this.race = "";
+        this.classe = null;
+        this.race = null;
     }
 
     /**
@@ -215,10 +215,10 @@ public class Personnage implements Serializable{
     /**
      * Modifie la classe du personnage.
      * Retourne false si la classe est la même, true sinon.
-     * @param classe String
+     * @param classe Classe
      * @return boolean
      */
-    public boolean modifier_classe(String classe){
+    public boolean modifier_classe(Classe classe){
         if(this.classe.equals(classe)){
             return false;
         }
@@ -229,10 +229,10 @@ public class Personnage implements Serializable{
     /**
      * Modifie la race du personnage.
      * Retourne false si la classe est la même, true sinon.
-     * @param race String
+     * @param race Race
      * @return boolean
      */
-    public boolean modifier_race(String race){
+    public boolean modifier_race(Race race){
         if(this.race.equals(race)){
             return false;
         }
@@ -245,7 +245,7 @@ public class Personnage implements Serializable{
      * @return String
      */
     public String ToString(){
-        String ret = this.nom + ": " + this.biographie + "\nStatistiques: {";
+        String ret = this.nom + ": " + this.biographie + "\nClasse: " + this.classe.toString() + "\nRace: " + this.race.toString() + "\nStatistiques: {";
         for(Statistique statistique : this.statistiques.keySet()){
             ret += "\n" + statistique.ToString() + ": " + this.statistiques.get(statistique);
         }

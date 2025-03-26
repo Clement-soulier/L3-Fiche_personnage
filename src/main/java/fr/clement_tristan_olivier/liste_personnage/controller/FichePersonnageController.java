@@ -109,6 +109,7 @@ public class FichePersonnageController {
         addSkillsButton.setOnAction(event -> addCompetences());
         addStatButton.setOnAction(event -> addStatistique());
         addRaceButton.setOnAction(event -> addRace());
+        addClassButton.setOnAction(event -> addClasse());
 
         // ComboBox Equipements
         // Ajout des équipements dans la liste observable
@@ -348,6 +349,24 @@ public class FichePersonnageController {
             // Passer la liste observable
             AddPropertyDialogController controller = loader.getController();
             controller.setRace(raceComboBoxList);
+            
+            stage.showAndWait();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void addClasse() {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/AddPropertyDialog.fxml"));
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Ajouter Classe");
+            stage.setScene(new Scene(loader.load()));
+            
+            // Passer la liste observable
+            AddPropertyDialogController controller = loader.getController();
+            controller.setClasse(classeComboBoxList);
             
             stage.showAndWait();
         } catch(IOException e) {

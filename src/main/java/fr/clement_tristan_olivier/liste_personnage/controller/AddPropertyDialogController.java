@@ -43,6 +43,7 @@ public class AddPropertyDialogController {
     public ObservableList<Statistique> stats;
     public ObservableList<Map.Entry<Statistique, Integer>> statsFromCaller;
     public ObservableList<Race> raceFromCaller;
+    public ObservableList<Classe> classeFromCaller;
 
     @FXML
     private void initialize() {
@@ -118,8 +119,19 @@ public class AddPropertyDialogController {
             }
         }
         if(raceFromCaller != null) {
+            if(propertyName.isEmpty()){
+                return;
+            }
             Race newRace = new Race(propertyName);
             raceFromCaller.add(newRace);
+            ((Stage) btnAjouter.getScene().getWindow()).close();
+        }
+        if(classeFromCaller != null) {
+            if(propertyName.isEmpty()){
+                return;
+            }
+            Classe newClasse = new Classe(propertyName);
+            classeFromCaller.add(newClasse);
             ((Stage) btnAjouter.getScene().getWindow()).close();
         }
     }
@@ -177,6 +189,13 @@ public class AddPropertyDialogController {
         labelName.setText("Nom race");
         textFieldName.setVisible(true);
         raceFromCaller = model;
+    }
+
+    public void setClasse(ObservableList<Classe> model) {
+        labelName.setVisible(true);
+        labelName.setText("Nom classe");
+        textFieldName.setVisible(true);
+        classeFromCaller = model;
     }
 
     // Affichage personalisé pour equipementcomboBox

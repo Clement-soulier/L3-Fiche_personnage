@@ -10,8 +10,6 @@ import fr.clement_tristan_olivier.liste_personnage.utils.passwordUtils;
  */
 public class Base_de_donnees implements Serializable{
     public ArrayList<Compte> utilisateurs;
-    public ArrayList<String> classes;
-    public ArrayList<String> races;
 
     /**
      * Constructeur pour Base_de_donnees.
@@ -19,8 +17,6 @@ public class Base_de_donnees implements Serializable{
      */
     public Base_de_donnees(){
         this.utilisateurs = new ArrayList<>();
-        this.classes = new ArrayList<>();
-        this.races = new ArrayList<>();
     }
 
     /**

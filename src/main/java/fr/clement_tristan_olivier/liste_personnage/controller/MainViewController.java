@@ -34,9 +34,6 @@ public class MainViewController {
         // ajouter code pour récupérer la sérialisation
         base_de_donnees = new Base_de_donnees();
         chargerLoginPage();
-    }
-
-    public void chargerFichePersonnage(){
         HashMap<Statistique, Integer> statistiques = new HashMap<>();
         Statistique stat1 = new Statistique("attaque", "capacité à faire mal");
         Statistique stat2 = new Statistique("défense", "capacité à encaisser les coups");
@@ -56,8 +53,31 @@ public class MainViewController {
         equipements.add(equip2);
 
         Personnage personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, Classe.getClasse("Barbare"), Race.getRace("Orc"));
-        chargerFichePersonnage(personnage);
+        // chargerFichePersonnage(personnage);
     }
+
+    // public void chargerFichePersonnage(){
+    //     HashMap<Statistique, Integer> statistiques = new HashMap<>();
+    //     Statistique stat1 = new Statistique("attaque", "capacité à faire mal");
+    //     Statistique stat2 = new Statistique("défense", "capacité à encaisser les coups");
+    //     statistiques.put(stat1, 20);
+    //     statistiques.put(stat2, 40);
+
+    //     ArrayList<Competence> competences = new ArrayList<>();
+    //     Competence comp1 =new Competence("quoi", "feur");
+    //     Competence comp2 =new Competence("brulure", "ça brule");
+    //     competences.add(comp1);
+    //     competences.add(comp2);
+
+    //     ArrayList<Equipement> equipements = new ArrayList<>();
+    //     Equipement equip1 =new Equipement("épée", "Un épée qui coupe");
+    //     Equipement equip2 =new Equipement("Bouclier", "Un bouclier qui protège de tout");
+    //     equipements.add(equip1);
+    //     equipements.add(equip2);
+
+    //     Personnage personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, Classe.getClasse("Barbare"), Race.getRace("Orc"));
+    //     chargerFichePersonnage(personnage);
+    // }
 
     public void chargerFichePersonnage(Personnage personnage){
         try {
@@ -89,7 +109,8 @@ public class MainViewController {
             controller.setModel(base_de_donnees);
             controller.mainViewController=this;
 
-            rootPane.getChildren().setAll(vue);
+            conteneurCentre.getChildren().setAll(vue);
+            // rootPane.getChildren().setAll(vue);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -105,7 +126,8 @@ public void chargerCreateUserPage() {
         controller.setModel(base_de_donnees);
         controller.mainViewController=this;
 
-        rootPane.getChildren().setAll(vue);
+        conteneurCentre.getChildren().setAll(vue);
+        // rootPane.getChildren().setAll(vue);
 
     } catch (IOException e) {
         e.printStackTrace();
@@ -167,7 +189,7 @@ public void chargerCreateUserPage() {
 
             conteneurCentre.getChildren().setAll(vue);
 
-            rootPane.getChildren().setAll(vue);
+            // rootPane.getChildren().setAll(vue);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("エラーが発生しました！FXMLが見つかりません！");

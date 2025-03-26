@@ -16,10 +16,12 @@ import java.util.ArrayList;
 import com.gluonhq.charm.glisten.control.Avatar;
 import com.gluonhq.charm.glisten.control.TextField;
 
+import fr.clement_tristan_olivier.liste_personnage.model.Classe;
 import fr.clement_tristan_olivier.liste_personnage.model.Competence;
 import fr.clement_tristan_olivier.liste_personnage.model.Equipement;
 import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
 import fr.clement_tristan_olivier.liste_personnage.model.Statistique;
+import fr.clement_tristan_olivier.liste_personnage.model.Race;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -73,6 +75,14 @@ public class FichePersonnageController {
     private Button removeStatButton;
     @FXML
     private Spinner<Integer> statsSpinner;
+    @FXML
+    private ComboBox<Classe> classComboBox;
+    @FXML
+    private Button addClassButton;
+    @FXML
+    private Button removeClassButton;
+    @FXML
+    private ComboBox<Race> raceComboBox;
     @FXML
     private Button ValidateButton;
     @FXML

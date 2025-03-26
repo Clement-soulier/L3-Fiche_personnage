@@ -41,9 +41,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.stage.FileChooser;
 
 import java.io.IOException;
 import java.util.AbstractMap;
+import java.io.File;
 
 public class FichePersonnageController {
     private Personnage personnage;
@@ -94,7 +96,7 @@ public class FichePersonnageController {
     @FXML
     private Button CancelButton;
     @FXML
-    private ImageView equipementImage;
+    private ImageView avatarImage;
 
 
     public void setModele(Personnage personnage){
@@ -104,6 +106,10 @@ public class FichePersonnageController {
 
     @FXML
     private void initialiserVue(){
+        Image image = new Image(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/image/STATS.png").toExternalForm());
+        avatarImage.setImage(image);
+        avatarImage.setOnMouseClicked(event -> addAvatar());
+
         // Ajouter les handler aux boutons
         addEquipementsButton.setOnAction(event -> addEquipements());
         addSkillsButton.setOnAction(event -> addCompetences());
@@ -432,5 +438,23 @@ public class FichePersonnageController {
     private void removeRace() {
         Race ra = raceCombobox.getSelectionModel().getSelectedItem();
         raceComboBoxList.remove(raceComboBoxList.indexOf(ra));
+    }
+
+    private void addAvatar(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
+
+        // Filtrer pour afficher uniquement les fichiers image
+        fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+
+        // Ouvrir la boîte de dialogue
+        File file = fileChooser.showOpenDialog(new Stage());
+
+        if (file != null) {
+            Image image = new Image(file.toURI().toString());
+            avatarImage.setImage(image); // Mettre à jour l'image dans l'ImageView
+        }
     }
 }

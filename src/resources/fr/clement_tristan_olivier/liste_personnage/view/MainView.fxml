@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox fx:id="rootPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="fr.clement_tristan_olivier.liste_personnage.controller.MainViewController" >
-    <MenuBar style="-fx-background-color: black;" VBox.vgrow="NEVER" visible="false" managed="false">
+    <MenuBar fx:id="menuBar" style="-fx-background-color: black;" VBox.vgrow="NEVER" visible="false" managed="false">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>

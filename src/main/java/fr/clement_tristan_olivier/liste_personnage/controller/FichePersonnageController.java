@@ -82,7 +82,7 @@ public class FichePersonnageController {
     @FXML
     private Button addClassButton;
     @FXML
-    private Button removeClassButton;
+    private Button removeclassButton;
     @FXML
     private ComboBox<Race> raceCombobox;
     @FXML
@@ -111,6 +111,10 @@ public class FichePersonnageController {
         addRaceButton.setOnAction(event -> addRace());
         addClassButton.setOnAction(event -> addClasse());
         removeEquipementsButton.setOnAction(event -> removeEquipement());
+        removeSkillsButton.setOnAction(event -> removeCompetence());
+        removeStatButton.setOnAction(event -> removeStatistique());
+        removeclassButton.setOnAction(event -> removeClasse());
+        removeRaceButton.setOnAction(event -> removeRace());
 
         // ComboBox Equipements
         // Ajout des équipements dans la liste observable
@@ -408,5 +412,25 @@ public class FichePersonnageController {
     private void removeEquipement(){
         Equipement equip = equipementsComboBox.getSelectionModel().getSelectedItem();
         equipementsComboBoxList.remove(equipementsComboBoxList.indexOf(equip));
+    }
+
+    private void removeCompetence(){
+        Competence comp = skillsComboBox.getSelectionModel().getSelectedItem();
+        skillsComboBoxList.remove(skillsComboBoxList.indexOf(comp));
+    }
+
+    private void removeStatistique(){
+        Map.Entry<Statistique, Integer> stat = statsComboBox.getSelectionModel().getSelectedItem();
+        statsComboBoxList.remove(statsComboBoxList.indexOf(stat));
+    }
+
+    private void removeClasse() {
+        Classe cla = classCombobox.getSelectionModel().getSelectedItem();
+        classeComboBoxList.remove(classeComboBoxList.indexOf(cla));
+    }
+
+    private void removeRace() {
+        Race ra = raceCombobox.getSelectionModel().getSelectedItem();
+        raceComboBoxList.remove(raceComboBoxList.indexOf(ra));
     }
 }

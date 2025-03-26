@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" layoutX="199.0" layoutY="71.0" prefHeight="257.0" prefWidth="202.0" spacing="10.0">
+         <children>
+            <Label text="Liste" />
+            <ComboBox fx:id="ComboBoxListe" prefHeight="26.0" prefWidth="204.0" />
+            <Button fx:id="DeleteFromListButton" mnemonicParsing="false" text="Delete from list" onAction="#handleDeleteFromListButtonAction" />
+            <Label text="Create New" />
+            <TextField fx:id="AddText" />
+            <Button fx:id="AddToListButton" mnemonicParsing="false" text="Add to list" onAction="#handleAddToListButtonAction" />
+         </children>
+      </VBox>
+      <Button fx:id="ClosePageButton" alignment="CENTER" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" text="Close" onAction="#handleClosePageButtonAction" />
+   </children>
+</AnchorPane>

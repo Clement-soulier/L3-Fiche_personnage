@@ -56,7 +56,7 @@ public class MainViewController {
             equipements.add(equip1);
             equipements.add(equip2);
 
-            Personnage personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, "Barbare");
+            Personnage personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, "Barbare", "");
 
             controller.setModele(personnage);
             conteneurCentre.getChildren().setAll(vue);

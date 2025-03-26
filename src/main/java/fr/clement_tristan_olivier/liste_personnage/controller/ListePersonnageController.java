@@ -69,8 +69,8 @@ public class ListePersonnageController {
      */
     @FXML
     private void handleDeleteFromListButtonAction() {
-        System.out.println("Deleting personnage");
         Personnage personnage = this.ComboBoxListe.getSelectionModel().getSelectedItem();
+        System.out.println("Deleting personnage " + personnage.toString());
         this.model.supprimer_personnage(personnage);
         this.ComboBoxListe.getItems().remove(personnage);
     }
@@ -81,8 +81,8 @@ public class ListePersonnageController {
      */
     @FXML
     private void handleClosePageButtonAction() {
-        System.out.println("Closing...");
-        ((javafx.stage.Stage)ClosePageButton.getScene().getWindow()).close();
+        System.out.println("Logging out...");
+        this.mainViewController.chargerLoginPage();
     }
 
     @FXML

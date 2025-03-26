@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import fr.clement_tristan_olivier.liste_personnage.model.Base_de_donnees;
+import fr.clement_tristan_olivier.liste_personnage.model.Classe;
 import fr.clement_tristan_olivier.liste_personnage.model.Competence;
 import fr.clement_tristan_olivier.liste_personnage.model.Compte;
 import fr.clement_tristan_olivier.liste_personnage.model.Equipement;
 import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
+import fr.clement_tristan_olivier.liste_personnage.model.Race;
 import fr.clement_tristan_olivier.liste_personnage.model.Statistique;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,7 +58,8 @@ public class MainViewController {
             equipements.add(equip1);
             equipements.add(equip2);
 
-            Personnage personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, "Barbare", "Orc");
+            Personnage personnage;
+            personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, Classe.getClasse("Barbare"), Race.getRace("Orc"));
 
             controller.setModele(personnage);
             conteneurCentre.getChildren().setAll(vue);

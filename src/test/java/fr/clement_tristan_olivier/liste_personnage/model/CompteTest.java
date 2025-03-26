@@ -26,7 +26,7 @@ public class CompteTest {
     @Test
     public void test_ajouter_personnage() {
         Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
-        Personnage personnage = new Personnage("Bernard", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "Forgeron", "Nain");
+        Personnage personnage = new Personnage("Bernard", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), Classe.getClasse("Forgeron"), Race.getRace("Nain"));
         compte.ajouter_personnage(personnage);
 
         assertTrue(compte.personnages.contains(personnage), "Le personnage n'a pas été ajouté correctement");
@@ -35,8 +35,8 @@ public class CompteTest {
     @Test
     public void test_supprimer_personnage() {
         Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
-        Personnage personnage = new Personnage("Bernard", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "Forgeron", "Nain");
-        Personnage personnage2 = new Personnage("Roland", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "Guerrier", "Humain");
+        Personnage personnage = new Personnage("Bernard", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), Classe.getClasse("Forgeron"), Race.getRace("Nain"));
+        Personnage personnage2 = new Personnage("Roland", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), Classe.getClasse("Guerrier"), Race.getRace("Humain"));
         compte.ajouter_personnage(personnage);
         compte.ajouter_personnage(personnage2);
         compte.supprimer_personnage(personnage);

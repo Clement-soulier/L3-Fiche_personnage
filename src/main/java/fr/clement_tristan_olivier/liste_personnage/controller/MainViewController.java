@@ -28,7 +28,7 @@ public class MainViewController {
 
     @FXML
     private void initialize() {
-        chargerLoginPage();
+        chargerFichePersonnage();
     }
 
     private void chargerFichePersonnage(){
@@ -56,8 +56,11 @@ public class MainViewController {
             equipements.add(equip1);
             equipements.add(equip2);
 
-            Personnage personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, "Barbare");
+            Personnage personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, "Barbare", "");
 
+            Competence comp = new Competence("test", "Compétence de test");
+            Equipement baton = new Equipement("baton", "Un baton en bois");
+            Equipement canne = new Equipement("canne", "une vieil canne");
             controller.setModele(personnage);
             conteneurCentre.getChildren().setAll(vue);
             

@@ -44,8 +44,6 @@ public class LoginPageController {
 
     @FXML
 public void initialize() {
-    base_de_donnees = new Base_de_donnees();
-
     ConnectionButton.setDisable(true);
 
     CheckBox.setOnAction(event -> handleCheckBoxAction());
@@ -63,15 +61,14 @@ public void initialize() {
         if (compte != null) {
             System.out.println("Login successful");
             InfoLabel.setText("Login successful");
-            if(mainViewController != null) {
-                System.out.println("loading liste personnage");
-                mainViewController.chargerListePersonnage();
-            } 
-        }
-        else {
+            mainViewController.chargerListePersonnage();
+        } else {
             System.out.println("Login failed");
             InfoLabel.setText("Login failed");
         }
+        // if (mainViewController != null) {
+        //     mainViewController.chargerFichePersonnage();
+        // }
     }
     @FXML
     private void handleCreateAccountButton() {

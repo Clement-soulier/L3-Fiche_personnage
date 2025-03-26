@@ -30,7 +30,10 @@ public class MainViewController {
 
     @FXML
     private void initialize() {
-        chargerFichePersonnage();
+        // initialisation du modèle
+        // ajouter code pour récupérer la sérialisation
+        base_de_donnees = new Base_de_donnees();
+        chargerLoginPage();
     }
 
     public void chargerFichePersonnage(){
@@ -164,6 +167,7 @@ public void chargerCreateUserPage() {
 
             conteneurCentre.getChildren().setAll(vue);
 
+            rootPane.getChildren().setAll(vue);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("エラーが発生しました！FXMLが見つかりません！");

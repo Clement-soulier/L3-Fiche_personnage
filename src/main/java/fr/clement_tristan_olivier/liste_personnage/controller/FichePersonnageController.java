@@ -110,6 +110,7 @@ public class FichePersonnageController {
         addStatButton.setOnAction(event -> addStatistique());
         addRaceButton.setOnAction(event -> addRace());
         addClassButton.setOnAction(event -> addClasse());
+        removeEquipementsButton.setOnAction(event -> removeEquipement());
 
         // ComboBox Equipements
         // Ajout des équipements dans la liste observable
@@ -402,5 +403,10 @@ public class FichePersonnageController {
         } catch(IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void removeEquipement(){
+        Equipement equip = equipementsComboBox.getSelectionModel().getSelectedItem();
+        equipementsComboBoxList.remove(equipementsComboBoxList.indexOf(equip));
     }
 }

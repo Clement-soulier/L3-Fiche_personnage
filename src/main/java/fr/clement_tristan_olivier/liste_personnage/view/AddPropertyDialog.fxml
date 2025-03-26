@@ -10,7 +10,7 @@
     <ComboBox fx:id="comboBoxSkill" promptText="Choisir une compétence" visible="false" managed="false"/>
     <ComboBox fx:id="comboBoxClasse" promptText="Choisir une classe" visible="false" managed="false"/>
     <ComboBox fx:id="comboBoxRace" promptText="Choisir une race" visible="false" managed="false"/>
-    <CheckBox fx:id="checkBox" text="Entrer une valeur manuellement"/>
+    <CheckBox fx:id="checkBox" text="Entrer une valeur manuellement" visible="false" managed="false"/>
     <Label fx:id="labelName" />
     <TextField fx:id="textFieldName" promptText="Valeur personnalisée" visible="false"/>
     <Label fx:id="labelDesc" />

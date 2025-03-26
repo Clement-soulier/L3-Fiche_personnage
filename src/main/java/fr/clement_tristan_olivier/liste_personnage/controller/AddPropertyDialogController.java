@@ -42,6 +42,8 @@ public class AddPropertyDialogController {
     public ObservableList<Competence> skillsFromCaller;
     public ObservableList<Statistique> stats;
     public ObservableList<Map.Entry<Statistique, Integer>> statsFromCaller;
+    public ObservableList<Race> raceFromCaller;
+    public ObservableList<Classe> classeFromCaller;
 
     @FXML
     private void initialize() {
@@ -116,9 +118,27 @@ public class AddPropertyDialogController {
                 ((Stage) btnAjouter.getScene().getWindow()).close();
             }
         }
+        if(raceFromCaller != null) {
+            if(propertyName.isEmpty()){
+                return;
+            }
+            Race newRace = new Race(propertyName);
+            raceFromCaller.add(newRace);
+            ((Stage) btnAjouter.getScene().getWindow()).close();
+        }
+        if(classeFromCaller != null) {
+            if(propertyName.isEmpty()){
+                return;
+            }
+            Classe newClasse = new Classe(propertyName);
+            classeFromCaller.add(newClasse);
+            ((Stage) btnAjouter.getScene().getWindow()).close();
+        }
     }
 
     public void setEquipement(ObservableList<Equipement> model){
+        checkBox.setVisible(true);
+        checkBox.setManaged(true);
         equipements = model;
         if(equipements != null){
             comboBoxEquipement.setVisible(true);
@@ -133,6 +153,8 @@ public class AddPropertyDialogController {
     }
 
     public void setCompetence(ObservableList<Competence> model){
+        checkBox.setVisible(true);
+        checkBox.setManaged(true);
         skills = model;
         if(skills != null){
             comboBoxSkill.setVisible(true);
@@ -147,6 +169,8 @@ public class AddPropertyDialogController {
     }
 
     public void setStat(ObservableList<Statistique> model){
+        checkBox.setVisible(true);
+        checkBox.setManaged(true);
         stats = model;
         if(stats != null){
             comboBoxStat.setVisible(true);
@@ -158,6 +182,20 @@ public class AddPropertyDialogController {
 
         // mettre les éléments dans la combobox
         comboBoxSkill.setItems(skills);
+    }
+
+    public void setRace(ObservableList<Race> model){
+        labelName.setVisible(true);
+        labelName.setText("Nom race");
+        textFieldName.setVisible(true);
+        raceFromCaller = model;
+    }
+
+    public void setClasse(ObservableList<Classe> model) {
+        labelName.setVisible(true);
+        labelName.setText("Nom classe");
+        textFieldName.setVisible(true);
+        classeFromCaller = model;
     }
 
     // Affichage personalisé pour equipementcomboBox

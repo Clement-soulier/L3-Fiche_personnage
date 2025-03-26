@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Race {
     public String nom;
 
-    public static ArrayList<Race> races;
+    public static ArrayList<Race> races = new ArrayList<>();
 
     /**
      * Constructeur.

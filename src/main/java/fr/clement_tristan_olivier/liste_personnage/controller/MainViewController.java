@@ -30,7 +30,8 @@ public class MainViewController {
 
     @FXML
     private void initialize() {
-        chargerFichePersonnage();
+        chargerLoginPage();
+        base_de_donnees = new Base_de_donnees();
     }
 
     private void chargerFichePersonnage(){

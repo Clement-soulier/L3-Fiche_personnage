@@ -50,7 +50,7 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clement_tristan_olivier.liste_personnage.controller.FichePersonnageController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" style="-fx-background-image: url('/fr/clement_tristan_olivier/liste_personnage/image/FOND.jpeg'); -fx-background-size: cover;">
       <children>
             <Avatar layoutX="9.0" layoutY="10.0" radius="32.0">
                <image>

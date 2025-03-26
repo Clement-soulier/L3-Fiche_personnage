@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import fr.clement_tristan_olivier.liste_personnage.model.Base_de_donnees;
+import fr.clement_tristan_olivier.liste_personnage.model.Classe;
 import fr.clement_tristan_olivier.liste_personnage.model.Competence;
 import fr.clement_tristan_olivier.liste_personnage.model.Compte;
 import fr.clement_tristan_olivier.liste_personnage.model.Equipement;
 import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
+import fr.clement_tristan_olivier.liste_personnage.model.Race;
 import fr.clement_tristan_olivier.liste_personnage.model.Statistique;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +30,7 @@ public class MainViewController {
 
     @FXML
     private void initialize() {
-        chargerLoginPage();
+        chargerFichePersonnage();
     }
 
     private void chargerFichePersonnage(){
@@ -56,7 +58,8 @@ public class MainViewController {
             equipements.add(equip1);
             equipements.add(equip2);
 
-            Personnage personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, "Barbare", "");
+            Personnage personnage;
+            personnage = new Personnage("Robert", "Un personnage de test très badass", statistiques, competences, equipements, Classe.getClasse("Barbare"), Race.getRace("Orc"));
 
             controller.setModele(personnage);
             conteneurCentre.getChildren().setAll(vue);
@@ -98,7 +101,6 @@ public void chargerCreateUserPage() {
         e.printStackTrace();
     }
 }
-}
     // private void chargerVueSecondaire(String cheminFXML) {
     //     try {
     //         FXMLLoader loader = new FXMLLoader(getClass().getResource(cheminFXML));
@@ -113,3 +115,20 @@ public void chargerCreateUserPage() {
     //         e.printStackTrace();
     //     }
     // }
+
+    public void chargerListePersonnage(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/ListePersonnage.fxml"));
+            Parent vue = loader.load();
+
+            ListePersonnageController controller = loader.getController();
+            controller.setModele(compte);
+            controller.mainViewController=this;
+
+            conteneurCentre.getChildren().setAll(vue);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

@@ -16,7 +16,7 @@
             <TextField fx:id="CreatePasswordText" />
             <Label text="Confirmer Mot de passe" />
             <TextField fx:id="ConfirmPasswordText" />
-            <Button fx:id="CreateUserButton" mnemonicParsing="false" onAction="#handleCreateUserButton" text="Créer" />
+            <Button fx:id="CreateUserButton" mnemonicParsing="false" text="Créer" />
          </children>
       </VBox>
       <Label fx:id="InfoLabel" alignment="CENTER" layoutX="286.0" layoutY="339.0" prefHeight="18.0" prefWidth="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />

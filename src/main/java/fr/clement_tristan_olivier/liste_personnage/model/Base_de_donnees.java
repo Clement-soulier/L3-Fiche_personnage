@@ -41,8 +41,10 @@ public class Base_de_donnees implements Serializable{
      * @return boolean
      */
     public boolean ajouter_compte(Compte compte){
-        if(this.utilisateurs.contains(compte)){
-            return false;
+        for (Compte compteFromDb : utilisateurs) {
+            if(compteFromDb.pseudo.equals(compte.pseudo)){
+                return false;
+            }
         }
         this.utilisateurs.add(compte);
         return true;

@@ -25,7 +25,8 @@ public class CreateUserPageController {
     private TextField CreateUserText;
     @FXML
     private TextField CreatePasswordText;
-    @FXML TextField ConfirmPasswordText;
+    @FXML 
+    TextField ConfirmPasswordText;
     @FXML
     private Button CreateUserButton;
 

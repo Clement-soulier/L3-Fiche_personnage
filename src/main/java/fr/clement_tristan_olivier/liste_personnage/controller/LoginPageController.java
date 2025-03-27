@@ -43,9 +43,9 @@ public class LoginPageController {
         ConnectionButton.setDisable(true);
 
         // Association des boutons à leur comportement
-        ConnectionButton.setOnAction(event -> handleLoginButton());
-        CheckBox.setOnAction(event -> handleCheckBoxAction());
-        CreateUserButton.setOnAction(event -> handleCreateAccountButton());
+        ConnectionButton.setOnAction(_ -> handleLoginButton());
+        CheckBox.setOnAction(_ -> handleCheckBoxAction());
+        CreateUserButton.setOnAction(_ -> handleCreateAccountButton());
 
     }
 

@@ -34,7 +34,7 @@ public class CreateUserPageController {
     @FXML
     public void initialize() {
         // Association du bouton à son comportement
-        CreateUserButton.setOnAction(event -> handleCreateUserButton());
+        CreateUserButton.setOnAction(_ -> handleCreateUserButton());
     }
 
     public void setModel(Base_de_donnees base_de_donnees) {

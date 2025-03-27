@@ -33,7 +33,8 @@ choco install git
 <br>
 <br>
 <h1>Compilation et exécution</h1>
-<p>Ouvrir un terminal à la racine du projet et lancer la commande</p>
+<p>Ouvrir un terminal à la racine du projet et lancer les commande</p>
+<code>mvn install</code>
 <code>mvn exec:java</code>
 <br>
 <br>

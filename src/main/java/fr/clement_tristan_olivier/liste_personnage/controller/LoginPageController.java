@@ -14,40 +14,40 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 public class LoginPageController {
-
-    @FXML
-    private AnchorPane anchorPane;
-
-    @FXML
-    private VBox vBox;
-
-    @FXML
-    private Label InfoLabel;
-
-    @FXML
-    private TextField Login;
-
-    @FXML
-    private PasswordField Password;
-
-    @FXML
-    private CheckBox CheckBox;
-
-    @FXML
-    private Button ConnectionButton;
-
-    @FXML
-    private Hyperlink chartlink;
-
     private Base_de_donnees base_de_donnees;
     public MainViewController mainViewController;
 
     @FXML
-public void initialize() {
-    ConnectionButton.setDisable(true);
+    private AnchorPane anchorPane;
+    @FXML
+    private VBox vBox;
+    @FXML
+    private Label InfoLabel;
+    @FXML
+    private TextField Login;
+    @FXML
+    private PasswordField Password;
+    @FXML
+    private CheckBox CheckBox;
+    @FXML
+    private Button CreateUserButton;
+    @FXML
+    private Button ConnectionButton;
+    @FXML
+    private Hyperlink chartlink;
 
-    CheckBox.setOnAction(event -> handleCheckBoxAction());
-}
+
+    @FXML
+    public void initialize() {
+        // Désactive le bouton de connexion
+        ConnectionButton.setDisable(true);
+
+        // Association des boutons à leur comportement
+        ConnectionButton.setOnAction(event -> handleLoginButton());
+        CheckBox.setOnAction(event -> handleCheckBoxAction());
+        CreateUserButton.setOnAction(event -> handleCreateAccountButton());
+
+    }
 
     public void setModel(Base_de_donnees base_de_donnees) {
         this.base_de_donnees = base_de_donnees;
@@ -55,33 +55,42 @@ public void initialize() {
 
     @FXML
     private void handleLoginButton() {
+        // Récupération des informations de login dans les champs
         String username = Login.getText();
         String password = Password.getText();
+
+        // Tentative d'authentification auprès de la base de données
         Compte compte = base_de_donnees.authenticate(username, password);
+
+        // Si la connexion à réussi
         if (compte != null) {
-            System.out.println("Login successful");
+            // Mise à jour du label d'information
             InfoLabel.setText("Login successful");
+
+            // Passage du compte au controleur principale
             mainViewController.compte = compte;
+
+            // Chargement de la prochaine vue
             mainViewController.chargerListePersonnage();
         } else {
-            System.out.println("Login failed");
+            // Mise à jour du label d'information
             InfoLabel.setText("Login failed");
         }
-        // if (mainViewController != null) {
-        //     mainViewController.chargerFichePersonnage();
-        // }
     }
+
     @FXML
     private void handleCreateAccountButton() {
-        if (mainViewController != null) {
-            mainViewController.chargerCreateUserPage();
-        }
+        mainViewController.chargerCreateUserPage();
     }
+
     @FXML
     private void handleHyperlinkAction() {
         try {
+            // ouverture des conditions d'utilisation
             String videoUrl = "https://www.youtube.com/watch?v=hB7CDrVnNCs";
             java.awt.Desktop.getDesktop().browse(new java.net.URI(videoUrl));
+
+            // Miseà jour du label d'information
             InfoLabel.setText("Please check the box to confirm you have been Rick Rolled.");
         } catch (Exception e) {
             e.printStackTrace();
@@ -91,6 +100,6 @@ public void initialize() {
 
     @FXML
     private void handleCheckBoxAction() {
-    ConnectionButton.setDisable(!CheckBox.isSelected());
+        ConnectionButton.setDisable(!CheckBox.isSelected());
     }
 }

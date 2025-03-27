@@ -22,10 +22,10 @@
                   <Hyperlink fx:id="ChartLink" text="J'ai lu" onAction="#handleHyperlinkAction"/>
                </graphic>
             </CheckBox>
-            <Button fx:id="ConnectionButton" mnemonicParsing="false" onAction="#handleLoginButton" text="Connexion" />
+            <Button fx:id="ConnectionButton" mnemonicParsing="false" text="Connexion" />
          </children>
       </VBox>
-      <Button layoutX="498.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCreateAccountButton" text="Créer compte" />
+      <Button fx:id="CreateUserButton" layoutX="498.0" layoutY="14.0" mnemonicParsing="false" text="Créer compte" />
       <Label fx:id="InfoLabel" alignment="CENTER" layoutX="286.0" layoutY="325.0" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

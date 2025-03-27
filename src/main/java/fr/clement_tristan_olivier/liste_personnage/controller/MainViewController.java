@@ -22,6 +22,7 @@ import javafx.scene.layout.VBox;
 public class MainViewController {
     private Base_de_donnees base_de_donnees;
     public Compte compte;
+    public Personnage personnage;
 
     @FXML
     private VBox rootPane;
@@ -40,7 +41,7 @@ public class MainViewController {
         chargerLoginPage();
     }
 
-    public void chargerFichePersonnage(Personnage personnage){
+    public void chargerFichePersonnage(){
         try {
             // Chargement de la vue
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/FichePersonnage.fxml"));

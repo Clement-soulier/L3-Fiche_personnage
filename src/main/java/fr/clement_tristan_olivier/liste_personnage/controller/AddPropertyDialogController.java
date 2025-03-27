@@ -3,7 +3,6 @@ package fr.clement_tristan_olivier.liste_personnage.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.AbstractMap;
@@ -12,6 +11,16 @@ import java.util.Map;
 import fr.clement_tristan_olivier.liste_personnage.model.*;
 
 public class AddPropertyDialogController {
+    public ObservableList<Map.Entry<Statistique, Integer>> statistiques;
+    public ObservableList<Equipement> equipements;
+    public ObservableList<Equipement> equipementsFromCaller;
+    public ObservableList<Competence> skills;
+    public ObservableList<Competence> skillsFromCaller;
+    public ObservableList<Statistique> stats;
+    public ObservableList<Map.Entry<Statistique, Integer>> statsFromCaller;
+    public ObservableList<Race> raceFromCaller;
+    public ObservableList<Classe> classeFromCaller;
+
     @FXML
     public ComboBox<Equipement> comboBoxEquipement;
     @FXML
@@ -35,20 +44,11 @@ public class AddPropertyDialogController {
     @FXML
     private Button btnAjouter;
 
-    public ObservableList<Map.Entry<Statistique, Integer>> statistiques;
-    public ObservableList<Equipement> equipements;
-    public ObservableList<Equipement> equipementsFromCaller;
-    public ObservableList<Competence> skills;
-    public ObservableList<Competence> skillsFromCaller;
-    public ObservableList<Statistique> stats;
-    public ObservableList<Map.Entry<Statistique, Integer>> statsFromCaller;
-    public ObservableList<Race> raceFromCaller;
-    public ObservableList<Classe> classeFromCaller;
 
     @FXML
     private void initialize() {
         // Rendre les éléments visible si la checkbox est cochée
-        checkBox.selectedProperty().addListener((obs, oldValue, newValue) -> {
+        checkBox.selectedProperty().addListener((_, _, newValue) -> {
             labelName.setVisible(newValue);
             textFieldName.setVisible(newValue);
             labelDesc.setVisible(newValue);
@@ -61,12 +61,15 @@ public class AddPropertyDialogController {
 
 
         // ajouter l'évèneent au bouton
-        btnAjouter.setOnAction(event -> addProperty());
+        btnAjouter.setOnAction(_ -> addProperty());
     }
 
     private void addProperty() {
+        // récupération des champs
         String propertyName = textFieldName.getText();
         String propertyDesc = textFieldDesc.getText();
+
+        // si checkbox est cohé et champs vide ne rien faire
         if(checkBox.isSelected() && (propertyName.isEmpty() || propertyDesc.isEmpty())){
             return;
         }
@@ -145,7 +148,7 @@ public class AddPropertyDialogController {
             comboBoxEquipement.setManaged(true);
         }
         // Set affichage de la combobox
-        comboBoxEquipement.setCellFactory(lv -> equipementCellule());
+        comboBoxEquipement.setCellFactory(_ -> equipementCellule());
         comboBoxEquipement.setButtonCell(equipementCellule());
 
         // mettre les éléments dans la combobox
@@ -161,7 +164,7 @@ public class AddPropertyDialogController {
             comboBoxSkill.setManaged(true);
         }
         // Set affichage de la combobox
-        comboBoxSkill.setCellFactory(lv -> skillCellule());
+        comboBoxSkill.setCellFactory(_ -> skillCellule());
         comboBoxSkill.setButtonCell(skillCellule());
 
         // mettre les éléments dans la combobox
@@ -177,7 +180,7 @@ public class AddPropertyDialogController {
             comboBoxStat.setManaged(true);
         }
         // Set affichage de la combobox
-        comboBoxStat.setCellFactory(lv -> statCellule());
+        comboBoxStat.setCellFactory(_ -> statCellule());
         comboBoxStat.setButtonCell(statCellule());
 
         // mettre les éléments dans la combobox

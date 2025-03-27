@@ -1,60 +1,42 @@
 package fr.clement_tristan_olivier.liste_personnage.controller;
 
-import javafx.fxml.FXML;
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.fxml.FXMLLoader;
-import javafx.collections.ObservableList;
+import fr.clement_tristan_olivier.liste_personnage.model.*;
 
-import java.util.Observable;
-import java.util.AbstractMap.SimpleEntry;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.ArrayList;
+import java.io.IOException;
+import java.util.AbstractMap;
+import java.io.File;
 
-import com.gluonhq.charm.glisten.control.Avatar;
+import javafx.fxml.FXML;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXMLLoader;
+import javafx.collections.ObservableList;
 import com.gluonhq.charm.glisten.control.TextField;
-
-import fr.clement_tristan_olivier.liste_personnage.model.Classe;
-import fr.clement_tristan_olivier.liste_personnage.model.Competence;
-import fr.clement_tristan_olivier.liste_personnage.model.Equipement;
-import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
-import fr.clement_tristan_olivier.liste_personnage.model.Statistique;
-import fr.clement_tristan_olivier.liste_personnage.model.Race;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 
-import java.io.IOException;
-import java.util.AbstractMap;
-import java.io.File;
 
 public class FichePersonnageController {
     private Personnage personnage;
+    public MainViewController mainViewController;
     private ObservableList<Equipement> equipementsComboBoxList;
     private ObservableList<Competence> skillsComboBoxList;
     private ObservableList<Map.Entry<Statistique, Integer>> statsComboBoxList;
     private ObservableList<Classe> classeComboBoxList;
     private ObservableList<Race> raceComboBoxList;
-    MainViewController mainViewController;
 
     @FXML
     private TextField nameTextField;
@@ -107,84 +89,83 @@ public class FichePersonnageController {
 
     @FXML
     private void initialiserVue(){
+        // Chargement du placholder pour l'avatar
+        // Penser à mettre un vrai bon placeholder
         Image image = new Image(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/image/STATS.png").toExternalForm());
         avatarImage.setImage(image);
-        avatarImage.setOnMouseClicked(event -> addAvatar());
-
-        // Ajouter les handler aux boutons
-        addEquipementsButton.setOnAction(event -> addEquipements());
-        addSkillsButton.setOnAction(event -> addCompetences());
-        addStatButton.setOnAction(event -> addStatistique());
-        addRaceButton.setOnAction(event -> addRace());
-        addClassButton.setOnAction(event -> addClasse());
-        removeEquipementsButton.setOnAction(event -> removeEquipement());
-        removeSkillsButton.setOnAction(event -> removeCompetence());
-        removeStatButton.setOnAction(event -> removeStatistique());
-        removeclassButton.setOnAction(event -> removeClasse());
-        removeRaceButton.setOnAction(event -> removeRace());
-        ValidateButton.setOnAction(event -> Validate());
-        CancelButton.setOnAction(event -> cancel());
+        
+        // Ajouter les handler aux éléments cliquables
+        avatarImage.setOnMouseClicked(_ -> addAvatar());
+        addEquipementsButton.setOnAction(_ -> addEquipements());
+        addSkillsButton.setOnAction(_ -> addCompetences());
+        addStatButton.setOnAction(_ -> addStatistique());
+        addRaceButton.setOnAction(_ -> addRace());
+        addClassButton.setOnAction(_ -> addClasse());
+        removeEquipementsButton.setOnAction(_ -> removeEquipement());
+        removeSkillsButton.setOnAction(_ -> removeCompetence());
+        removeStatButton.setOnAction(_ -> removeStatistique());
+        removeclassButton.setOnAction(_ -> removeClasse());
+        removeRaceButton.setOnAction(_ -> removeRace());
+        ValidateButton.setOnAction(_ -> Validate());
+        CancelButton.setOnAction(_ -> cancel());
 
         // ComboBox Equipements
         // Ajout des équipements dans la liste observable
         equipementsComboBoxList = FXCollections.observableArrayList(this.personnage.equipements);
-        // for (Equipement equipement : this.personnage.equipements) {
-        //     equipementsComboBoxList.add(equipement);
-        // }
         // lien entre la liste et la comboBox
         equipementsComboBox.setItems(equipementsComboBoxList);
         // utilisation de l'afichage personalisé
-        equipementsComboBox.setCellFactory(lv -> equipementCellule());
+        equipementsComboBox.setCellFactory(_ -> equipementCellule());
         equipementsComboBox.setButtonCell(equipementCellule());
 
         // ComboBox Competences
         // Ajout des compétences dans la liste observable
         skillsComboBoxList = FXCollections.observableArrayList(this.personnage.competences);
-        // for (Competence competence : this.personnage.competences) {
-        //     skillsComboBoxList.add(competence);
-        // }
         // Lien entre la liste et la comboBox
         skillsComboBox.setItems(skillsComboBoxList);
         // Utilisation de l'affichage personalisé
-        skillsComboBox.setCellFactory(lv -> skillCellule());
+        skillsComboBox.setCellFactory(_ -> skillCellule());
         skillsComboBox.setButtonCell(skillCellule());
 
         // ComboBox class
+        // Ajout des classes dans la liste observable
         classeComboBoxList = FXCollections.observableArrayList(Classe.classes);
+        // Lien entre la liste et la comboBox
         classCombobox.setItems(classeComboBoxList);
-        classCombobox.setCellFactory(lv -> classeCellule());
+        // Utilisation de l'affichage personnalisé
+        classCombobox.setCellFactory(_ -> classeCellule());
         classCombobox.setButtonCell(classeCellule());
 
         // ComboBox race
+        // Ajout des éléments dans la liste observable
         raceComboBoxList = FXCollections.observableArrayList(Race.races);
+        // Lien entre la liste et la comboBox
         raceCombobox.setItems(raceComboBoxList);
-        raceCombobox.setCellFactory(lv -> RaceCellule());
+        // Utilisation de l'affichage personnalisé
+        raceCombobox.setCellFactory(_ -> RaceCellule());
         raceCombobox.setButtonCell(RaceCellule());
 
         // Combobox Statistiques
         // Ajout des éléments dans la liste observable
         statsComboBoxList = FXCollections.observableArrayList(this.personnage.statistiques.entrySet());
-        // for (Map.entry<Statistique, Integer> statistique : this.personnage.statistiques ) {
-        //     statsComboBoxList.add(statistique);
-        // }
         // lien entre liste et BOmboBOx
         statsComboBox.setItems(statsComboBoxList);
         // Utilisation de l'affichage personalisé
-        statsComboBox.setCellFactory(lv -> statCellule());
+        statsComboBox.setCellFactory(_ -> statCellule());
         statsComboBox.setButtonCell(statCellule());
 
         // Paramétrage du spinner des stats
         statsSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99, 1));
 
         // Listener pour mettre à jour le spinner en fonction de la comboBox
-        statsComboBox.getSelectionModel().selectedItemProperty().addListener((obs, oldstat, newStat) -> {
+        statsComboBox.getSelectionModel().selectedItemProperty().addListener((_, _, newStat) -> {
             if(newStat != null) {
                 statsSpinner.getValueFactory().setValue(newStat.getValue());
             }
         });
 
         // Listener pour mettre à jour l'observableList des stats
-        statsSpinner.valueProperty().addListener((obs, oldValue, newValue) -> {
+        statsSpinner.valueProperty().addListener((_, _, newValue) -> {
             Map.Entry<Statistique, Integer> selectedEntry = statsComboBox.getSelectionModel().getSelectedItem();
             if(selectedEntry != null) {
                 for (int i = 0; i < statsComboBoxList.size(); i++) {
@@ -204,7 +185,7 @@ public class FichePersonnageController {
         return new ListCell<Equipement>() {
             // Infobulle
             private final Tooltip tooltip = new Tooltip();
-            
+
             @Override
             protected void updateItem(Equipement equipement, boolean empty){
                 super.updateItem(equipement, empty);
@@ -296,15 +277,19 @@ public class FichePersonnageController {
 
     private void addEquipements() {
         try{
+            // Chargement de la fenêtre de pop-up
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/AddPropertyDialog.fxml"));
             Stage stage = new Stage();
+
+            // Paramétrage de la fenêtre de pop-up
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Ajouter Equipement");
             stage.setScene(new Scene(loader.load()));
             
-            // Passer la liste observable
+            // Récupération du controleur
             AddPropertyDialogController controller = loader.getController();
-            // algo pour récupérer seulement les equipement qui ne sont pas encore là
+
+            // algo pour récupérer seulement les equipement qui ne sont pas affecté au personnage
             ArrayList<Equipement> equipementToAdd = Equipement.liste_equipement;
             Iterator<Equipement> iterator = equipementToAdd.iterator();
             while(iterator.hasNext()) {
@@ -313,10 +298,15 @@ public class FichePersonnageController {
                     iterator.remove();
                 }
             }
+
+            // Création de la liste observable depuis la liste des éléments à ajouter
             ObservableList<Equipement> equipementsToAddObservable = FXCollections.observableArrayList(equipementToAdd);
+
+            // Passage du modèle à la nouvelle fenêtre
             controller.equipementsFromCaller = equipementsComboBoxList;
             controller.setEquipement(equipementsToAddObservable);
             
+            // Ouvrir la fenêtre et bloqué la fenêtre courante
             stage.showAndWait();
         } catch(IOException e) {
             e.printStackTrace();
@@ -325,15 +315,19 @@ public class FichePersonnageController {
 
     private void addCompetences() {
         try{
+            // Chargement de la fenêtre de pop-up
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/AddPropertyDialog.fxml"));
             Stage stage = new Stage();
+
+            // Paramétrage de la fenêtre de pop-up
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Ajouter Compétence");
             stage.setScene(new Scene(loader.load()));
             
-            // Passer la liste observable
+            // Récupération du controleur
             AddPropertyDialogController controller = loader.getController();
-            // algo pour récupérer seulement les compétences qui ne sont pas encore là
+
+            // algo pour récupérer seulement les compétences qui ne sont pas affecté au personnage
             ArrayList<Competence> skillsToAdd = Competence.liste_competence;
             Iterator<Competence> iterator = skillsToAdd.iterator();
             while(iterator.hasNext()) {
@@ -342,10 +336,15 @@ public class FichePersonnageController {
                     iterator.remove();
                 }
             }
+
+            // Création de la liste observable depuis la liste des éléments à ajouter
             ObservableList<Competence> skillsToAddObservable = FXCollections.observableArrayList(skillsToAdd);
+
+            // Passage du modèle à la nouvelle fenêtre
             controller.skillsFromCaller = skillsComboBoxList;
             controller.setCompetence(skillsToAddObservable);
-            
+
+            // Ouvrir la fenêtre et bloqué la fenêtre courante
             stage.showAndWait();
         } catch(IOException e) {
             e.printStackTrace();
@@ -354,16 +353,22 @@ public class FichePersonnageController {
 
     private void addRace() {
         try{
+            // Chargement de la fenêtre de pop-up
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/AddPropertyDialog.fxml"));
             Stage stage = new Stage();
+
+            // Paramétrage de la fenêtre de pop-up
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Ajouter Race");
             stage.setScene(new Scene(loader.load()));
             
-            // Passer la liste observable
+            // Récupération du controleur
             AddPropertyDialogController controller = loader.getController();
+
+            // Passage du modèle à la nouvelle fenêtre
             controller.setRace(raceComboBoxList);
             
+            // Ouvrir la fenêtre et bloqué la fenêtre courante
             stage.showAndWait();
         } catch(IOException e) {
             e.printStackTrace();
@@ -372,16 +377,22 @@ public class FichePersonnageController {
 
     private void addClasse() {
         try{
+            // Chargement de la fenêtre de pop-up
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/AddPropertyDialog.fxml"));
             Stage stage = new Stage();
+
+            // Paramétrage de la fenêtre de pop-up
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Ajouter Classe");
             stage.setScene(new Scene(loader.load()));
             
-            // Passer la liste observable
+            // Récupération du controleur
             AddPropertyDialogController controller = loader.getController();
+
+            // Passage du modèle à la nouvelle fenêtre
             controller.setClasse(classeComboBoxList);
             
+            // Ouvrir la fenêtre et bloqué la fenêtre courante
             stage.showAndWait();
         } catch(IOException e) {
             e.printStackTrace();
@@ -390,15 +401,19 @@ public class FichePersonnageController {
 
     private void addStatistique() {
         try{
+            // Chargement de la fenêtre de pop-up
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/AddPropertyDialog.fxml"));
             Stage stage = new Stage();
+
+            // Paramétrage de la fenêtre de pop-up
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Ajouter Statistique");
             stage.setScene(new Scene(loader.load()));
             
-            // Passer la liste observable
+            // Récupération du controleur
             AddPropertyDialogController controller = loader.getController();
-            // algo pour récupérer seulement les compétences qui ne sont pas encore là
+
+            // algo pour récupérer seulement les statistiques qui ne sont pas affecté au personnage
             ArrayList<Statistique> statsToAdd = Statistique.liste_stats;
             Iterator<Statistique> iterator = statsToAdd.iterator();
             while(iterator.hasNext()) {
@@ -408,10 +423,15 @@ public class FichePersonnageController {
                     iterator.remove();
                 }
             }
+
+            // Création de la liste observable depuis la liste des éléments à ajouter
             ObservableList<Statistique> statsToAddObservable = FXCollections.observableArrayList(statsToAdd);
+
+            // Passage du modèle à la nouvelle fenêtre
             controller.statsFromCaller = statsComboBoxList;
             controller.setStat(statsToAddObservable);
-            
+
+            // Ouvrir la fenêtre et bloqué la fenêtre courante
             stage.showAndWait();
         } catch(IOException e) {
             e.printStackTrace();
@@ -444,6 +464,7 @@ public class FichePersonnageController {
     }
 
     private void addAvatar(){
+        // Paramétrage du fileChooser
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choisir une image");
 
@@ -456,8 +477,9 @@ public class FichePersonnageController {
         File file = fileChooser.showOpenDialog(new Stage());
 
         if (file != null) {
+            // Chargement de l'image dans l'interface
             Image image = new Image(file.toURI().toString());
-            avatarImage.setImage(image); // Mettre à jour l'image dans l'ImageView
+            avatarImage.setImage(image); 
         }
     }
 
@@ -476,6 +498,8 @@ public class FichePersonnageController {
         personnage.classe = cla;
         Race ra = raceCombobox.getSelectionModel().getSelectedItem();
         personnage.race = ra;
+
+        // Changement de vue
         mainViewController.chargerListePersonnage();
     }
 

@@ -2,56 +2,38 @@ package fr.clement_tristan_olivier.liste_personnage.controller;
 
 import fr.clement_tristan_olivier.liste_personnage.model.Compte;
 import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
 
 public class ListePersonnageController {
+    public MainViewController mainViewController;
+    private Compte compte;
 
     @FXML
     private ComboBox<Personnage> ComboBoxListe;
-
     @FXML
     private Button DeleteFromListButton;
-
     @FXML
     private Button EditFromListButton;
-
     @FXML
     private Button AddToListButton;
-
     @FXML
     private Button ClosePageButton;
 
-    public MainViewController mainViewController;
-    private Compte model;
 
     @FXML
     private void initialize() {
-        System.out.println("Initialisation ListePersonnageController");
-
         // Agordi la cellFactory por montri toSimpleString()
-        ComboBoxListe.setCellFactory(lv -> new javafx.scene.control.ListCell<>() {
-            @Override
-            protected void updateItem(Personnage item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty || item == null ? null : item.toSimpleString());
-            }
-        });
-
+        ComboBoxListe.setCellFactory(_ -> PersonnageCellule());
         // Agordi la buttonCell por montri toSimpleString() por la elektita objekto
-        ComboBoxListe.setButtonCell(new javafx.scene.control.ListCell<>() {
-            @Override
-            protected void updateItem(Personnage item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty || item == null ? null : item.toSimpleString());
-            }
-        });
+        ComboBoxListe.setButtonCell(PersonnageCellule());
     }
 
     protected void setModele(Compte model) {
-        System.out.println("Setting compte to " + model.toString());
-        this.model = model;
+        this.compte = model;
         setup_liste_personnages();
     }
 
@@ -60,8 +42,7 @@ public class ListePersonnageController {
      * @return void
      */
     private void setup_liste_personnages() {
-        System.out.println("Setting up liste personnage");
-        this.ComboBoxListe.getItems().addAll(model.personnages);
+        this.ComboBoxListe.getItems().addAll(compte.personnages);
     }
 
     /**
@@ -82,7 +63,7 @@ public class ListePersonnageController {
     private void handleDeleteFromListButtonAction() {
         Personnage personnage = this.ComboBoxListe.getSelectionModel().getSelectedItem();
         System.out.println("Deleting personnage " + personnage.toString());
-        this.model.supprimer_personnage(personnage);
+        this.compte.supprimer_personnage(personnage);
         this.ComboBoxListe.getItems().remove(personnage);
     }
 
@@ -100,6 +81,16 @@ public class ListePersonnageController {
     private void handleEditFromListButtonAction() {
         System.out.println("Displaying personnage");
         Personnage personnage = this.ComboBoxListe.getSelectionModel().getSelectedItem();
-        this.mainViewController.chargerFichePersonnage(personnage);
+        // this.mainViewController.chargerFichePersonnage(personnage);
+    }
+
+    private ListCell<Personnage> PersonnageCellule() {
+        return new ListCell<Personnage>() {
+            @Override
+            protected void updateItem(Personnage item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : item.toSimpleString());
+            }
+        };
     }
 }

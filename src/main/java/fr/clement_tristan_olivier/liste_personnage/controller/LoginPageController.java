@@ -61,6 +61,7 @@ public void initialize() {
         if (compte != null) {
             System.out.println("Login successful");
             InfoLabel.setText("Login successful");
+            mainViewController.compte = compte;
             mainViewController.chargerListePersonnage();
         } else {
             System.out.println("Login failed");

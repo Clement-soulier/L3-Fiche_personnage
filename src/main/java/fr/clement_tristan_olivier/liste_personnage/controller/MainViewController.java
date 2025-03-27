@@ -21,7 +21,7 @@ import javafx.scene.layout.VBox;
 
 public class MainViewController {
     private Base_de_donnees base_de_donnees;
-    private Compte compte;
+    public Compte compte;
 
     @FXML
     private VBox rootPane;

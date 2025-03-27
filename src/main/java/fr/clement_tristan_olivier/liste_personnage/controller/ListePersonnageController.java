@@ -60,7 +60,7 @@ public class ListePersonnageController {
     @FXML
     private void handleAddToListButtonAction() {
         System.out.println("Adding personnage");
-        this.mainViewController.chargerFichePersonnage();
+        // this.mainViewController.chargerFichePersonnage();
     }
 
     /**

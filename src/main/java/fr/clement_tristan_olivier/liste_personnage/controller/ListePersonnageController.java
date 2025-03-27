@@ -29,7 +29,18 @@ public class ListePersonnageController {
     @FXML
     private void initialize() {
         System.out.println("Initialisation ListePersonnageController");
+
+        // Agordi la cellFactory por montri toSimpleString()
         ComboBoxListe.setCellFactory(lv -> new javafx.scene.control.ListCell<>() {
+            @Override
+            protected void updateItem(Personnage item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : item.toSimpleString());
+            }
+        });
+
+        // Agordi la buttonCell por montri toSimpleString() por la elektita objekto
+        ComboBoxListe.setButtonCell(new javafx.scene.control.ListCell<>() {
             @Override
             protected void updateItem(Personnage item, boolean empty) {
                 super.updateItem(item, empty);

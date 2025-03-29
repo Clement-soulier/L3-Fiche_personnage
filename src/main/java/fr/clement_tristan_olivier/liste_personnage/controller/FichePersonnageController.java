@@ -158,7 +158,7 @@ public class FichePersonnageController {
         statsComboBox.setButtonCell(statCellule());
 
         // Paramétrage du spinner des stats
-        statsSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99, 1));
+        statsSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99, 0));
 
         // Listener pour mettre à jour le spinner en fonction de la comboBox
         statsComboBox.getSelectionModel().selectedItemProperty().addListener((_, _, newStat) -> {
@@ -174,8 +174,11 @@ public class FichePersonnageController {
                 for (int i = 0; i < statsComboBoxList.size(); i++) {
                 if (statsComboBoxList.get(i).getKey().equals(selectedEntry.getKey())) {  
                     // Mettre à jour la valeur de la statistique correspondante
-                    statsComboBoxList.set(i, new AbstractMap.SimpleEntry<>(selectedEntry.getKey(), newValue));
-                    // comboBoxStats.refresh(); // Rafraîchir l'affichage
+                    AbstractMap.SimpleEntry<Statistique, Integer> newEntry = new AbstractMap.SimpleEntry<>(selectedEntry.getKey(), newValue);
+                    statsComboBoxList.set(i, newEntry);
+
+                    // Restaurer la sélection de la combo Box
+                    statsComboBox.getSelectionModel().select(newEntry);
                     break; // Sortir de la boucle après la modification
                 }
             }

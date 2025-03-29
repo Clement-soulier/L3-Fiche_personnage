@@ -26,6 +26,11 @@ public class ListePersonnageController {
 
     @FXML
     private void initialiserVue() {
+        // Associe les boutons à leur comportement
+        DeleteFromListButton.setOnAction(_ -> handleDeleteFromListButtonAction());
+        EditFromListButton.setOnAction(_ -> handleEditFromListButtonAction());
+        AddToListButton.setOnAction(_ -> handleAddToListButtonAction());
+        // Set configure et initialise la comboBox
         // Agordi la cellFactory por montri toSimpleString()
         ComboBoxListe.setCellFactory(_ -> PersonnageCellule());
         // Agordi la buttonCell por montri toSimpleString() por la elektita objekto

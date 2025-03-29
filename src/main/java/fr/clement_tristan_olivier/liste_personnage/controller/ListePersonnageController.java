@@ -70,6 +70,9 @@ public class ListePersonnageController {
     @FXML
     private void handleDeleteFromListButtonAction() {
         Personnage personnage = this.ComboBoxListe.getSelectionModel().getSelectedItem();
+        if(personnage == null){
+            return;
+        }
         this.compte.supprimer_personnage(personnage);
         this.ComboBoxListe.getItems().remove(personnage);
     }
@@ -86,6 +89,9 @@ public class ListePersonnageController {
     @FXML
     private void handleEditFromListButtonAction() {
         Personnage personnage = this.ComboBoxListe.getSelectionModel().getSelectedItem();
+        if(personnage == null){
+            return;
+        }
         mainViewController.personnage = personnage;
         this.mainViewController.chargerFichePersonnage();
     }

@@ -14,6 +14,8 @@ import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.collections.ObservableList;
+
+import javafx.scene.control.Alert;
 import com.gluonhq.charm.glisten.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -22,6 +24,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
@@ -481,6 +484,11 @@ public class FichePersonnageController {
         if(personnage.nom.isEmpty()){
             mainViewController.compte.ajouter_personnage(personnage);
         }
+        // Vérification que le personnage à au moins un nom pour pouvoir l'enregistrer
+        if(nameTextField.getText().isEmpty()){
+            dataValidationWarning();
+            return;
+        }
         // mise à jour du personnage
         personnage.modifier_nom(nameTextField.getText());
         personnage.modifier_biographie(bioTextField.getText());
@@ -502,5 +510,14 @@ public class FichePersonnageController {
 
     private void cancel(){
         mainViewController.chargerListePersonnage();
+    }
+
+    private void dataValidationWarning(){
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle( "Information");
+        alert.setHeaderText(null);
+        alert.setContentText("Veuillez renseinger au moins un nom avant d'enregistrer le personage");
+
+        alert.showAndWait();
     }
 }

@@ -45,9 +45,9 @@ public class Personnage implements Serializable{
      * Ne requiert que le nom du personnage, à utiliser dans ListePersonnage.
      * @param nom
      */
-    public Personnage(String nom){
+    public Personnage(){
         this.id = Personnage.get_id++;
-        this.nom = nom;
+        this.nom = "";
         this.biographie = "";
         this.statistiques = new HashMap<>();
         this.competences = new ArrayList<>();

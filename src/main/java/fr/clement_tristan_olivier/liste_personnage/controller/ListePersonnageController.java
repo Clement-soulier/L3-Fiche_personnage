@@ -25,7 +25,7 @@ public class ListePersonnageController {
 
 
     @FXML
-    private void initialiserVue() {
+    public void initialiserVue() {
         // Associe les boutons à leur comportement
         DeleteFromListButton.setOnAction(_ -> handleDeleteFromListButtonAction());
         EditFromListButton.setOnAction(_ -> handleEditFromListButtonAction());
@@ -47,8 +47,6 @@ public class ListePersonnageController {
      * @return void
      */
     public void setup_liste_personnages() {
-        System.out.println(mainViewController.compte);
-        System.out.println(mainViewController.compte.personnages.toString());
         this.ComboBoxListe.getItems().addAll(compte.personnages);
     }
 
@@ -58,8 +56,9 @@ public class ListePersonnageController {
      */
     @FXML
     private void handleAddToListButtonAction() {
-        // Personnage newPersonnage = new Personnage(null, null, null, null, null, null, null)
-        // this.mainViewController.chargerFichePersonnage();
+        Personnage newPersonnage = new Personnage();
+        mainViewController.personnage = newPersonnage;
+        this.mainViewController.chargerFichePersonnage();
     }
 
     /**
@@ -84,9 +83,9 @@ public class ListePersonnageController {
 
     @FXML
     private void handleEditFromListButtonAction() {
-        System.out.println("Displaying personnage");
         Personnage personnage = this.ComboBoxListe.getSelectionModel().getSelectedItem();
-        // this.mainViewController.chargerFichePersonnage(personnage);
+        mainViewController.personnage = personnage;
+        this.mainViewController.chargerFichePersonnage();
     }
 
     private ListCell<Personnage> PersonnageCellule() {

@@ -128,6 +128,8 @@ public class MainViewController {
             controller.setModele(compte);
             controller.mainViewController = this;
 
+            controller.initialiserVue();
+
             // affichage de la vue dans la fenêtre
             conteneurCentre.getChildren().setAll(vue);
 

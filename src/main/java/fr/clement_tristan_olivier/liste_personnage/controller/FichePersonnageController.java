@@ -109,6 +109,9 @@ public class FichePersonnageController {
         ValidateButton.setOnAction(_ -> Validate());
         CancelButton.setOnAction(_ -> cancel());
 
+        // Set des informations de la fenêtre
+        nameTextField.setText(personnage.nom);
+        bioTextField.setText(personnage.biographie);
         // ComboBox Equipements
         // Ajout des équipements dans la liste observable
         equipementsComboBoxList = FXCollections.observableArrayList(this.personnage.equipements);
@@ -484,6 +487,10 @@ public class FichePersonnageController {
     }
 
     private void Validate(){
+        // Si c'est un ajout de personnage le rajouter au compte
+        if(personnage.nom.isEmpty()){
+            mainViewController.compte.ajouter_personnage(personnage);
+        }
         // mise à jour du personnage
         personnage.modifier_nom(nameTextField.getText());
         personnage.modifier_biographie(bioTextField.getText());

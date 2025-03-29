@@ -10,7 +10,7 @@ import javafx.scene.control.ListCell;
 
 public class ListePersonnageController {
     public MainViewController mainViewController;
-    private Compte compte;
+    public Compte compte;
 
     @FXML
     private ComboBox<Personnage> ComboBoxListe;
@@ -25,23 +25,25 @@ public class ListePersonnageController {
 
 
     @FXML
-    private void initialize() {
+    private void initialiserVue() {
         // Agordi la cellFactory por montri toSimpleString()
         ComboBoxListe.setCellFactory(_ -> PersonnageCellule());
         // Agordi la buttonCell por montri toSimpleString() por la elektita objekto
         ComboBoxListe.setButtonCell(PersonnageCellule());
+        setup_liste_personnages();
     }
 
     protected void setModele(Compte model) {
         this.compte = model;
-        setup_liste_personnages();
     }
 
     /**
      * Importe la liste des personnages du compte et les ajoute à la liste déroulante.
      * @return void
      */
-    private void setup_liste_personnages() {
+    public void setup_liste_personnages() {
+        System.out.println(mainViewController.compte);
+        System.out.println(mainViewController.compte.personnages.toString());
         this.ComboBoxListe.getItems().addAll(compte.personnages);
     }
 
@@ -51,7 +53,7 @@ public class ListePersonnageController {
      */
     @FXML
     private void handleAddToListButtonAction() {
-        System.out.println("Adding personnage");
+        // Personnage newPersonnage = new Personnage(null, null, null, null, null, null, null)
         // this.mainViewController.chargerFichePersonnage();
     }
 
@@ -62,7 +64,6 @@ public class ListePersonnageController {
     @FXML
     private void handleDeleteFromListButtonAction() {
         Personnage personnage = this.ComboBoxListe.getSelectionModel().getSelectedItem();
-        System.out.println("Deleting personnage " + personnage.toString());
         this.compte.supprimer_personnage(personnage);
         this.ComboBoxListe.getItems().remove(personnage);
     }
@@ -73,7 +74,6 @@ public class ListePersonnageController {
      */
     @FXML
     private void handleClosePageButtonAction() {
-        System.out.println("Logging out...");
         this.mainViewController.chargerLoginPage();
     }
 

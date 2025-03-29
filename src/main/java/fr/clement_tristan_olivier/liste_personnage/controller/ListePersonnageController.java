@@ -30,6 +30,8 @@ public class ListePersonnageController {
         DeleteFromListButton.setOnAction(_ -> handleDeleteFromListButtonAction());
         EditFromListButton.setOnAction(_ -> handleEditFromListButtonAction());
         AddToListButton.setOnAction(_ -> handleAddToListButtonAction());
+        ClosePageButton.setOnAction(_ -> handleClosePageButtonAction());
+
         // Set configure et initialise la comboBox
         // Agordi la cellFactory por montri toSimpleString()
         ComboBoxListe.setCellFactory(_ -> PersonnageCellule());

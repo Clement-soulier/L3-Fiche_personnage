@@ -20,6 +20,6 @@
             <Button fx:id="AddToListButton" mnemonicParsing="false" text="Add to list" />
          </children>
       </VBox>
-      <Button fx:id="ClosePageButton" alignment="CENTER" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" text="Log out" onAction="#handleClosePageButtonAction" />
+      <Button fx:id="ClosePageButton" alignment="CENTER" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" text="Log out" />
    </children>
 </AnchorPane>

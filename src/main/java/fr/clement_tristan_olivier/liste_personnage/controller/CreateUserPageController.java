@@ -25,6 +25,8 @@ public class CreateUserPageController {
     private TextField CreateUserText;
     @FXML
     private TextField CreatePasswordText;
+    @FXML
+    private Button BackButton;
     @FXML 
     TextField ConfirmPasswordText;
     @FXML
@@ -35,6 +37,7 @@ public class CreateUserPageController {
     public void initialize() {
         // Association du bouton à son comportement
         CreateUserButton.setOnAction(_ -> handleCreateUserButton());
+        BackButton.setOnAction(_ -> backButtonAction());
     }
 
     public void setModel(Base_de_donnees base_de_donnees) {
@@ -76,5 +79,9 @@ public class CreateUserPageController {
         } else {
             InfoLabel.setText("Account creation failed: Username already exists");
         }
+    }
+
+    private void backButtonAction() {
+        mainViewController.chargerLoginPage();
     }
 }

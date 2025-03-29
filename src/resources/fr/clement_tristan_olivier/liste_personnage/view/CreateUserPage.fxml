@@ -19,6 +19,7 @@
             <Button fx:id="CreateUserButton" mnemonicParsing="false" text="Créer" />
          </children>
       </VBox>
+      <Button fx:id="BackButton" alignment="CENTER" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" text="Retour" />
       <Label fx:id="InfoLabel" alignment="CENTER" layoutX="286.0" layoutY="339.0" prefHeight="18.0" prefWidth="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

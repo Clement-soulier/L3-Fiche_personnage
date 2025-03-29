@@ -20,6 +20,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,8 +33,8 @@ import javafx.stage.FileChooser;
 public class FichePersonnageController {
     private Personnage personnage;
     public MainViewController mainViewController;
-    private ObservableList<Equipement> equipementsComboBoxList;
-    private ObservableList<Competence> skillsComboBoxList;
+    private ObservableList<Equipement> equipementsListViewList;
+    private ObservableList<Competence> skillsListViewList;
     private ObservableList<Map.Entry<Statistique, Integer>> statsComboBoxList;
     private ObservableList<Classe> classeComboBoxList;
     private ObservableList<Race> raceComboBoxList;
@@ -43,13 +44,13 @@ public class FichePersonnageController {
     @FXML
     private TextField bioTextField;
     @FXML
-    private ComboBox<Equipement> equipementsComboBox;
+    private ListView<Equipement> equipementsListView;
     @FXML
     private Button addEquipementsButton;
     @FXML
     private Button removeEquipementsButton;
     @FXML
-    private ComboBox<Competence> skillsComboBox;
+    private ListView<Competence> skillsListView;
     @FXML
     private Button addSkillsButton;
     @FXML
@@ -114,21 +115,19 @@ public class FichePersonnageController {
         bioTextField.setText(personnage.biographie);
         // ComboBox Equipements
         // Ajout des équipements dans la liste observable
-        equipementsComboBoxList = FXCollections.observableArrayList(this.personnage.equipements);
+        equipementsListViewList = FXCollections.observableArrayList(this.personnage.equipements);
         // lien entre la liste et la comboBox
-        equipementsComboBox.setItems(equipementsComboBoxList);
+        equipementsListView.setItems(equipementsListViewList);
         // utilisation de l'afichage personalisé
-        equipementsComboBox.setCellFactory(_ -> equipementCellule());
-        equipementsComboBox.setButtonCell(equipementCellule());
+        equipementsListView.setCellFactory(_ -> equipementCellule());
 
         // ComboBox Competences
         // Ajout des compétences dans la liste observable
-        skillsComboBoxList = FXCollections.observableArrayList(this.personnage.competences);
+        skillsListViewList = FXCollections.observableArrayList(this.personnage.competences);
         // Lien entre la liste et la comboBox
-        skillsComboBox.setItems(skillsComboBoxList);
+        skillsListView.setItems(skillsListViewList);
         // Utilisation de l'affichage personalisé
-        skillsComboBox.setCellFactory(_ -> skillCellule());
-        skillsComboBox.setButtonCell(skillCellule());
+        skillsListView.setCellFactory(_ -> skillCellule());
 
         // ComboBox class
         // Ajout des classes dans la liste observable
@@ -297,19 +296,13 @@ public class FichePersonnageController {
 
             // algo pour récupérer seulement les equipement qui ne sont pas affecté au personnage
             ArrayList<Equipement> equipementToAdd = Equipement.liste_equipement;
-            Iterator<Equipement> iterator = equipementToAdd.iterator();
-            while(iterator.hasNext()) {
-                Equipement equip = iterator.next();
-                if(equipementsComboBoxList.contains(equip)) {
-                    iterator.remove();
-                }
-            }
+            equipementToAdd.removeAll(equipementsListViewList);
 
             // Création de la liste observable depuis la liste des éléments à ajouter
             ObservableList<Equipement> equipementsToAddObservable = FXCollections.observableArrayList(equipementToAdd);
 
             // Passage du modèle à la nouvelle fenêtre
-            controller.equipementsFromCaller = equipementsComboBoxList;
+            controller.equipementsFromCaller = equipementsListViewList;
             controller.setEquipement(equipementsToAddObservable);
             
             // Ouvrir la fenêtre et bloqué la fenêtre courante
@@ -335,19 +328,13 @@ public class FichePersonnageController {
 
             // algo pour récupérer seulement les compétences qui ne sont pas affecté au personnage
             ArrayList<Competence> skillsToAdd = Competence.liste_competence;
-            Iterator<Competence> iterator = skillsToAdd.iterator();
-            while(iterator.hasNext()) {
-                Competence comp = iterator.next();
-                if(skillsComboBoxList.contains(comp)) {
-                    iterator.remove();
-                }
-            }
+            skillsToAdd.removeAll(skillsListViewList);
 
             // Création de la liste observable depuis la liste des éléments à ajouter
             ObservableList<Competence> skillsToAddObservable = FXCollections.observableArrayList(skillsToAdd);
 
             // Passage du modèle à la nouvelle fenêtre
-            controller.skillsFromCaller = skillsComboBoxList;
+            controller.skillsFromCaller = skillsListViewList;
             controller.setCompetence(skillsToAddObservable);
 
             // Ouvrir la fenêtre et bloqué la fenêtre courante
@@ -445,13 +432,13 @@ public class FichePersonnageController {
     }
 
     private void removeEquipement(){
-        Equipement equip = equipementsComboBox.getSelectionModel().getSelectedItem();
-        equipementsComboBoxList.remove(equipementsComboBoxList.indexOf(equip));
+        Equipement equip = equipementsListView.getSelectionModel().getSelectedItem();
+        equipementsListViewList.remove(equip);
     }
 
     private void removeCompetence(){
-        Competence comp = skillsComboBox.getSelectionModel().getSelectedItem();
-        skillsComboBoxList.remove(skillsComboBoxList.indexOf(comp));
+        Competence comp = skillsListView.getSelectionModel().getSelectedItem();
+        skillsListViewList.remove(comp);
     }
 
     private void removeStatistique(){
@@ -497,8 +484,8 @@ public class FichePersonnageController {
         // mise à jour du personnage
         personnage.modifier_nom(nameTextField.getText());
         personnage.modifier_biographie(bioTextField.getText());
-        personnage.competences = new ArrayList<>(skillsComboBoxList);
-        personnage.equipements = new ArrayList<>(equipementsComboBoxList);
+        personnage.competences = new ArrayList<>(skillsListViewList);
+        personnage.equipements = new ArrayList<>(equipementsListViewList);
         HashMap<Statistique, Integer> newHash = new HashMap<>();
         for(Map.Entry<Statistique, Integer> entry : statsComboBoxList){
             newHash.put(entry.getKey(), entry.getValue());

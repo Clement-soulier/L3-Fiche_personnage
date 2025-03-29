@@ -35,7 +35,7 @@ import javafx.stage.FileChooser;
 
 public class FichePersonnageController {
     private Personnage personnage;
-    private String profilePicture;
+    public String profilePicture;
     public MainViewController mainViewController;
     private ObservableList<Equipement> equipementsListViewList;
     private ObservableList<Competence> skillsListViewList;
@@ -60,7 +60,7 @@ public class FichePersonnageController {
     @FXML
     private Button removeSkillsButton;
     @FXML
-    private ComboBox<Map.Entry<Statistique, Integer>> statsComboBox;
+    public ComboBox<Map.Entry<Statistique, Integer>> statsComboBox;
     @FXML
     private Button addStatButton;
     @FXML
@@ -68,13 +68,13 @@ public class FichePersonnageController {
     @FXML
     private Spinner<Integer> statsSpinner;
     @FXML
-    private ComboBox<Classe> classCombobox;
+    public ComboBox<Classe> classCombobox;
     @FXML
     private Button addClassButton;
     @FXML
     private Button removeclassButton;
     @FXML
-    private ComboBox<Race> raceCombobox;
+    public ComboBox<Race> raceCombobox;
     @FXML
     private Button addRaceButton;
     @FXML
@@ -367,7 +367,7 @@ public class FichePersonnageController {
             AddPropertyDialogController controller = loader.getController();
 
             // Passage du modèle à la nouvelle fenêtre
-            controller.setRace(raceComboBoxList);
+            controller.setRace(raceComboBoxList, this);
             
             // Ouvrir la fenêtre et bloqué la fenêtre courante
             stage.showAndWait();
@@ -391,7 +391,7 @@ public class FichePersonnageController {
             AddPropertyDialogController controller = loader.getController();
 
             // Passage du modèle à la nouvelle fenêtre
-            controller.setClasse(classeComboBoxList);
+            controller.setClasse(classeComboBoxList, this);
             
             // Ouvrir la fenêtre et bloqué la fenêtre courante
             stage.showAndWait();
@@ -430,7 +430,7 @@ public class FichePersonnageController {
 
             // Passage du modèle à la nouvelle fenêtre
             controller.statsFromCaller = statsComboBoxList;
-            controller.setStat(statsToAddObservable);
+            controller.setStat(statsToAddObservable, this);
 
             // Ouvrir la fenêtre et bloqué la fenêtre courante
             stage.showAndWait();

@@ -20,6 +20,7 @@ public class AddPropertyDialogController {
     public ObservableList<Map.Entry<Statistique, Integer>> statsFromCaller;
     public ObservableList<Race> raceFromCaller;
     public ObservableList<Classe> classeFromCaller;
+    public FichePersonnageController callerController;
 
     @FXML
     public ComboBox<Equipement> comboBoxEquipement;
@@ -92,7 +93,11 @@ public class AddPropertyDialogController {
         if(stats != null){
             if(checkBox.isSelected()){
                 Statistique newStat = new Statistique(propertyName, propertyDesc);
-                statsFromCaller.add(new AbstractMap.SimpleEntry<>(newStat, 0));
+                AbstractMap.SimpleEntry<Statistique, Integer> newEntry = new AbstractMap.SimpleEntry<>(newStat, 0);
+                statsFromCaller.add(newEntry);
+                
+                // set la comboBox sur la statistique ajoutée
+                callerController.statsComboBox.getSelectionModel().select(newEntry);
 
                 ((Stage) btnAjouter.getScene().getWindow()).close();
             } else {
@@ -101,8 +106,8 @@ public class AddPropertyDialogController {
                     statsFromCaller.add(new AbstractMap.SimpleEntry<>(selectedStat, 0));
                     //déclaration de l'équipement pour le model
                     new Statistique(propertyName, propertyDesc);
+                    ((Stage) btnAjouter.getScene().getWindow()).close();
                 }
-                ((Stage) btnAjouter.getScene().getWindow()).close();
             }
         }
         if(skills != null){
@@ -127,6 +132,10 @@ public class AddPropertyDialogController {
             }
             Race newRace = new Race(propertyName);
             raceFromCaller.add(newRace);
+
+            // Selectionne la race ajoutée dans la comboBox
+            callerController.raceCombobox.getSelectionModel().select(newRace);
+
             ((Stage) btnAjouter.getScene().getWindow()).close();
         }
         if(classeFromCaller != null) {
@@ -135,6 +144,10 @@ public class AddPropertyDialogController {
             }
             Classe newClasse = new Classe(propertyName);
             classeFromCaller.add(newClasse);
+
+            // Selection de la nouvelle classe dans la bomboBox
+            callerController.classCombobox.getSelectionModel().select(newClasse);
+
             ((Stage) btnAjouter.getScene().getWindow()).close();
         }
     }
@@ -171,10 +184,11 @@ public class AddPropertyDialogController {
         comboBoxSkill.setItems(skills);
     }
 
-    public void setStat(ObservableList<Statistique> model){
+    public void setStat(ObservableList<Statistique> model, FichePersonnageController controller){
         checkBox.setVisible(true);
         checkBox.setManaged(true);
         stats = model;
+        callerController = controller;
         if(stats != null){
             comboBoxStat.setVisible(true);
             comboBoxStat.setManaged(true);
@@ -187,18 +201,20 @@ public class AddPropertyDialogController {
         comboBoxSkill.setItems(skills);
     }
 
-    public void setRace(ObservableList<Race> model){
+    public void setRace(ObservableList<Race> model, FichePersonnageController controller){
         labelName.setVisible(true);
         labelName.setText("Nom race");
         textFieldName.setVisible(true);
         raceFromCaller = model;
+        callerController = controller;
     }
 
-    public void setClasse(ObservableList<Classe> model) {
+    public void setClasse(ObservableList<Classe> model, FichePersonnageController controller) {
         labelName.setVisible(true);
         labelName.setText("Nom classe");
         textFieldName.setVisible(true);
         classeFromCaller = model;
+        callerController = controller;
     }
 
     // Affichage personalisé pour equipementcomboBox

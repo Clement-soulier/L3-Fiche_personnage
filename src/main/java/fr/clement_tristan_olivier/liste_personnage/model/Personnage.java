@@ -11,7 +11,7 @@ public class Personnage implements Serializable{
     static int get_id = 0;
     public int id;
     public String nom;
-    // protected image portrait
+    public String avatar;
     public String biographie;
     public HashMap<Statistique, Integer> statistiques;
     public ArrayList<Competence> competences;

@@ -35,6 +35,7 @@ import javafx.stage.FileChooser;
 
 public class FichePersonnageController {
     private Personnage personnage;
+    private String profilePicture;
     public MainViewController mainViewController;
     private ObservableList<Equipement> equipementsListViewList;
     private ObservableList<Competence> skillsListViewList;
@@ -94,9 +95,13 @@ public class FichePersonnageController {
     @FXML
     private void initialiserVue(){
         // Chargement du placholder pour l'avatar
-        // Penser à mettre un vrai bon placeholder
-        Image image = new Image(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/image/STATS.png").toExternalForm());
-        avatarImage.setImage(image);
+        if(personnage.avatar != null && !personnage.avatar.isEmpty()){
+            Image image = new Image(personnage.avatar);
+            avatarImage.setImage(image);
+        } else {
+            Image placeholder = new Image(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/image/AVATAR_PLACEHOLDER.png").toExternalForm());
+            avatarImage.setImage(placeholder);
+        }
         
         // Ajouter les handler aux éléments cliquables
         avatarImage.setOnMouseClicked(_ -> addAvatar());
@@ -475,7 +480,10 @@ public class FichePersonnageController {
         if (file != null) {
             // Chargement de l'image dans l'interface
             Image image = new Image(file.toURI().toString());
-            avatarImage.setImage(image); 
+            avatarImage.setImage(image);
+
+            // Mettre à jour la variable de l'avatar
+            profilePicture = file.toURI().toString();
         }
     }
 
@@ -503,6 +511,9 @@ public class FichePersonnageController {
         personnage.classe = cla;
         Race ra = raceCombobox.getSelectionModel().getSelectedItem();
         personnage.race = ra;
+        if(profilePicture != null){
+            personnage.avatar = profilePicture;
+        }
 
         // Changement de vue
         mainViewController.chargerListePersonnage();

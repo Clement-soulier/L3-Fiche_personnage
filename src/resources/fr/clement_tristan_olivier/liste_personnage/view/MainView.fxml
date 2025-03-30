@@ -12,19 +12,19 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
+            <MenuItem fx:id="MenuBarNew" mnemonicParsing="false" text="New" />
+            <MenuItem fx:id="MenuBarOpen" mnemonicParsing="false" text="Open…" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem fx:id="MenuBarClose" mnemonicParsing="false" text="Close" />
+            <MenuItem fx:id="MenuBarSave" mnemonicParsing="false" text="Save" />
+            <MenuItem fx:id="MenuBarSaveAs" mnemonicParsing="false" text="Save As…" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
+            <MenuItem fx:id="MenuBarQuit" mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Characters">
           <items>
-            <MenuItem mnemonicParsing="false" text="Liste des personnages" />
+            <MenuItem fx:id="MenuBarPersonnage" mnemonicParsing="false" text="Liste des personnages" />
           </items>
         </Menu>
       </menus>

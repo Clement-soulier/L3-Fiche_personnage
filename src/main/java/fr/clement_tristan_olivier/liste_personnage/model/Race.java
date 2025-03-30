@@ -1,7 +1,8 @@
 package fr.clement_tristan_olivier.liste_personnage.model;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Race {
+public class Race implements Serializable{
     public String nom;
 
     public static ArrayList<Race> races = new ArrayList<>();

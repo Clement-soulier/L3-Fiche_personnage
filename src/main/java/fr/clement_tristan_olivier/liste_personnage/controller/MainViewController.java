@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import java.io.File;
@@ -46,6 +47,20 @@ public class MainViewController {
 
     @FXML
     private MenuBar menuBar;
+    @FXML
+    private MenuItem MenuBarNew;
+    @FXML
+    private MenuItem MenuBarOpen;
+    @FXML
+    private MenuItem MenuBarClose;
+    @FXML
+    private MenuItem MenuBarSave;
+    @FXML
+    private MenuItem MenuBarSaveAs;
+    @FXML
+    private MenuItem MenuBarQuit;
+    @FXML
+    private MenuItem MenuBarPersonnage;
 
     @FXML
     private void initialize() {
@@ -69,6 +84,15 @@ public class MainViewController {
             // Initialiser une base vide
             base_de_donnees = new Base_de_donnees();
         }
+
+        // Association des boutons de la menubar avec leur comportement
+        MenuBarNew.setOnAction(_ -> MenuBarNewAction());
+        MenuBarOpen.setOnAction(_ -> MenuBarOpenAction());
+        MenuBarClose.setOnAction(_ -> MenuBarCloseAction());
+        MenuBarSave.setOnAction(_ -> MenuBarSaveAction());
+        MenuBarSaveAs.setOnAction(_ -> MenuBarSaveAsAction());
+        MenuBarQuit.setOnAction(_ -> MenuBarQuitAction());
+        MenuBarPersonnage.setOnAction(_ -> chargerListePersonnage());
 
         chargerLoginPage();
 
@@ -291,5 +315,223 @@ public class MainViewController {
 
         // Ouvrir le FileChooser pour choisir ou créer un fichier
         return fileChooser.showSaveDialog(fileChooserStage);
+    }
+
+    private void MenuBarNewAction() {
+        // Créer une fenêtre de dialogue de confirmation
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Enregistrement");
+        alert.setHeaderText("Voulez-vous enregistrer les modifications");
+        alert.setContentText("Choisissez une option :");
+        ButtonType buttonEnregistrer = new ButtonType("Enregistrer");
+        ButtonType buttonNePasEnregistrer = new ButtonType("Ne pas enregistrer");
+        ButtonType buttonAnnuler = new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(buttonEnregistrer, buttonNePasEnregistrer, buttonAnnuler);
+
+        // Afficher la fenêtre de dialogue et attendre la réponse de l'utilisateur
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent()) {
+            if (result.get() == buttonEnregistrer) {
+                if(currentFile == null){
+                    File fichier = choisirFichierEnregistrement();
+                    if(fichier != null){
+                        sauvegardeModele(fichier.getAbsolutePath());
+                        // Procédure pour l'ouverture d'une nouvelle base
+                        fichier = choisirFichierEnregistrement();
+                        if(fichier != null) {
+                            currentFile = choisirFichierEnregistrement().getAbsolutePath();
+                            base_de_donnees = new Base_de_donnees();
+                            chargerLoginPage();
+                        } else {
+                            base_de_donnees = new Base_de_donnees();
+                            chargerLoginPage();
+                        }
+                    } else {
+                        return;
+                    }
+                } else {
+                    // Enregistrer les modifications
+                    sauvegardeModele(currentFile); // Remplacez par le chemin souhaité
+                    // Procédure pour l'ouverture d'une nouvelle base
+                    File fichier = choisirFichierEnregistrement();
+                    if(fichier != null) {
+                        currentFile = fichier.getAbsolutePath();
+                        base_de_donnees = new Base_de_donnees();
+                        chargerLoginPage();
+                    } else {
+                        base_de_donnees = new Base_de_donnees();
+                        chargerLoginPage();
+                    }
+                }
+            } else if (result.get() == buttonNePasEnregistrer) {
+                // Fermer la fenêtre sans enregistrer
+                    // Procédure pour l'ouverture d'une nouvelle base
+                    File fichier = choisirFichierEnregistrement();
+                    if(fichier != null) {
+                        currentFile = fichier.getAbsolutePath();
+                        base_de_donnees = new Base_de_donnees();
+                        chargerLoginPage();
+                    } else {
+                        base_de_donnees = new Base_de_donnees();
+                        chargerLoginPage();
+                    }
+            } else {
+                // Annuler la fermeture
+                System.out.println("Fermeture annulée par l'utilisateur.");
+            }
+        }
+    }
+
+    private void MenuBarOpenAction() {
+        // Créer une fenêtre de dialogue de confirmation
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Enregistrement");
+        alert.setHeaderText("Voulez-vous enregistrer les modifications");
+        alert.setContentText("Choisissez une option :");
+        ButtonType buttonEnregistrer = new ButtonType("Enregistrer");
+        ButtonType buttonNePasEnregistrer = new ButtonType("Ne pas enregistrer");
+        ButtonType buttonAnnuler = new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(buttonEnregistrer, buttonNePasEnregistrer, buttonAnnuler);
+
+        // Afficher la fenêtre de dialogue et attendre la réponse de l'utilisateur
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent()) {
+            if (result.get() == buttonEnregistrer) {
+                if(currentFile == null){
+                    File fichier = choisirFichierEnregistrement();
+                    if(fichier != null){
+                        sauvegardeModele(fichier.getAbsolutePath());
+                        // Procédure pour l'ouverture d'une base existente
+                        File newfichier = ouvrirFileChooser();
+                        if (newfichier != null) {
+                            // Charger les données depuis le fichier
+                            chargerModele(newfichier.getAbsolutePath());
+                            // Enregistrer le chemin pour enregistrer sur ce fichier
+                            currentFile = newfichier.getAbsolutePath();
+                            chargerLoginPage();
+                        } else {
+                            // Si aucun fichier n'est sélectionné, initialiser une base vide
+                            base_de_donnees = new Base_de_donnees();
+                            currentFile = null;
+                            chargerLoginPage();
+                        }
+                    } else {
+                        return;
+                    }
+                } else {
+                    // Enregistrer les modifications
+                    sauvegardeModele(currentFile); // Remplacez par le chemin souhaité
+                    // Procédure pour l'ouverture d'une base existente
+                    File newfichier = ouvrirFileChooser();
+                    if (newfichier != null) {
+                        // Charger les données depuis le fichier
+                        chargerModele(newfichier.getAbsolutePath());
+                            // Enregistrer le chemin pour enregistrer sur ce fichier
+                            currentFile = newfichier.getAbsolutePath();
+                            chargerLoginPage();
+                    } else {
+                        // Si aucun fichier n'est sélectionné, initialiser une base vide
+                        currentFile = null;
+                        base_de_donnees = new Base_de_donnees();
+                        chargerLoginPage();
+                    }
+                }
+            } else if (result.get() == buttonNePasEnregistrer) {
+                // Fermer la fenêtre sans enregistrer
+                // Procédure pour l'ouverture d'une base existente
+                File newfichier = ouvrirFileChooser();
+                if (newfichier != null) {
+                    // Charger les données depuis le fichier
+                    chargerModele(newfichier.getAbsolutePath());
+                    // Enregistrer le chemin pour enregistrer sur ce fichier
+                    currentFile = newfichier.getAbsolutePath();
+                    chargerLoginPage();
+                } else {
+                    // Si aucun fichier n'est sélectionné, initialiser une base vide
+                    currentFile = null;
+                    base_de_donnees = new Base_de_donnees();
+                    chargerLoginPage();
+                }
+            } else {
+                // Annuler la fermeture
+                System.out.println("Fermeture annulée par l'utilisateur.");
+            }
+        }
+    }
+
+    private void MenuBarCloseAction() {
+        // Créer une fenêtre de dialogue de confirmation
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Quitter l'application");
+        alert.setHeaderText("Voulez-vous enregistrer les modifications avant de quitter ?");
+        alert.setContentText("Choisissez une option :");
+        ButtonType buttonEnregistrer = new ButtonType("Enregistrer");
+        ButtonType buttonNePasEnregistrer = new ButtonType("Ne pas enregistrer");
+        ButtonType buttonAnnuler = new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(buttonEnregistrer, buttonNePasEnregistrer, buttonAnnuler);
+
+        // Afficher la fenêtre de dialogue et attendre la réponse de l'utilisateur
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent()) {
+            if (result.get() == buttonEnregistrer) {
+                if(currentFile == null){
+                    File fichier = choisirFichierEnregistrement();
+                    if(fichier != null){
+                        sauvegardeModele(fichier.getAbsolutePath());
+                        currentFile = null;
+                        base_de_donnees = new Base_de_donnees();
+                        chargerLoginPage();
+                    } else {
+                        return;
+                    }
+                } else {
+                    // Enregistrer les modifications
+                    sauvegardeModele(currentFile); // Remplacez par le chemin souhaité
+                    currentFile = null;
+                    base_de_donnees = new Base_de_donnees();
+                    chargerLoginPage();
+                }
+            } else if (result.get() == buttonNePasEnregistrer) {
+                // Fermer la fenêtre sans enregistrer
+                currentFile = null;
+                base_de_donnees = new Base_de_donnees();
+                chargerLoginPage();
+            } else {
+                // Annuler la fermeture
+                System.out.println("Fermeture annulée par l'utilisateur.");
+            }
+        }
+    }
+
+    private void MenuBarSaveAction() {
+        if(currentFile != null){
+            sauvegardeModele(currentFile);
+        } else {
+            File fichier = choisirFichierEnregistrement();
+            if(fichier != null){
+                currentFile = fichier.getAbsolutePath();
+                sauvegardeModele(currentFile);
+            } else {
+                return;
+            }
+        }
+    }
+
+    private void MenuBarSaveAsAction() {
+        File fichier = choisirFichierEnregistrement();
+        if(fichier != null){
+            currentFile = fichier.getAbsolutePath();
+            sauvegardeModele(currentFile);
+        } else {
+            return;
+        }
+    }
+
+    private void MenuBarQuitAction() {
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        demanderEnregistrementAvantFermeture(stage);
     }
 }

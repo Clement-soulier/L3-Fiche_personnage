@@ -78,11 +78,10 @@ public class MainViewController {
                 currentFile = fichier.getAbsolutePath();
             } else {
                 // Si aucun fichier n'est sélectionné, initialiser une base vide
-                base_de_donnees = new Base_de_donnees();
+                initBaseDeDonnes();
             }
         } else {
-            // Initialiser une base vide
-            base_de_donnees = new Base_de_donnees();
+            initBaseDeDonnes();
         }
 
         // Association des boutons de la menubar avec leur comportement
@@ -354,10 +353,10 @@ public class MainViewController {
                         fichier = choisirFichierEnregistrement();
                         if(fichier != null) {
                             currentFile = choisirFichierEnregistrement().getAbsolutePath();
-                            base_de_donnees = new Base_de_donnees();
+                            initBaseDeDonnes();
                             chargerLoginPage();
                         } else {
-                            base_de_donnees = new Base_de_donnees();
+                            initBaseDeDonnes();
                             chargerLoginPage();
                         }
                     } else {
@@ -370,10 +369,10 @@ public class MainViewController {
                     File fichier = choisirFichierEnregistrement();
                     if(fichier != null) {
                         currentFile = fichier.getAbsolutePath();
-                        base_de_donnees = new Base_de_donnees();
+                        initBaseDeDonnes();
                         chargerLoginPage();
                     } else {
-                        base_de_donnees = new Base_de_donnees();
+                        initBaseDeDonnes();
                         chargerLoginPage();
                     }
                 }
@@ -383,10 +382,10 @@ public class MainViewController {
                     File fichier = choisirFichierEnregistrement();
                     if(fichier != null) {
                         currentFile = fichier.getAbsolutePath();
-                        base_de_donnees = new Base_de_donnees();
+                        initBaseDeDonnes();
                         chargerLoginPage();
                     } else {
-                        base_de_donnees = new Base_de_donnees();
+                        initBaseDeDonnes();
                         chargerLoginPage();
                     }
             } else {
@@ -426,7 +425,7 @@ public class MainViewController {
                             chargerLoginPage();
                         } else {
                             // Si aucun fichier n'est sélectionné, initialiser une base vide
-                            base_de_donnees = new Base_de_donnees();
+                            initBaseDeDonnes();
                             currentFile = null;
                             chargerLoginPage();
                         }
@@ -447,7 +446,7 @@ public class MainViewController {
                     } else {
                         // Si aucun fichier n'est sélectionné, initialiser une base vide
                         currentFile = null;
-                        base_de_donnees = new Base_de_donnees();
+                        initBaseDeDonnes();
                         chargerLoginPage();
                     }
                 }
@@ -464,7 +463,7 @@ public class MainViewController {
                 } else {
                     // Si aucun fichier n'est sélectionné, initialiser une base vide
                     currentFile = null;
-                    base_de_donnees = new Base_de_donnees();
+                    initBaseDeDonnes();
                     chargerLoginPage();
                 }
             } else {
@@ -495,7 +494,7 @@ public class MainViewController {
                     if(fichier != null){
                         sauvegardeModele(fichier.getAbsolutePath());
                         currentFile = null;
-                        base_de_donnees = new Base_de_donnees();
+                        initBaseDeDonnes();
                         chargerLoginPage();
                     } else {
                         return;
@@ -504,13 +503,13 @@ public class MainViewController {
                     // Enregistrer les modifications
                     sauvegardeModele(currentFile); // Remplacez par le chemin souhaité
                     currentFile = null;
-                    base_de_donnees = new Base_de_donnees();
+                    initBaseDeDonnes();
                     chargerLoginPage();
                 }
             } else if (result.get() == buttonNePasEnregistrer) {
                 // Fermer la fenêtre sans enregistrer
                 currentFile = null;
-                base_de_donnees = new Base_de_donnees();
+                initBaseDeDonnes();
                 chargerLoginPage();
             } else {
                 // Annuler la fermeture
@@ -546,5 +545,39 @@ public class MainViewController {
     private void MenuBarQuitAction() {
         Stage stage = (Stage) rootPane.getScene().getWindow();
         demanderEnregistrementAvantFermeture(stage);
+    }
+
+    private void initBaseDeDonnes(){
+        base_de_donnees = new Base_de_donnees();
+
+        // Reset les listes statiques
+        Classe.classes = new ArrayList<Classe>();
+        Competence.liste_competence = new ArrayList<Competence>();
+        Equipement.liste_equipement = new ArrayList<Equipement>();
+        Race.races = new ArrayList<Race>();
+        Statistique.liste_stats = new ArrayList<Statistique>();
+
+        // Initialisation d'attribut classique
+        // Statistiques
+        new Statistique("Attaque", "Capacité à faire des dégâts");
+        new Statistique("Défense", "Capacité à encaisser des dégâts des dégâts");
+
+        // Equipements
+        new Equipement("épée", "Une épée qui coupe bien");
+        new Equipement("Bouclier", "Un bouclier qui protège bien");
+
+        // Compétences
+        new Competence("coup d'épée", "Mettre un coup d'épée de base");
+        new Competence("boule de feu", "Jette une boule de feu sur l'adversaire");
+        new Competence("éclair", "Foudroie l'ennemi");
+
+        // Classe
+        new Classe("Chevalier");
+        new Classe("Saint");
+
+        // Race
+        new Race("Humain");
+        new Race("Elfe");
+        new Race("Orc");
     }
 }

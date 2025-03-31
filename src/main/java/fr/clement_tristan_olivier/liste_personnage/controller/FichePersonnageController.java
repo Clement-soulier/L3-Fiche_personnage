@@ -303,8 +303,12 @@ public class FichePersonnageController {
             AddPropertyDialogController controller = loader.getController();
 
             // algo pour récupérer seulement les equipement qui ne sont pas affecté au personnage
-            ArrayList<Equipement> equipementToAdd = Equipement.liste_equipement;
-            equipementToAdd.removeAll(equipementsListViewList);
+            ArrayList<Equipement> equipementToAdd = new ArrayList<>();
+            for(Equipement equip : Equipement.liste_equipement){
+                if(!equipementsListViewList.contains(equip)){
+                    equipementToAdd.add(equip);
+                }
+            }
 
             // Création de la liste observable depuis la liste des éléments à ajouter
             ObservableList<Equipement> equipementsToAddObservable = FXCollections.observableArrayList(equipementToAdd);
@@ -335,9 +339,12 @@ public class FichePersonnageController {
             AddPropertyDialogController controller = loader.getController();
 
             // algo pour récupérer seulement les compétences qui ne sont pas affecté au personnage
-            ArrayList<Competence> skillsToAdd = Competence.liste_competence;
-            skillsToAdd.removeAll(skillsListViewList);
-
+            ArrayList<Competence> skillsToAdd = new ArrayList<>();
+            for(Competence comp : Competence.liste_competence){
+                if(!skillsListViewList.contains(comp)){
+                    skillsToAdd.add(comp);
+                }
+            } 
             // Création de la liste observable depuis la liste des éléments à ajouter
             ObservableList<Competence> skillsToAddObservable = FXCollections.observableArrayList(skillsToAdd);
 
@@ -362,13 +369,13 @@ public class FichePersonnageController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Ajouter Race");
             stage.setScene(new Scene(loader.load()));
-            
+
             // Récupération du controleur
             AddPropertyDialogController controller = loader.getController();
 
             // Passage du modèle à la nouvelle fenêtre
             controller.setRace(raceComboBoxList, this);
-            
+
             // Ouvrir la fenêtre et bloqué la fenêtre courante
             stage.showAndWait();
         } catch(IOException e) {
@@ -386,13 +393,13 @@ public class FichePersonnageController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Ajouter Classe");
             stage.setScene(new Scene(loader.load()));
-            
+
             // Récupération du controleur
             AddPropertyDialogController controller = loader.getController();
 
             // Passage du modèle à la nouvelle fenêtre
             controller.setClasse(classeComboBoxList, this);
-            
+
             // Ouvrir la fenêtre et bloqué la fenêtre courante
             stage.showAndWait();
         } catch(IOException e) {
@@ -415,13 +422,10 @@ public class FichePersonnageController {
             AddPropertyDialogController controller = loader.getController();
 
             // algo pour récupérer seulement les statistiques qui ne sont pas affecté au personnage
-            ArrayList<Statistique> statsToAdd = Statistique.liste_stats;
-            Iterator<Statistique> iterator = statsToAdd.iterator();
-            while(iterator.hasNext()) {
-                Statistique stat = iterator.next();
-                boolean condition = statsComboBoxList.stream().anyMatch(entry -> entry.getKey().equals(stat));
-                if(condition) {
-                    iterator.remove();
+            ArrayList<Statistique> statsToAdd = new ArrayList<>();
+            for(Statistique stat : Statistique.liste_stats){
+                if(!statsComboBoxList.stream().anyMatch(entry -> entry.getKey().equals(stat))){
+                    statsToAdd.add(stat);
                 }
             }
 
@@ -489,7 +493,7 @@ public class FichePersonnageController {
 
     private void Validate(){
         // Si c'est un ajout de personnage le rajouter au compte
-        if(personnage.nom.isEmpty()){
+        if(!personnage.nom.isEmpty()){
             mainViewController.compte.ajouter_personnage(personnage);
         }
         // Vérification que le personnage à au moins un nom pour pouvoir l'enregistrer

@@ -84,8 +84,6 @@ public class AddPropertyDialogController {
                 Equipement selectedEquipement = comboBoxEquipement.getSelectionModel().getSelectedItem();
                 if(selectedEquipement != null) {
                     equipementsFromCaller.add(selectedEquipement);
-                    //déclaration de l'équipement pour le model
-                    new Equipement(propertyName, propertyDesc);
                     ((Stage) btnAjouter.getScene().getWindow()).close();
                 }
             }
@@ -103,9 +101,10 @@ public class AddPropertyDialogController {
             } else {
                 Statistique selectedStat = comboBoxStat.getSelectionModel().getSelectedItem();
                 if(selectedStat != null) {
-                    statsFromCaller.add(new AbstractMap.SimpleEntry<>(selectedStat, 0));
-                    //déclaration de l'équipement pour le model
-                    new Statistique(propertyName, propertyDesc);
+                    AbstractMap.SimpleEntry<Statistique, Integer> newEntry = new  AbstractMap.SimpleEntry<>(selectedStat, 0);
+                    statsFromCaller.add(newEntry);
+                    // set la comboBox sur la statistique ajoutée
+                    callerController.statsComboBox.getSelectionModel().select(newEntry);
                     ((Stage) btnAjouter.getScene().getWindow()).close();
                 }
             }
@@ -120,10 +119,8 @@ public class AddPropertyDialogController {
                 Competence selectedSkill = comboBoxSkill.getSelectionModel().getSelectedItem();
                 if(selectedSkill != null) {
                     skillsFromCaller.add(selectedSkill);
-                    //déclaration de l'équipement pour le model
-                    new Competence(propertyName, propertyDesc);
+                    ((Stage) btnAjouter.getScene().getWindow()).close();
                 }
-                ((Stage) btnAjouter.getScene().getWindow()).close();
             }
         }
         if(raceFromCaller != null) {
@@ -198,7 +195,7 @@ public class AddPropertyDialogController {
         comboBoxStat.setButtonCell(statCellule());
 
         // mettre les éléments dans la combobox
-        comboBoxSkill.setItems(skills);
+        comboBoxStat.setItems(stats);
     }
 
     public void setRace(ObservableList<Race> model, FichePersonnageController controller){

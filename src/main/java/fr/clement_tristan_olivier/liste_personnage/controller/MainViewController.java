@@ -211,6 +211,13 @@ public class MainViewController {
     }
 
     public void sauvegardeModele(String path){
+        // Récupération des listes statiques
+        base_de_donnees.classes = Classe.classes;
+        base_de_donnees.competences = Competence.liste_competence;
+        base_de_donnees.equipements = Equipement.liste_equipement;
+        base_de_donnees.races = Race.races;
+        base_de_donnees.statistiques = Statistique.liste_stats;
+
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
             oos.writeObject(base_de_donnees);
             System.out.println("Modèle sauvegardé avec succès dans : " + path);
@@ -223,6 +230,12 @@ public class MainViewController {
     public void chargerModele(String path){
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
             base_de_donnees = (Base_de_donnees) ois.readObject();
+            // repassage des listes statiques
+            Classe.classes = base_de_donnees.classes;
+            Competence.liste_competence = base_de_donnees.competences;
+            Equipement.liste_equipement = base_de_donnees.equipements;
+            Race.races = base_de_donnees.races;
+            Statistique.liste_stats = base_de_donnees.statistiques;
             System.out.println("Données chargées avec succès depuis " + path);
         } catch(IOException | ClassNotFoundException e){
             e.printStackTrace();

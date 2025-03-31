@@ -10,6 +10,11 @@ import fr.clement_tristan_olivier.liste_personnage.utils.passwordUtils;
  */
 public class Base_de_donnees implements Serializable{
     public ArrayList<Compte> utilisateurs;
+    public ArrayList<Classe> classes;
+    public ArrayList<Competence> competences;
+    public ArrayList<Equipement> equipements;
+    public ArrayList<Race> races;
+    public ArrayList<Statistique> statistiques;
 
     /**
      * Constructeur pour Base_de_donnees.

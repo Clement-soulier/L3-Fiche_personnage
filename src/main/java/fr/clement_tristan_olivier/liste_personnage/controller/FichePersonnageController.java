@@ -3,7 +3,6 @@ package fr.clement_tristan_olivier.liste_personnage.controller;
 import fr.clement_tristan_olivier.liste_personnage.model.*;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.ArrayList;
 import java.io.IOException;
@@ -493,7 +492,7 @@ public class FichePersonnageController {
 
     private void Validate(){
         // Si c'est un ajout de personnage le rajouter au compte
-        if(!personnage.nom.isEmpty()){
+        if(!nameTextField.getText().isEmpty()){
             mainViewController.compte.ajouter_personnage(personnage);
         }
         // Vérification que le personnage à au moins un nom pour pouvoir l'enregistrer

@@ -28,6 +28,7 @@ import javafx.stage.FileChooser;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar;
+import javafx.scene.Scene;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.stage.Modality;
@@ -61,6 +62,8 @@ public class MainViewController {
     private MenuItem MenuBarQuit;
     @FXML
     private MenuItem MenuBarPersonnage;
+    @FXML
+    private MenuItem MenuBarEditProperty;
 
     @FXML
     private void initialize() {
@@ -92,6 +95,7 @@ public class MainViewController {
         MenuBarSaveAs.setOnAction(_ -> MenuBarSaveAsAction());
         MenuBarQuit.setOnAction(_ -> MenuBarQuitAction());
         MenuBarPersonnage.setOnAction(_ -> chargerListePersonnage());
+        MenuBarEditProperty.setOnAction(_ -> chargerEditProperty());
 
         chargerLoginPage();
 
@@ -206,6 +210,24 @@ public class MainViewController {
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("エラーが発生しました！FXMLが見つかりません！");
+        }
+    }
+
+    private void chargerEditProperty() {
+        try{
+            // Chargement de la fenêtre de pop-up
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/EditProperty.fxml"));
+            Stage stage = new Stage();
+
+            // Paramétrage de la fenêtre de pop-up
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Editer les propriétés");
+            stage.setScene(new Scene(loader.load()));
+
+            // Ouvrir la fenêtre et bloqué la fenêtre courante
+            stage.showAndWait();
+        } catch(IOException e) {
+            e.printStackTrace();
         }
     }
 

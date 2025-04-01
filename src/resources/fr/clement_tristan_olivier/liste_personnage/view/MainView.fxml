@@ -25,6 +25,7 @@
         <Menu mnemonicParsing="false" text="Characters">
           <items>
             <MenuItem fx:id="MenuBarPersonnage" mnemonicParsing="false" text="Liste des personnages" />
+            <MenuItem fx:id="MenuBarEditProperty" mnemonicParsing="false" text="Editer les propriétés" />
           </items>
         </Menu>
       </menus>

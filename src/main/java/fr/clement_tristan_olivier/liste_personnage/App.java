@@ -22,6 +22,8 @@ public class App extends Application
 
             // Configuration et affichage de la fenêtre principale
             primaryStage.setTitle("Test app");
+            primaryStage.setWidth(650);
+            primaryStage.setHeight(463);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch(Exception e){

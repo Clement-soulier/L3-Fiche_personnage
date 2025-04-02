@@ -222,6 +222,8 @@ public class MainViewController {
             // Paramétrage de la fenêtre de pop-up
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Editer les propriétés");
+            stage.setWidth(300);
+            stage.setHeight(350);
             stage.setScene(new Scene(loader.load()));
 
             // Ouvrir la fenêtre et bloqué la fenêtre courante

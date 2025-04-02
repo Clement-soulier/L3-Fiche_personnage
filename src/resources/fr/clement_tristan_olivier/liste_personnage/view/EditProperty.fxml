@@ -7,10 +7,14 @@
     <Label fx:id="labelEdit" text="Sélectionner la propriété à éditer"/>
     <ComboBox fx:id="comboBoxPropertySelect" promptText="Choisir une propriété" />
     <Label fx:id="labelProperty" />
-    <ComboBox fx:id="comboBoxProperty" />
+    <ComboBox fx:id="comboBoxPropertyClasse" promptText="Choisir une classe" visible="false" managed="false" />
+    <ComboBox fx:id="comboBoxPropertyCompetence" promptText="Choisir une compétence" visible="false" managed="false"/>
+    <ComboBox fx:id="comboBoxPropertyEquipement" promptText="Choisir une équipement" visible="false" managed="false"/>
+    <ComboBox fx:id="comboBoxPropertyRace" promptText="Choisir une Race" visible="false" managed="false"/>
+    <ComboBox fx:id="comboBoxPropertyStatistique" promptText="Choisir une statistique" visible="false" managed="false"/>
     <Label fx:id="labelName" text="Nom"/>
     <TextField fx:id="textFieldName" />
-    <Label fx:id="labelDesc" />
+    <Label fx:id="labelDesc" text="Description"/>
     <TextField fx:id="textFieldDesc" />
     <Button fx:id="btnValider" text="Valider Changement"/>
 

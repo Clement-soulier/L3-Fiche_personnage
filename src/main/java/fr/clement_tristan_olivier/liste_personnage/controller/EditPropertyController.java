@@ -15,7 +15,15 @@ public class EditPropertyController {
     @FXML
     private Label labelProperty;
     @FXML
-    private ComboBox<Object> comboBoxProperty;
+    private ComboBox<Classe> comboBoxPropertyClasse;
+    @FXML
+    private ComboBox<Competence> comboBoxPropertyCompetence;
+    @FXML
+    private ComboBox<Equipement> comboBoxPropertyEquipement;
+    @FXML
+    private ComboBox<Race> comboBoxPropertyRace;
+    @FXML
+    private ComboBox<Statistique> comboBoxPropertyStatistique;
     @FXML
     private TextField textFieldName;
     @FXML
@@ -36,53 +44,110 @@ public class EditPropertyController {
         });
 
         // Set le listener pour remplir les champs lors du changement de propriété
-        comboBoxProperty.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
+        comboBoxPropertyClasse.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
             setTextFieldsForProperty(newValue);
         });
+        comboBoxPropertyClasse.setCellFactory(_ -> classeCellule());
+        comboBoxPropertyClasse.setButtonCell(classeCellule());
+
+        comboBoxPropertyCompetence.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
+            setTextFieldsForProperty(newValue);
+        });
+        comboBoxPropertyCompetence.setCellFactory(_ -> skillCellule());
+        comboBoxPropertyCompetence.setButtonCell(skillCellule());
+
+        comboBoxPropertyEquipement.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
+            setTextFieldsForProperty(newValue);
+        });
+        comboBoxPropertyEquipement.setCellFactory(_ -> equipementCellule());
+        comboBoxPropertyEquipement.setButtonCell(equipementCellule());
+
+        comboBoxPropertyRace.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
+            setTextFieldsForProperty(newValue);
+        });
+        comboBoxPropertyRace.setCellFactory(_ -> raceCellule());
+        comboBoxPropertyRace.setButtonCell(raceCellule());
+
+        comboBoxPropertyStatistique.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
+            setTextFieldsForProperty(newValue);
+        });
+        comboBoxPropertyStatistique.setCellFactory(_ -> statistiqueCellule());
+        comboBoxPropertyStatistique.setButtonCell(statistiqueCellule());
+        
 
         // Set le comportement du bouton valider
         btnValider.setOnAction(_ -> handleValidateButton());
     }
 
     private void propertySelectionChangedAction(String property){
-        comboBoxProperty.getSelectionModel().clearSelection();
-        comboBoxProperty.getItems().clear();
-        comboBoxProperty.setCellFactory(null);
-        comboBoxProperty.setButtonCell(null);
+        // Reset de toutes les comboBox
+        comboBoxPropertyClasse.getSelectionModel().clearSelection();
+        comboBoxPropertyClasse.getItems().clear();
+        comboBoxPropertyCompetence.getSelectionModel().clearSelection();
+        comboBoxPropertyCompetence.getItems().clear();
+        comboBoxPropertyEquipement.getSelectionModel().clearSelection();
+        comboBoxPropertyEquipement.getItems().clear();
+        comboBoxPropertyRace.getSelectionModel().clearSelection();
+        comboBoxPropertyRace.getItems().clear();
+        comboBoxPropertyStatistique.getSelectionModel().clearSelection();
+        comboBoxPropertyStatistique.getItems().clear();
+
+        // Cacher les label et textfield desc
+        labelDesc.setVisible(false);
+        textFieldDesc.setVisible(false);
+
+        // Cacher toutes les comboBox
+        comboBoxPropertyClasse.setVisible(false);
+        comboBoxPropertyClasse.setManaged(false);
+        comboBoxPropertyCompetence.setVisible(false);
+        comboBoxPropertyCompetence.setManaged(false);
+        comboBoxPropertyEquipement.setVisible(false);
+        comboBoxPropertyEquipement.setManaged(false);
+        comboBoxPropertyRace.setVisible(false);
+        comboBoxPropertyRace.setManaged(false);
+        comboBoxPropertyStatistique.setManaged(false);
+
         switch (property) {
             case "Classes":
-                comboBoxProperty.setCellFactory(_ -> (ListCell<Object>) (ListCell<?>) classeCellule());
-                comboBoxProperty.setButtonCell((ListCell<Object>) (ListCell<?>) classeCellule());
-                comboBoxProperty.getItems().setAll(Classe.classes); 
+                comboBoxPropertyClasse.getItems().setAll(Classe.classes);
+                comboBoxPropertyClasse.setVisible(true);
+                comboBoxPropertyClasse.setManaged(true);
                 labelProperty.setText("Choisir la Classe à modifier");
                 break;
             case "Compétences":
-                comboBoxProperty.setCellFactory(_ -> (ListCell<Object>) (ListCell<?>) skillCellule());
-                comboBoxProperty.setButtonCell((ListCell<Object>) (ListCell<?>) skillCellule());
-                comboBoxProperty.getItems().setAll(Competence.liste_competence);
+                comboBoxPropertyCompetence.getItems().setAll(Competence.liste_competence);
+                comboBoxPropertyCompetence.setVisible(true);
+                comboBoxPropertyCompetence.setManaged(true);
                 labelProperty.setText("Choisir la compétence à modifier");
+                // Afficher les label et textField desc
+                labelDesc.setVisible(true);
+                textFieldDesc.setVisible(true);
                 break;
             case "Equipements":
-                comboBoxProperty.setCellFactory(_ -> (ListCell<Object>) (ListCell<?>) equipementCellule());
-                comboBoxProperty.setButtonCell((ListCell<Object>) (ListCell<?>) equipementCellule());
-                comboBoxProperty.getItems().setAll(Equipement.liste_equipement); 
+                comboBoxPropertyEquipement.getItems().setAll(Equipement.liste_equipement); 
+                comboBoxPropertyEquipement.setVisible(true);
+                comboBoxPropertyEquipement.setManaged(true);
                 labelProperty.setText("Choisir l'équipement à modifier");
+                // Afficher les label et textField desc
+                labelDesc.setVisible(true);
+                textFieldDesc.setVisible(true);
                 break;
             case "Races":
-                comboBoxProperty.setCellFactory(_ -> (ListCell<Object>) (ListCell<?>) raceCellule());
-                comboBoxProperty.setButtonCell((ListCell<Object>) (ListCell<?>) raceCellule());
-                comboBoxProperty.getItems().setAll(Race.races);
+                comboBoxPropertyRace.getItems().setAll(Race.races);
+                comboBoxPropertyRace.setVisible(true);
+                comboBoxPropertyRace.setManaged(true);
                 labelProperty.setText("Choisir la race à modifier");
                 break;
             case "Statistiques":
-                
-                comboBoxProperty.setCellFactory(_ -> (ListCell<Object>) (ListCell<?>) statistiqueCellule());
-                comboBoxProperty.setButtonCell((ListCell<Object>) (ListCell<?>) statistiqueCellule());
-                comboBoxProperty.getItems().setAll(Statistique.liste_stats); 
+                comboBoxPropertyStatistique.getItems().setAll(Statistique.liste_stats); 
+                comboBoxPropertyStatistique.setVisible(true);
+                comboBoxPropertyStatistique.setManaged(true);
                 labelProperty.setText("Choisir la statistique à modifier");
+                // Afficher les label et textField desc
+                labelDesc.setVisible(true);
+                textFieldDesc.setVisible(true);
                 break;
             default:
-                comboBoxProperty.getItems().setAll(); 
         }
     }
 
@@ -92,14 +157,14 @@ public class EditPropertyController {
             labelDesc.setVisible(false);
             textFieldDesc.setVisible(false);
 
-            Classe classe = (Classe) comboBoxProperty.getSelectionModel().getSelectedItem();
+            Classe classe = (Classe) comboBoxPropertyClasse.getSelectionModel().getSelectedItem();
             textFieldName.setText(classe.nom);
         } else if(value instanceof Competence){
             // Rendre visible la partie descriptioon
             labelDesc.setVisible(true);
             textFieldDesc.setVisible(true);
 
-            Competence competence = (Competence) comboBoxProperty.getSelectionModel().getSelectedItem();
+            Competence competence = (Competence) comboBoxPropertyCompetence.getSelectionModel().getSelectedItem();
             textFieldName.setText(competence.nom);
             textFieldDesc.setText(competence.description);
         } else if(value instanceof Equipement) {
@@ -107,7 +172,7 @@ public class EditPropertyController {
             labelDesc.setVisible(true);
             textFieldDesc.setVisible(true);
 
-            Equipement equipement = (Equipement) comboBoxProperty.getSelectionModel().getSelectedItem();
+            Equipement equipement = (Equipement) comboBoxPropertyEquipement.getSelectionModel().getSelectedItem();
             textFieldName.setText(equipement.nom);
             textFieldDesc.setText(equipement.description);
         } else if (value instanceof Race){
@@ -115,14 +180,14 @@ public class EditPropertyController {
             labelDesc.setVisible(false);
             textFieldDesc.setVisible(false);
 
-            Race race = (Race) comboBoxProperty.getSelectionModel().getSelectedItem();
+            Race race = (Race) comboBoxPropertyRace.getSelectionModel().getSelectedItem();
             textFieldName.setText(race.nom);
         } else if(value instanceof Statistique){
             // Rendre visible la partie descriptioon
             labelDesc.setVisible(true);
             textFieldDesc.setVisible(true);
 
-            Statistique statistique = (Statistique) comboBoxProperty.getSelectionModel().getSelectedItem();
+            Statistique statistique = (Statistique) comboBoxPropertyStatistique.getSelectionModel().getSelectedItem();
             textFieldName.setText(statistique.nom);
             textFieldDesc.setText(statistique.description);
         }
@@ -135,25 +200,22 @@ public class EditPropertyController {
 
         // Validation des champs non nul avant de continuer
         if(!nom.isEmpty() && !desc.isEmpty()){
-            // récupérer la sélectioon
-            Object var = comboBoxProperty.getSelectionModel().getSelectedItem();
-            if(var instanceof Classe){
-                System.out.println("Classe mise à jour");
-                Classe classe = (Classe) var;
+            Classe classe = comboBoxPropertyClasse.getSelectionModel().getSelectedItem();
+            Competence comp = comboBoxPropertyCompetence.getSelectionModel().getSelectedItem();
+            Equipement equipement = comboBoxPropertyEquipement.getSelectionModel().getSelectedItem();
+            Race race = comboBoxPropertyRace.getSelectionModel().getSelectedItem();
+            Statistique statistique = comboBoxPropertyStatistique.getSelectionModel().getSelectedItem();
+            if(classe !=null){
                 classe.nom = nom;
-            } else if(var instanceof Competence) {
-                Competence comp = (Competence) var;
+            } else if(comp != null) {
                 comp.nom = nom;
                 comp.description = desc;
-            } else if(var instanceof Equipement) {
-                Equipement equipement = (Equipement) var;
+            } else if(equipement != null) {
                 equipement.nom = nom;
                 equipement.description = desc;
-            } else if(var instanceof Race) {
-                Race race = (Race) var;
+            } else if(race != null) {
                 race.nom = nom;
-            } else if(var instanceof Statistique){
-                Statistique statistique = (Statistique) var;
+            } else if(statistique != null){
                 statistique.nom = nom;
                 statistique.description = desc;
             }

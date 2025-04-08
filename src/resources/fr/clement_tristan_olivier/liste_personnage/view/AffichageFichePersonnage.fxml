@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="107.0" fitWidth="80.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/AVATAR_PLACEHOLDER.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="103.0" layoutY="14.0" text="The Rock Johnson" />
+      <TextArea layoutX="103.0" layoutY="56.0" prefHeight="62.0" prefWidth="160.0" style="-fx-border-color: black;" />
+      <ImageView fitHeight="35.0" fitWidth="250.0" layoutX="336.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/RACE.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="336.0" layoutY="36.0" prefHeight="24.0" prefWidth="250.0" style="-fx-border-color: black;" text="Golem de pierre" />
+      <ImageView fitHeight="35.0" fitWidth="250.0" layoutX="336.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/CLASS.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="336.0" layoutY="94.0" prefHeight="24.0" prefWidth="250.0" style="-fx-border-color: black;" text="WWE Champion" />
+      <Label layoutX="104.0" layoutY="37.0" text="Biographie :" />
+      <ImageView fitHeight="35.0" fitWidth="250.0" layoutX="14.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/STATS.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="250.0" layoutX="336.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/EQUIPEMENTS.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="250.0" layoutX="14.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/SKILLS.png" />
+         </image>
+      </ImageView>
+      <ListView layoutX="336.0" layoutY="152.0" prefHeight="233.0" prefWidth="250.0" style="-fx-border-color: black;" />
+      <ListView layoutX="14.0" layoutY="151.0" prefHeight="100.0" prefWidth="249.0" style="-fx-border-color: black;" />
+      <ListView layoutX="14.0" layoutY="285.0" prefHeight="100.0" prefWidth="249.0" style="-fx-border-color: black;" />
+   </children>
+</AnchorPane>

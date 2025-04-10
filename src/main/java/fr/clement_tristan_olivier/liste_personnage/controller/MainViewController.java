@@ -134,6 +134,35 @@ public class MainViewController {
         }
     }
 
+    public void chargerAffichageFichePersonnage(){
+        try {
+            // Chargement de la vue
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/view/AffichageFichePersonnage.fxml"));
+            Stage stage = new Stage();
+
+            // Paramétrage de la fenêtre de pop-up
+            // stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle(personnage.nom);
+            stage.setScene(new Scene(loader.load()));
+
+            // Récupération du controleur
+            AffichageFichePersonnageController controller = loader.getController();
+
+            // Passage du modèle et du controler principal au controleur de la vue
+            controller.setModele(personnage);
+
+            // Initialiser la vue
+            controller.initialiserVue();
+
+            // Afficher la vue dans la fenêtre
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void chargerLoginPage() {
         try {
             // chargement de la vue

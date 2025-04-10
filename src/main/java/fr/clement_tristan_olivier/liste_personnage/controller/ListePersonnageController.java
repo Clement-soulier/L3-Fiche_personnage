@@ -21,6 +21,8 @@ public class ListePersonnageController {
     @FXML
     private Button AddToListButton;
     @FXML
+    private Button ViewPersonnage;
+    @FXML
     private Button ClosePageButton;
 
 
@@ -31,6 +33,7 @@ public class ListePersonnageController {
         EditFromListButton.setOnAction(_ -> handleEditFromListButtonAction());
         AddToListButton.setOnAction(_ -> handleAddToListButtonAction());
         ClosePageButton.setOnAction(_ -> handleClosePageButtonAction());
+        ViewPersonnage.setOnAction(_ -> handleViewPersonnageActioon());
 
         // Set configure et initialise la comboBox
         // Agordi la cellFactory por montri toSimpleString()
@@ -75,6 +78,16 @@ public class ListePersonnageController {
         }
         this.compte.supprimer_personnage(personnage);
         this.ComboBoxListe.getItems().remove(personnage);
+    }
+
+    @FXML
+    private void handleViewPersonnageActioon() {
+        Personnage personnage = this.ComboBoxListe.getSelectionModel().getSelectedItem();
+        if(personnage == null){
+            return;
+        }
+        this.mainViewController.personnage = personnage;
+        this.mainViewController.chargerAffichageFichePersonnage();
     }
 
     /**

@@ -18,6 +18,7 @@
             <Button fx:id="DeleteFromListButton" mnemonicParsing="false" text="Delete from list" />
             <Button fx:id="EditFromListButton" mnemonicParsing="false" text="Edit from list" />
             <Button fx:id="AddToListButton" mnemonicParsing="false" text="Add to list" />
+            <Button fx:id="ViewPersonnage" mnemonicParsing="false" text="View from list"/>
          </children>
       </VBox>
       <Button fx:id="ClosePageButton" alignment="CENTER" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" text="Log out" />

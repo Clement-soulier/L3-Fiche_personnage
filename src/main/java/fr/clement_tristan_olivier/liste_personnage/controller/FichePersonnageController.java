@@ -141,6 +141,8 @@ public class FichePersonnageController {
         classeComboBoxList = FXCollections.observableArrayList(Classe.classes);
         // Lien entre la liste et la comboBox
         classCombobox.setItems(classeComboBoxList);
+        //sélectione la class du pêrsoonnage
+        classCombobox.setValue(personnage.classe);
         // Utilisation de l'affichage personnalisé
         classCombobox.setCellFactory(_ -> classeCellule());
         classCombobox.setButtonCell(classeCellule());
@@ -150,6 +152,8 @@ public class FichePersonnageController {
         raceComboBoxList = FXCollections.observableArrayList(Race.races);
         // Lien entre la liste et la comboBox
         raceCombobox.setItems(raceComboBoxList);
+        //sélectionne la race du personnage
+        raceCombobox.setValue(personnage.race);
         // Utilisation de l'affichage personnalisé
         raceCombobox.setCellFactory(_ -> RaceCellule());
         raceCombobox.setButtonCell(RaceCellule());

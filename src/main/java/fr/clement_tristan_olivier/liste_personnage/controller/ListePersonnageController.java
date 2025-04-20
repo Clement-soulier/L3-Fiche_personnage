@@ -2,11 +2,10 @@ package fr.clement_tristan_olivier.liste_personnage.controller;
 
 import fr.clement_tristan_olivier.liste_personnage.model.Compte;
 import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
-
+import fr.clement_tristan_olivier.liste_personnage.model.PersonnageCellFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
 
 public class ListePersonnageController {
     public MainViewController mainViewController;
@@ -37,9 +36,9 @@ public class ListePersonnageController {
 
         // Set configure et initialise la comboBox
         // Agordi la cellFactory por montri toSimpleString()
-        ComboBoxListe.setCellFactory(_ -> PersonnageCellule());
+        ComboBoxListe.setCellFactory(new PersonnageCellFactory());
         // Agordi la buttonCell por montri toSimpleString() por la elektita objekto
-        ComboBoxListe.setButtonCell(PersonnageCellule());
+        ComboBoxListe.setButtonCell(new PersonnageCellFactory().call(null));
         setup_liste_personnages();
     }
 
@@ -107,15 +106,5 @@ public class ListePersonnageController {
         }
         mainViewController.personnage = personnage;
         this.mainViewController.chargerFichePersonnage();
-    }
-
-    private ListCell<Personnage> PersonnageCellule() {
-        return new ListCell<Personnage>() {
-            @Override
-            protected void updateItem(Personnage item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty || item == null ? null : item.toSimpleString());
-            }
-        };
     }
 }

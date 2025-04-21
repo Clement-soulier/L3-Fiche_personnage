@@ -14,7 +14,7 @@ public class PersonnageCellFactory implements Callback<ListView<Personnage>, Lis
                 if (empty || item == null) {
                     setText(null);
                 } else {
-                    setText(item.nom +" | "+item.classe.nom);
+                    setText(item.nom);
                 }
             }
         };

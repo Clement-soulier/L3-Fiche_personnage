@@ -164,8 +164,8 @@ public class FichePersonnageController {
         // lien entre liste et BOmboBOx
         statsComboBox.setItems(statsComboBoxList);
         // Utilisation de l'affichage personalisé
-        statsComboBox.setCellFactory(_ -> statCellule());
-        statsComboBox.setButtonCell(statCellule());
+        statsComboBox.setCellFactory(new StatistiqueCellFactory());
+        statsComboBox.setButtonCell(new StatistiqueCellFactory().call(null));
 
         // Paramétrage du spinner des stats
         statsSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99, 0));
@@ -534,7 +534,7 @@ public class FichePersonnageController {
         Alert alert = new Alert(AlertType.WARNING);
         alert.setTitle( "Information");
         alert.setHeaderText(null);
-        alert.setContentText("Veuillez renseinger au moins un nom avant d'enregistrer le personage");
+        alert.setContentText("Veuillez renseigner au moins un nom avant d'enregistrer le personage");
 
         alert.showAndWait();
     }

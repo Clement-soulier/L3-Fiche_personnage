@@ -174,8 +174,8 @@ public class AddPropertyDialogController {
             comboBoxSkill.setManaged(true);
         }
         // Set affichage de la combobox
-        comboBoxSkill.setCellFactory(_ -> skillCellule());
-        comboBoxSkill.setButtonCell(skillCellule());
+        comboBoxSkill.setCellFactory(new CompetenceCellFactory());
+        comboBoxSkill.setButtonCell(new CompetenceCellFactory().call(null));
 
         // mettre les éléments dans la combobox
         comboBoxSkill.setItems(skills);
@@ -191,8 +191,8 @@ public class AddPropertyDialogController {
             comboBoxStat.setManaged(true);
         }
         // Set affichage de la combobox
-        comboBoxStat.setCellFactory(_ -> statCellule());
-        comboBoxStat.setButtonCell(statCellule());
+        comboBoxStat.setCellFactory(new StatistiqueCellFactory());
+        comboBoxStat.setButtonCell(new StatistiqueCellFactory().call(null));
 
         // mettre les éléments dans la combobox
         comboBoxStat.setItems(stats);

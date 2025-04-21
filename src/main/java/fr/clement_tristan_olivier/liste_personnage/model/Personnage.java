@@ -241,14 +241,6 @@ public class Personnage implements Serializable{
     }
 
     /**
-     * Renvoie un affichage simplifié pour l'objet.
-     * @return String
-     */
-    public String toSimpleString(){
-        return this.nom;
-    }
-
-    /**
      * Renvoie un string représentant l'objet pour affichage.
      * @return String
      */

@@ -158,8 +158,8 @@ public class AddPropertyDialogController {
             comboBoxEquipement.setManaged(true);
         }
         // Set affichage de la combobox
-        comboBoxEquipement.setCellFactory(_ -> equipementCellule());
-        comboBoxEquipement.setButtonCell(equipementCellule());
+        comboBoxEquipement.setCellFactory(new EquipementCellFactory());
+        comboBoxEquipement.setButtonCell(new EquipementCellFactory().call(null));
 
         // mettre les éléments dans la combobox
         comboBoxEquipement.setItems(equipements);

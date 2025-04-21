@@ -126,7 +126,7 @@ public class FichePersonnageController {
         // lien entre la liste et la comboBox
         equipementsListView.setItems(equipementsListViewList);
         // utilisation de l'afichage personalisé
-        equipementsListView.setCellFactory(_ -> equipementCellule());
+        equipementsListView.setCellFactory(new EquipementCellFactory());
 
         // ComboBox Competences
         // Ajout des compétences dans la liste observable
@@ -134,7 +134,7 @@ public class FichePersonnageController {
         // Lien entre la liste et la comboBox
         skillsListView.setItems(skillsListViewList);
         // Utilisation de l'affichage personalisé
-        skillsListView.setCellFactory(_ -> skillCellule());
+        skillsListView.setCellFactory(new CompetenceCellFactory());
 
         // ComboBox class
         // Ajout des classes dans la liste observable
@@ -144,8 +144,8 @@ public class FichePersonnageController {
         //sélectione la class du pêrsoonnage
         classCombobox.setValue(personnage.classe);
         // Utilisation de l'affichage personnalisé
-        classCombobox.setCellFactory(_ -> classeCellule());
-        classCombobox.setButtonCell(classeCellule());
+        classCombobox.setCellFactory(new ClasseCellFactory());
+        classCombobox.setButtonCell(new ClasseCellFactory().call(null));
 
         // ComboBox race
         // Ajout des éléments dans la liste observable
@@ -155,8 +155,8 @@ public class FichePersonnageController {
         //sélectionne la race du personnage
         raceCombobox.setValue(personnage.race);
         // Utilisation de l'affichage personnalisé
-        raceCombobox.setCellFactory(_ -> RaceCellule());
-        raceCombobox.setButtonCell(RaceCellule());
+        raceCombobox.setCellFactory(new RaceCellFactory());
+        raceCombobox.setButtonCell(new RaceCellFactory().call(null));
 
         // Combobox Statistiques
         // Ajout des éléments dans la liste observable
@@ -164,8 +164,8 @@ public class FichePersonnageController {
         // lien entre liste et BOmboBOx
         statsComboBox.setItems(statsComboBoxList);
         // Utilisation de l'affichage personalisé
-        statsComboBox.setCellFactory(new StatistiqueCellFactory());
-        statsComboBox.setButtonCell(new StatistiqueCellFactory().call(null));
+        statsComboBox.setCellFactory(new StatistiqueMapEntryCellFactory());
+        statsComboBox.setButtonCell(new StatistiqueMapEntryCellFactory().call(null));
 
         // Paramétrage du spinner des stats
         statsSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99, 0));

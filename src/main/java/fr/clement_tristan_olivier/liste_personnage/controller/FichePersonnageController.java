@@ -408,7 +408,11 @@ public class FichePersonnageController {
             mainViewController.compte.ajouter_personnage(personnage);
         }
         // Vérification que le personnage à au moins un nom pour pouvoir l'enregistrer
-        if(nameTextField.getText().isEmpty()){
+        boolean nameVerif = !nameTextField.getText().isEmpty();
+        Classe classVerif = classCombobox.getSelectionModel().getSelectedItem();
+        Race raceVerif = raceCombobox.getSelectionModel().getSelectedItem();
+        
+        if (!nameVerif || classVerif == null || raceVerif == null) {
             dataValidationWarning();
             return;
         }
@@ -442,7 +446,7 @@ public class FichePersonnageController {
         Alert alert = new Alert(AlertType.WARNING);
         alert.setTitle( "Information");
         alert.setHeaderText(null);
-        alert.setContentText("Veuillez renseigner au moins un nom avant d'enregistrer le personage");
+        alert.setContentText("Veuillez renseigner au moins un nom, une classe et une race avant d'enregistrer le personage");
 
         alert.showAndWait();
     }

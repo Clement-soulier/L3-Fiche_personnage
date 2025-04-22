@@ -17,9 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
+
+import fr.clement_tristan_olivier.liste_personnage.controller.makeDraggable;
 
 public class AffichageFichePersonnageController {
     private Personnage personnage;
@@ -40,6 +41,19 @@ public class AffichageFichePersonnageController {
     private ListView<Map.Entry<Statistique, Integer>> ListView2;
     @FXML
     private ListView<Competence> ListView3;
+    @FXML
+    private Pane PaneBio;
+    @FXML
+    private Pane PaneStats;
+    @FXML
+    private Pane PaneEquipements;
+    @FXML
+    private Pane PaneSkills;
+    @FXML
+    private Pane PaneRace;
+    @FXML
+    private Pane PaneClass;
+
 
     @FXML
     public void initialiserVue(){
@@ -51,6 +65,14 @@ public class AffichageFichePersonnageController {
             Image placeholder = new Image(getClass().getResource("/fr/clement_tristan_olivier/liste_personnage/image/AVATAR_PLACEHOLDER.png").toExternalForm());
             Avatar.setImage(placeholder);
         }
+        // Rendre le déplacement des composants de la fiche possible
+        makeDraggable.makeDraggable(PaneBio);
+        makeDraggable.makeDraggable(PaneStats);
+        makeDraggable.makeDraggable(PaneEquipements);
+        makeDraggable.makeDraggable(PaneSkills);
+        makeDraggable.makeDraggable(PaneRace);
+        makeDraggable.makeDraggable(PaneClass);
+        makeDraggable.makeDraggable(Avatar);
 
         // Remplir la fiche avec les informations
         Name.setText(personnage.nom);

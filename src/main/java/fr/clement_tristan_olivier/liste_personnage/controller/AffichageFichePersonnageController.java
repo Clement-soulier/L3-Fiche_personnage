@@ -54,7 +54,6 @@ public class AffichageFichePersonnageController {
 
         // Remplir la fiche avec les informations
         Name.setText(personnage.nom);
-        System.out.println(personnage.biographie);
         Biographie.setText(personnage.biographie);
         Race.setText(personnage.race.toString());
         Class.setText(personnage.classe.toString());

@@ -17,7 +17,7 @@ public class Race implements Serializable{
     }
 
     /**
-     * Retourne un string correspondant à l'objet
+     * Retourne un string correspondant à l'objet.
      * @return String
      */
     @Override

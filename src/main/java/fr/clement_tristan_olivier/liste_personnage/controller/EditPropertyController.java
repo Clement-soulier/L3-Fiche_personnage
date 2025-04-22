@@ -47,32 +47,32 @@ public class EditPropertyController {
         comboBoxPropertyClasse.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
             setTextFieldsForProperty(newValue);
         });
-        comboBoxPropertyClasse.setCellFactory(_ -> classeCellule());
-        comboBoxPropertyClasse.setButtonCell(classeCellule());
+        comboBoxPropertyClasse.setCellFactory(new ClasseCellFactory());
+        comboBoxPropertyClasse.setButtonCell(new ClasseCellFactory().call(null));
 
         comboBoxPropertyCompetence.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
             setTextFieldsForProperty(newValue);
         });
-        comboBoxPropertyCompetence.setCellFactory(_ -> skillCellule());
-        comboBoxPropertyCompetence.setButtonCell(skillCellule());
+        comboBoxPropertyCompetence.setCellFactory(new CompetenceCellFactory());
+        comboBoxPropertyCompetence.setButtonCell(new CompetenceCellFactory().call(null));
 
         comboBoxPropertyEquipement.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
             setTextFieldsForProperty(newValue);
         });
-        comboBoxPropertyEquipement.setCellFactory(_ -> equipementCellule());
-        comboBoxPropertyEquipement.setButtonCell(equipementCellule());
+        comboBoxPropertyEquipement.setCellFactory(new EquipementCellFactory());
+        comboBoxPropertyEquipement.setButtonCell(new EquipementCellFactory().call(null));
 
         comboBoxPropertyRace.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
             setTextFieldsForProperty(newValue);
         });
-        comboBoxPropertyRace.setCellFactory(_ -> raceCellule());
-        comboBoxPropertyRace.setButtonCell(raceCellule());
+        comboBoxPropertyRace.setCellFactory(new RaceCellFactory());
+        comboBoxPropertyRace.setButtonCell(new RaceCellFactory().call(null));
 
         comboBoxPropertyStatistique.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
             setTextFieldsForProperty(newValue);
         });
-        comboBoxPropertyStatistique.setCellFactory(_ -> statistiqueCellule());
-        comboBoxPropertyStatistique.setButtonCell(statistiqueCellule());
+        comboBoxPropertyStatistique.setCellFactory(new StatistiqueCellFactory());
+        comboBoxPropertyStatistique.setButtonCell(new StatistiqueCellFactory().call(null));
         
 
         // Set le comportement du bouton valider
@@ -220,100 +220,5 @@ public class EditPropertyController {
                 statistique.description = desc;
             }
         }
-    }
-
-    // Affichage personalisé pour equipementcomboBox
-    private ListCell<Equipement> equipementCellule() {
-        return new ListCell<Equipement>() {
-            // Infobulle
-            private final Tooltip tooltip = new Tooltip();
-
-            @Override
-            protected void updateItem(Equipement equipement, boolean empty){
-                super.updateItem(equipement, empty);
-                if(empty || equipement == null) {
-                    setText(null);
-                    setTooltip(null);
-                } else {
-                    setText(equipement.nom);
-                    tooltip.setText(equipement.description);
-                    setTooltip(tooltip);
-                }
-            }
-        };
-    }
-
-    // Affichage personalisé pour skillscomboBox
-    private ListCell<Competence> skillCellule() {
-        return new ListCell<Competence>() {
-            // Infobulle
-            private final Tooltip tooltip = new Tooltip();
-            
-            @Override
-            protected void updateItem(Competence competence, boolean empty){
-                super.updateItem(competence, empty);
-                if(empty || competence == null) {
-                    setText(null);
-                    setTooltip(null);
-                } else {
-                    setText(competence.nom);
-                    tooltip.setText(competence.description);
-                    setTooltip(tooltip);
-                }
-            }
-        };
-    }
-
-    // Affichage personalisé pour classe
-    private ListCell<Classe> classeCellule() {
-        return new ListCell<Classe>() {
-            
-            @Override
-            protected void updateItem(Classe cla, boolean empty){
-                super.updateItem(cla, empty);
-                if(empty || cla == null) {
-                    setText(null);
-                } else {
-                    setText(cla.nom);
-                }
-            }
-        };
-    }
-
-    // Affichage personalisé pour race
-    private ListCell<Race> raceCellule() {
-        return new ListCell<Race>() {
-            
-            @Override
-            protected void updateItem(Race race, boolean empty){
-                super.updateItem(race, empty);
-                if(empty || race == null) {
-                    setText(null);
-                } else {
-                    setText(race.nom);
-                }
-            }
-        };
-    }
-
-    // Affichage personalisé pour Statistique
-    private ListCell<Statistique> statistiqueCellule() {
-        return new ListCell<Statistique>() {
-            // Infobull
-            private final Tooltip tooltip = new Tooltip();
-
-            @Override
-            protected void updateItem(Statistique stat, boolean empty){
-                super.updateItem(stat, empty);
-                if(empty || stat == null){
-                    setText(null);
-                    setTooltip(null);
-                } else {
-                    setText(stat.nom);
-                    tooltip.setText(stat.description);
-                    setTooltip(tooltip);
-                }
-            }
-        };
     }
 }

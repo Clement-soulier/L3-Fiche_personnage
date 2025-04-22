@@ -5,8 +5,12 @@ import java.util.Map;
 
 import fr.clement_tristan_olivier.liste_personnage.model.Competence;
 import fr.clement_tristan_olivier.liste_personnage.model.Equipement;
+import fr.clement_tristan_olivier.liste_personnage.model.EquipementCellFactory;
 import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
 import fr.clement_tristan_olivier.liste_personnage.model.Statistique;
+import fr.clement_tristan_olivier.liste_personnage.model.StatistiqueMapEntryCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.model.CompetenceCellFactory;
+
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
@@ -56,77 +60,14 @@ public class AffichageFichePersonnageController {
         ListView3.setItems(javafx.collections.FXCollections.observableArrayList(personnage.competences));
 
         // Set les affichages personalisé des listView
-        ListView1.setCellFactory(_ -> equipementCellule());
-        ListView2.setCellFactory(_ -> statCellule());
-        ListView3.setCellFactory(_ -> skillCellule());
+        ListView1.setCellFactory(new EquipementCellFactory());
+        ListView2.setCellFactory(new StatistiqueMapEntryCellFactory());
+        ListView3.setCellFactory(new CompetenceCellFactory());
 
 
     }
 
     public void setModele(Personnage personnage){
         this.personnage = personnage;
-    }
-
-    // Affichage personalisé pour skillscomboBox
-    private ListCell<Competence> skillCellule() {
-        return new ListCell<Competence>() {
-            // Infobulle
-            private final Tooltip tooltip = new Tooltip();
-            
-            @Override
-            protected void updateItem(Competence competence, boolean empty){
-                super.updateItem(competence, empty);
-                if(empty || competence == null) {
-                    setText(null);
-                    setTooltip(null);
-                } else {
-                    setText(competence.nom);
-                    tooltip.setText(competence.description);
-                    setTooltip(tooltip);
-                }
-            }
-        };
-    }
-
-    // Affichage personalisé pour equipementcomboBox
-    private ListCell<Equipement> equipementCellule() {
-        return new ListCell<Equipement>() {
-            // Infobulle
-            private final Tooltip tooltip = new Tooltip();
-
-            @Override
-            protected void updateItem(Equipement equipement, boolean empty){
-                super.updateItem(equipement, empty);
-                if(empty || equipement == null) {
-                    setText(null);
-                    setTooltip(null);
-                } else {
-                    setText(equipement.nom);
-                    tooltip.setText(equipement.description);
-                    setTooltip(tooltip);
-                }
-            }
-        };
-    }
-
-    // Affichage personalisé pour statscomboBox
-    private ListCell<Map.Entry<Statistique, Integer>> statCellule() {
-        return new ListCell<Map.Entry<Statistique, Integer>>() {
-            // Infobulle
-            private final Tooltip tooltip = new Tooltip();
-            
-            @Override
-            protected void updateItem(Map.Entry<Statistique, Integer> statistique, boolean empty){
-                super.updateItem(statistique, empty);
-                if(empty || statistique == null) {
-                    setText(null);
-                    setTooltip(null);
-                } else {
-                    setText(statistique.getKey().nom + ": " + statistique.getValue());
-                    tooltip.setText(statistique.getKey().description);
-                    setTooltip(tooltip);
-                }
-            }
-        };
     }
 }

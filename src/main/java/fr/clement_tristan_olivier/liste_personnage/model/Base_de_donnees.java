@@ -32,7 +32,7 @@ public class Base_de_donnees implements Serializable{
      */
     public Compte authenticate(String pseudo, String password){
         for(Compte compte : this.utilisateurs){
-            if(compte.active == true && compte.pseudo.equals(pseudo) && passwordUtils.verifyPassword(compte.password, password)){
+            if(compte.pseudo.equals(pseudo) && passwordUtils.verifyPassword(compte.password, password)){
                 return compte;
             }
         }
@@ -67,34 +67,6 @@ public class Base_de_donnees implements Serializable{
         }
         this.utilisateurs.remove(compte);
         return !this.utilisateurs.contains(compte);
-    }
-
-    /**
-     * Désactive le compte.
-     * Retourne false si le compte est déjà désactivé, true sinon
-     * @param compte Compte
-     * @return boolean
-     */
-    public boolean desactiver_compte(Compte compte){
-        if(compte.active == false){
-            return false;
-        }
-        compte.active = false;
-        return true;
-    }
-
-    /**
-     * Réactive un compte désactivé.
-     * Retourne false si le compte est déjà activé, true sinon
-     * @param compte Compte
-     * @return boolean
-     */
-    public boolean activer_compte(Compte compte){
-        if(compte.active == true){
-            return false;
-        }
-        compte.active = true;
-        return true;
     }
 
     /**

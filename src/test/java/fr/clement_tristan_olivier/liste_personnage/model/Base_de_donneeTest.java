@@ -27,7 +27,6 @@ public class Base_de_donneeTest {
         assertEquals(compte_depuis_bd.id, compte.id, "L'id ne correspond pas");
         assertEquals(compte_depuis_bd.pseudo, compte.pseudo, "Le pseudo ne correspond pas");
         assertEquals(compte_depuis_bd.password, compte.password, "Le pseudo ne correspond pas");
-        assertEquals(compte_depuis_bd.active, compte.active, "L'état du compte ne correspond pas");
         assertTrue(compte_depuis_bd.personnages.equals(compte.personnages), "La liste des personnage ne correspond pas");
     }
 
@@ -52,31 +51,6 @@ public class Base_de_donneeTest {
 
         assertTrue(!bd.utilisateurs.contains(compte), "Le compte n'as pas été supprimé");
         assertTrue(bd.utilisateurs.contains(compte1), "Le mauvais compte a été supprimé");
-    }
-
-    @Test
-    public void test_desactive_compte() {
-        Base_de_donnees bd = new Base_de_donnees();
-        Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
-
-        bd.ajouter_compte(compte);
-        bd.desactiver_compte(compte);
-
-        assertTrue(!compte.active, "Le compte n'a pas été désactivé (depuis le comtpe)");
-        assertTrue(!bd.utilisateurs.get(bd.utilisateurs.indexOf(compte)).active, "Le compte n'a pas été désactivé (depuis la db)");
-    }
-
-    @Test
-    public void test_active_compte() {
-        Base_de_donnees bd = new Base_de_donnees();
-        Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
-
-        bd.ajouter_compte(compte);
-        bd.desactiver_compte(compte);
-        bd.activer_compte(compte);
-
-        assertTrue(compte.active, "Le Compte n'as pas été réactivé (depuis compte)");
-        assertTrue(bd.utilisateurs.get(bd.utilisateurs.indexOf(compte)).active, "Le compte n'as pas été réactivé (depuis la db)");
     }
 
     @Test

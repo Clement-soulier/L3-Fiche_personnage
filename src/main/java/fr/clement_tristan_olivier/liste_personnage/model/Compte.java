@@ -12,7 +12,6 @@ public class Compte implements Serializable{
     protected int id;
     protected String pseudo;
     protected String password;
-    protected Boolean active;
     public ArrayList<Personnage> personnages;
     public static ArrayList<Compte> liste_compte = new ArrayList<>();
 
@@ -25,7 +24,6 @@ public class Compte implements Serializable{
         this.pseudo = pseudo;
         this.id = Compte.get_id++;
         this.password = passwordUtils.hashPassword(password);
-        this.active = true;
         this.personnages = new ArrayList<>();
         liste_compte.add(this);
     }
@@ -81,7 +79,6 @@ public class Compte implements Serializable{
         return "Compte{\nid=" + id +
                 "\npseudo='" + pseudo + '\'' +
                 "\npassword='" + password + '\'' +
-                "\nactive=" + active +
                 "\npersonnages=" + personnages +
                 "\n}";
     }

@@ -58,28 +58,6 @@ public class Competence implements Serializable
     }
 
     /**
-     * Supprime une compétence pour chaque personnage et pour la liste globale
-     * @param p Competence
-     * @return boolean
-     */
-    public static boolean supprime_globale(Competence p)
-    {
-        for(Compte compte : Compte.liste_compte)
-        {
-            for (Personnage personnage : compte.personnages)
-            {
-                personnage.supprimer_competence(p);
-                if(personnage.competences.contains(p))
-                {
-                    return false;
-                }
-            }
-        }
-        liste_competence.removeIf(c -> c.equals(p));
-        return true;
-    }
-
-    /**
      * Renvoie un string représentant l'objet pour affichage
      * @return String
      */

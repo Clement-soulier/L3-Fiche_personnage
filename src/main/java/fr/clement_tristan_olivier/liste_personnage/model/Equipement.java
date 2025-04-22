@@ -58,28 +58,6 @@ public class Equipement implements Serializable
     }
 
     /**
-     * Supprime un équipement de pour tous les personnages et de la liste globale
-     * @param p Equipement
-     * @return boolean
-     */
-    public static boolean supprime_globale(Equipement p)
-    {
-        for (Compte compte : Compte.liste_compte)
-        {
-            for (Personnage personnage : compte.personnages)
-            {
-                personnage.supprimer_equipement(p);
-                if(personnage.equipements.contains(p))
-                {
-                    return false;
-                }
-            }
-        }
-        liste_equipement.removeIf(c -> c.equals(p));
-        return true;
-    }
-
-    /**
      * Renvoie un string représentant l'objet pour affichage
      * @return String
      */

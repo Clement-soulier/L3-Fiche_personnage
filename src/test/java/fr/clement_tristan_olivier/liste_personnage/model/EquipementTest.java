@@ -37,28 +37,6 @@ public class EquipementTest {
     }
 
     @Test
-    public void test_supprime_globale() {
-        Compte compte = new Compte("Jean", "Mot2p@ssTr3sSecuizer");
-        Equipement equipement = new Equipement("épée", "Une épée très tranchante 😱");
-        Equipement equipement1 = new Equipement("hache", "Une hache très tranchante 😱");
-        Personnage personnage = new Personnage("Jean", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), Classe.getClasse("testeur"), Race.getRace("elfe"));
-        Personnage personnage2 = new Personnage("Claude", "Personnage de test", new HashMap<>(), new ArrayList<>(), new ArrayList<>(), Classe.getClasse("testeur"), Race.getRace("demi-elfe"));
-
-        personnage.ajouter_equipement(equipement);
-        personnage2.ajouter_equipement(equipement);
-        personnage2.ajouter_equipement(equipement1);
-        compte.ajouter_personnage(personnage);
-        compte.ajouter_personnage(personnage2);
-
-        Equipement.supprime_globale(equipement);
-
-        assertTrue(!Equipement.liste_equipement.contains(equipement), "L'équipement n'a pas été supprimé de la liste globale");
-        assertTrue(!personnage.equipements.contains(equipement), "L'équipement n'as pas été supprimé pour le premier personnage");
-        assertTrue(!personnage2.equipements.contains(equipement), "L'équipement n'as pas été supprimé du deuxième personnage");
-        assertTrue(personnage2.equipements.contains(equipement1), "L'équipement supprimé n'est pas le bon");
-    }
-
-    @Test
     public void test_toString() {
         Equipement equipement = new Equipement("épée", "Une épée très tranchante 😱");
 

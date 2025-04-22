@@ -42,7 +42,7 @@ public class Personnage implements Serializable{
 
     /**
      * Constructeur pour Personnage.
-     * Ne requiert que le nom du personnage, à utiliser dans ListePersonnage.
+     * Ne requiert aucun paramètre.
      * @param nom
      */
     public Personnage(){
@@ -169,19 +169,6 @@ public class Personnage implements Serializable{
         }
         return this.statistiques.get(statistique);
     }
-
-    /**
-     * Modifie le portrait du personnage.
-     * @param portrait Image
-     * @return boolean
-     */
-    /*public boolean modifie_portrait(Image portrait){
-        if(this.portrait.equals(portrait)){
-            return false;
-        }
-        this.portrait = portrait;
-        return true;
-    }*/
 
     /**
      * Modifie le nom du personnage.

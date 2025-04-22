@@ -70,34 +70,6 @@ public class Base_de_donnees implements Serializable{
     }
 
     /**
-     * Désactive le compte.
-     * Retourne false si le compte est déjà désactivé, true sinon
-     * @param compte Compte
-     * @return boolean
-     */
-    public boolean desactiver_compte(Compte compte){
-        if(compte.active == false){
-            return false;
-        }
-        compte.active = false;
-        return true;
-    }
-
-    /**
-     * Réactive un compte désactivé.
-     * Retourne false si le compte est déjà activé, true sinon
-     * @param compte Compte
-     * @return boolean
-     */
-    public boolean activer_compte(Compte compte){
-        if(compte.active == true){
-            return false;
-        }
-        compte.active = true;
-        return true;
-    }
-
-    /**
      * Renvoie une string représentant l'objet pour affichage.
      * @return String
      */

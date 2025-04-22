@@ -2,23 +2,16 @@ package fr.clement_tristan_olivier.liste_personnage.controller;
 
 import fr.clement_tristan_olivier.liste_personnage.model.Base_de_donnees;
 import fr.clement_tristan_olivier.liste_personnage.model.Compte;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 
 
 public class CreateUserPageController {
     private Base_de_donnees base_de_donnees;
     public MainViewController mainViewController;
 
-    @FXML
-    private AnchorPane anchorPane;
-    @FXML
-    private VBox vBox;
     @FXML
     private Label InfoLabel;
     @FXML

@@ -13,7 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.*;
 
 public class EditPropertyController {
-    private String[] properties = {"Classes", "Compétences", "Equipements", "Races", "Statistiques"};
+    private final String[] properties = {"Classes", "Compétences", "Equipements", "Races", "Statistiques"};
 
     @FXML
     private ComboBox<String> comboBoxPropertySelect;

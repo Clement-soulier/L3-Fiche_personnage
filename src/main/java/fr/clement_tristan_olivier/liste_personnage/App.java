@@ -24,6 +24,7 @@ public class App extends Application
             primaryStage.setTitle("Test app");
             primaryStage.setWidth(650);
             primaryStage.setHeight(463);
+            primaryStage.setResizable(false);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch(Exception e){

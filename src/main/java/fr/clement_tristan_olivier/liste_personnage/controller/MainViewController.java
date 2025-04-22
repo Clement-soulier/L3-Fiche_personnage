@@ -2,7 +2,6 @@ package fr.clement_tristan_olivier.liste_personnage.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -254,6 +253,7 @@ public class MainViewController {
             stage.setWidth(300);
             stage.setHeight(350);
             stage.setScene(new Scene(loader.load()));
+            stage.setResizable(false);
 
             // Ouvrir la fenêtre et bloqué la fenêtre courante
             stage.showAndWait();
@@ -616,7 +616,7 @@ public class MainViewController {
         new Statistique("Défense", "Capacité à encaisser des dégâts des dégâts");
 
         // Equipements
-        new Equipement("épée", "Une épée qui coupe bien");
+        new Equipement("Epée", "Une épée qui coupe bien");
         new Equipement("Bouclier", "Un bouclier qui protège bien");
 
         // Compétences

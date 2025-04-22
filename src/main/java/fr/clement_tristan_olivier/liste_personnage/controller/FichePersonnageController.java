@@ -18,11 +18,9 @@ import javafx.scene.control.Alert;
 import com.gluonhq.charm.glisten.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -205,6 +203,7 @@ public class FichePersonnageController {
             // Paramétrage de la fenêtre de pop-up
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Ajouter Equipement");
+            stage.setResizable(false);
             stage.setScene(new Scene(loader.load()));
             
             // Récupération du controleur
@@ -240,6 +239,7 @@ public class FichePersonnageController {
 
             // Paramétrage de la fenêtre de pop-up
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
             stage.setTitle("Ajouter Compétence");
             stage.setScene(new Scene(loader.load()));
             
@@ -275,6 +275,7 @@ public class FichePersonnageController {
 
             // Paramétrage de la fenêtre de pop-up
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
             stage.setTitle("Ajouter Race");
             stage.setScene(new Scene(loader.load()));
 
@@ -299,6 +300,7 @@ public class FichePersonnageController {
 
             // Paramétrage de la fenêtre de pop-up
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
             stage.setTitle("Ajouter Classe");
             stage.setScene(new Scene(loader.load()));
 
@@ -323,6 +325,7 @@ public class FichePersonnageController {
 
             // Paramétrage de la fenêtre de pop-up
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
             stage.setTitle("Ajouter Statistique");
             stage.setScene(new Scene(loader.load()));
             

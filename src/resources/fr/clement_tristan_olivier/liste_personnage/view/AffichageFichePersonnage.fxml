@@ -42,6 +42,6 @@
       <ListView fx:id="ListView1" layoutX="336.0" layoutY="152.0" prefHeight="233.0" prefWidth="250.0" style="-fx-border-color: black;" />
       <ListView fx:id="ListView2" layoutX="14.0" layoutY="151.0" prefHeight="100.0" prefWidth="249.0" style="-fx-border-color: black;" />
       <ListView fx:id="ListView3" layoutX="14.0" layoutY="285.0" prefHeight="100.0" prefWidth="249.0" style="-fx-border-color: black;" />
-      <TextArea id="FixBugBiographie" editable="false" layoutX="103.0" layoutY="35.0" prefHeight="83.0" prefWidth="200.0" wrapText="true" />
+      <TextArea fx:id="Biographie" editable="false" layoutX="103.0" layoutY="35.0" prefHeight="83.0" prefWidth="200.0" wrapText="true" />
    </children>
 </AnchorPane>

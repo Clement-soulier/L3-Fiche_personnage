@@ -3,6 +3,7 @@ package fr.clement_tristan_olivier.liste_personnage.controller;
 
 import java.util.Map;
 
+
 import fr.clement_tristan_olivier.liste_personnage.model.Competence;
 import fr.clement_tristan_olivier.liste_personnage.model.Equipement;
 import fr.clement_tristan_olivier.liste_personnage.model.EquipementCellFactory;
@@ -15,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -31,7 +33,7 @@ public class AffichageFichePersonnageController {
     @FXML
     private Label Class;
     @FXML
-    private Label Biographie;
+    private TextArea Biographie;
     @FXML
     private ListView<Equipement> ListView1;
     @FXML
@@ -52,6 +54,7 @@ public class AffichageFichePersonnageController {
 
         // Remplir la fiche avec les informations
         Name.setText(personnage.nom);
+        System.out.println(personnage.biographie);
         Biographie.setText(personnage.biographie);
         Race.setText(personnage.race.toString());
         Class.setText(personnage.classe.toString());

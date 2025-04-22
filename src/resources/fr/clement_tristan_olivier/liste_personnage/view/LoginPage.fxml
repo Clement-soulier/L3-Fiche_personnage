@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clement_tristan_olivier.liste_personnage.controller.LoginPageController">
+<AnchorPane prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clement_tristan_olivier.liste_personnage.controller.LoginPageController">
    <children>
-      <VBox alignment="CENTER" layoutX="212.0" layoutY="67.0" prefHeight="266.0" prefWidth="176.0" spacing="10.0">
+      <VBox alignment="CENTER" layoutX="232.0" layoutY="87.0" prefHeight="266.0" prefWidth="176.0" spacing="10.0">
          <children>
             <Label text="Identifiant" />
             <TextField fx:id="Login" />
@@ -19,13 +19,13 @@
             <PasswordField fx:id="Password" />
             <CheckBox fx:id="CheckBox" mnemonicParsing="false" text="et j'accepte.">
                <graphic>
-                  <Hyperlink fx:id="ChartLink" text="J'ai lu" onAction="#handleHyperlinkAction"/>
+                  <Hyperlink fx:id="ChartLink" onAction="#handleHyperlinkAction" text="J'ai lu" />
                </graphic>
             </CheckBox>
             <Button fx:id="ConnectionButton" mnemonicParsing="false" text="Connexion" />
          </children>
       </VBox>
-      <Button fx:id="CreateUserButton" layoutX="498.0" layoutY="14.0" mnemonicParsing="false" text="Créer compte" />
+      <Button fx:id="CreateUserButton" layoutX="538.0" layoutY="14.0" mnemonicParsing="false" text="Créer compte" />
       <Label fx:id="InfoLabel" alignment="CENTER" layoutX="286.0" layoutY="325.0" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

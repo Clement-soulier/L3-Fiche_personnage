@@ -59,27 +59,6 @@ public class Statistique implements Serializable
     }
 
     /**
-     * Supprime la statistique de chaque personnage puis se supprime de la liste static
-     * @param p Statistique
-     * @return boolean
-     */
-    public static boolean supprime_globale(Statistique p)
-    {
-        for(Compte compte : Compte.liste_compte)
-        {
-            for(Personnage personnage : compte.personnages)
-            {
-                personnage.supprimer_statistique(p);
-                if(personnage.statistiques.containsKey(p)){
-                    return false;
-                }
-            }
-        }
-        liste_stats.removeIf(s -> s.equals(p));
-        return true;
-    }
-
-    /**
      * Retourne l'objet sous forme de String pour affichage
      * @return String
      */

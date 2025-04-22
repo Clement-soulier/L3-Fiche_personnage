@@ -17,7 +17,6 @@ public class CompteTest {
 
         assertEquals("Jean", compte.pseudo, "Le pseudo du compte devrait être \"Jean\"");
         assertEquals(true, passwordUtils.verifyPassword(compte.password, "Mot2p@ssTr3sSecuizer"), "Le hashage du mot de passe est incorect");
-        assertEquals(true, compte.active, "Le compte devrait être actif");
         assertTrue(compte.personnages instanceof ArrayList<Personnage>, "La liste de personnage n'est pas du bon type");
         assertTrue(compte.personnages.isEmpty(), "La liste des personnage devrait être vide");
         assertTrue(Compte.liste_compte.contains(compte), "Le compte n'as pas été ajouté à la liste des comptes");

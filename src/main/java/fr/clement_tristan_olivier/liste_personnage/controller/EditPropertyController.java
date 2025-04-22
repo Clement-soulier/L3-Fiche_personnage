@@ -2,6 +2,11 @@ package fr.clement_tristan_olivier.liste_personnage.controller;
 
 import javafx.scene.control.Label;
 import fr.clement_tristan_olivier.liste_personnage.model.*;
+import fr.clement_tristan_olivier.liste_personnage.utils.ClasseCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.CompetenceCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.EquipementCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.RaceCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.StatistiqueCellFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;

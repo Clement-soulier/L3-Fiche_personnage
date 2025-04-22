@@ -614,23 +614,31 @@ public class MainViewController {
         // Statistiques
         new Statistique("Attaque", "Capacité à faire des dégâts");
         new Statistique("Défense", "Capacité à encaisser des dégâts des dégâts");
+        new Statistique("Magie", "Capacité à lancer des sorts");
+        new Statistique("Agilité", "Capacité à esquiver les attaques et à se déplacer rapidement");
 
         // Equipements
-        new Equipement("Epée", "Une épée qui coupe bien");
+        new Equipement("Épée", "Une épée qui coupe bien");
         new Equipement("Bouclier", "Un bouclier qui protège bien");
+        new Equipement("Baguette magique", "Une baguette magique qui lance des sorts");
+        new Equipement("Armure", "Une armure qui protège bien");
 
         // Compétences
-        new Competence("coup d'épée", "Mettre un coup d'épée de base");
-        new Competence("boule de feu", "Jette une boule de feu sur l'adversaire");
-        new Competence("éclair", "Foudroie l'ennemi");
+        new Competence("Coup d'épée", "Mettre un coup d'épée de base");
+        new Competence("Boule de feu", "Jette une boule de feu sur l'adversaire");
+        new Competence("Éclair", "Foudroie l'ennemi");
+        new Competence("Tir à l'arc", "Tire une flèche sur l'adversaire");
 
         // Classe
         new Classe("Chevalier");
         new Classe("Saint");
+        new Classe("Mage");
+        new Classe("Archer");
 
         // Race
         new Race("Humain");
         new Race("Elfe");
         new Race("Orc");
+        new Race("Nain");
     }
 }

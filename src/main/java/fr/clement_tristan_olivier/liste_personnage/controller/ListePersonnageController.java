@@ -2,7 +2,7 @@ package fr.clement_tristan_olivier.liste_personnage.controller;
 
 import fr.clement_tristan_olivier.liste_personnage.model.Compte;
 import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
-import fr.clement_tristan_olivier.liste_personnage.model.PersonnageCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.PersonnageCellFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;

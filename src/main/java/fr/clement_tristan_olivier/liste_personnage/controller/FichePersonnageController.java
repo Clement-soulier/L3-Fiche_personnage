@@ -1,6 +1,11 @@
 package fr.clement_tristan_olivier.liste_personnage.controller;
 
 import fr.clement_tristan_olivier.liste_personnage.model.*;
+import fr.clement_tristan_olivier.liste_personnage.utils.ClasseCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.CompetenceCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.EquipementCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.RaceCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.StatistiqueMapEntryCellFactory;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,8 @@
-package fr.clement_tristan_olivier.liste_personnage.model;
+package fr.clement_tristan_olivier.liste_personnage.utils;
 
 import java.util.Map;
 
+import fr.clement_tristan_olivier.liste_personnage.model.Statistique;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;

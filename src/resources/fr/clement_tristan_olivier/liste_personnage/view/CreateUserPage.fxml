@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clement_tristan_olivier.liste_personnage.controller.CreateUserPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clement_tristan_olivier.liste_personnage.controller.CreateUserPageController">
    <children>
-      <VBox alignment="CENTER" layoutX="167.0" layoutY="79.0" prefHeight="242.0" prefWidth="266.0" spacing="10.0">
+      <VBox alignment="CENTER" layoutX="187.0" layoutY="99.0" prefHeight="242.0" prefWidth="266.0" spacing="10.0">
          <children>
             <Label text="Nom d'utilisateur" />
             <TextField fx:id="CreateUserText" />
@@ -19,7 +19,7 @@
             <Button fx:id="CreateUserButton" mnemonicParsing="false" text="Créer" />
          </children>
       </VBox>
-      <Button fx:id="BackButton" alignment="CENTER" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" text="Retour" />
+      <Button fx:id="BackButton" alignment="CENTER" layoutX="574.0" layoutY="14.0" mnemonicParsing="false" text="Retour" />
       <Label fx:id="InfoLabel" alignment="CENTER" layoutX="286.0" layoutY="339.0" prefHeight="18.0" prefWidth="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

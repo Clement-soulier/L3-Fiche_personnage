@@ -7,7 +7,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.clement_tristan_olivier.liste_personnage.controller.AffichageFichePersonnageController">
    <children>
       <ImageView fx:id="Avatar" fitHeight="107.0" fitWidth="80.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
@@ -25,7 +24,6 @@
          </image>
       </ImageView>
       <Label fx:id="Class" alignment="CENTER" contentDisplay="CENTER" layoutX="336.0" layoutY="94.0" prefHeight="24.0" prefWidth="250.0" style="-fx-border-color: black;" />
-      <Label fx:id="Biographie" layoutX="104.0" layoutY="37.0" text="Biographie :" />
       <ImageView fitHeight="35.0" fitWidth="250.0" layoutX="14.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/STATS.png" />
@@ -44,5 +42,6 @@
       <ListView fx:id="ListView1" layoutX="336.0" layoutY="152.0" prefHeight="233.0" prefWidth="250.0" style="-fx-border-color: black;" />
       <ListView fx:id="ListView2" layoutX="14.0" layoutY="151.0" prefHeight="100.0" prefWidth="249.0" style="-fx-border-color: black;" />
       <ListView fx:id="ListView3" layoutX="14.0" layoutY="285.0" prefHeight="100.0" prefWidth="249.0" style="-fx-border-color: black;" />
+      <TextArea id="FixBugBiographie" editable="false" layoutX="103.0" layoutY="35.0" prefHeight="83.0" prefWidth="200.0" wrapText="true" />
    </children>
 </AnchorPane>

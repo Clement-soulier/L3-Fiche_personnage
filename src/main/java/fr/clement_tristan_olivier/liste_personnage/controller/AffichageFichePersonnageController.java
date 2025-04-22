@@ -6,12 +6,11 @@ import java.util.Map;
 
 import fr.clement_tristan_olivier.liste_personnage.model.Competence;
 import fr.clement_tristan_olivier.liste_personnage.model.Equipement;
-import fr.clement_tristan_olivier.liste_personnage.model.EquipementCellFactory;
 import fr.clement_tristan_olivier.liste_personnage.model.Personnage;
 import fr.clement_tristan_olivier.liste_personnage.model.Statistique;
-import fr.clement_tristan_olivier.liste_personnage.model.StatistiqueMapEntryCellFactory;
-import fr.clement_tristan_olivier.liste_personnage.model.CompetenceCellFactory;
-
+import fr.clement_tristan_olivier.liste_personnage.utils.CompetenceCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.EquipementCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.StatistiqueMapEntryCellFactory;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;

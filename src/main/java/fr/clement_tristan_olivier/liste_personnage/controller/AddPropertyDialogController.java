@@ -9,6 +9,9 @@ import java.util.AbstractMap;
 import java.util.Map;
 
 import fr.clement_tristan_olivier.liste_personnage.model.*;
+import fr.clement_tristan_olivier.liste_personnage.utils.CompetenceCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.EquipementCellFactory;
+import fr.clement_tristan_olivier.liste_personnage.utils.StatistiqueCellFactory;
 
 public class AddPropertyDialogController {
     public ObservableList<Map.Entry<Statistique, Integer>> statistiques;

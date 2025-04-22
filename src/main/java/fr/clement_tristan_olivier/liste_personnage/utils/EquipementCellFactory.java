@@ -1,5 +1,6 @@
-package fr.clement_tristan_olivier.liste_personnage.model;
+package fr.clement_tristan_olivier.liste_personnage.utils;
 
+import fr.clement_tristan_olivier.liste_personnage.model.Equipement;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.ListView;

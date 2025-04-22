@@ -346,8 +346,6 @@ public class MainViewController {
                     if(fichier != null){
                         sauvegardeModele(fichier.getAbsolutePath());
                         stage.close();
-                    } else {
-                        return;
                     }
                 } else {
                     // Enregistrer les modifications
@@ -412,8 +410,6 @@ public class MainViewController {
                             initBaseDeDonnes();
                             chargerLoginPage();
                         }
-                    } else {
-                        return;
                     }
                 } else {
                     // Enregistrer les modifications
@@ -482,8 +478,6 @@ public class MainViewController {
                             currentFile = null;
                             chargerLoginPage();
                         }
-                    } else {
-                        return;
                     }
                 } else {
                     // Enregistrer les modifications
@@ -549,8 +543,6 @@ public class MainViewController {
                         currentFile = null;
                         initBaseDeDonnes();
                         chargerLoginPage();
-                    } else {
-                        return;
                     }
                 } else {
                     // Enregistrer les modifications
@@ -579,8 +571,6 @@ public class MainViewController {
             if(fichier != null){
                 currentFile = fichier.getAbsolutePath();
                 sauvegardeModele(currentFile);
-            } else {
-                return;
             }
         }
     }
@@ -590,8 +580,6 @@ public class MainViewController {
         if(fichier != null){
             currentFile = fichier.getAbsolutePath();
             sauvegardeModele(currentFile);
-        } else {
-            return;
         }
     }
 
